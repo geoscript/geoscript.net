@@ -85,6 +85,10 @@ pre {
     padding: 1em;
 }
 
+tt {
+    color: inherit;
+}
+
 div.footer {
     background: transparent;
     text-align: center;

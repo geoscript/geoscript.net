@@ -27,6 +27,5 @@ Yes, you can choose from an implementation of GeoScript in :doc:`JavaScript <js/
 
 .. toctree::
     :hidden:
-    :glob:
 
-    js/*
+    js/index
