@@ -24,3 +24,4 @@ environment. With this environment, you can run paver tasks to build the site::
     ~/geoscript.org$ . bin/activate
     (geoscript.org)~/geoscript.org$ paver build_site
 
+This will generate the website in a `build` directory.

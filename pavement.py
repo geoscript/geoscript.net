@@ -41,12 +41,12 @@ def pull_docs():
     curdir.chdir()
 
 @task
-@needs(['pull_docs'])
+#@needs(['pull_docs'])
 def build_site():
     jsbuild = options.build / "js"
     jsbuild.makedirs()
     jssrc = options.repo_cache / "js" / options.js.docs
-    sh("sphinx-build -E -b html %s %s" % (jssrc, jsbuild))
+    sh("sphinx-build -E -b html -c %s -D html_theme=geoscript-js %s %s" % (curdir / "src", jssrc, jsbuild))
 
     sh("sphinx-build -E -b html %s %s" % (curdir / "src", options.build))
 
