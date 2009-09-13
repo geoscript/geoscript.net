@@ -21,11 +21,6 @@ GeoScript provides geospatial data access, manipulation, and rendering ability t
 Wait, is that JavaScript?
 -------------------------
 
-Yes, you can choose from an implementation of GeoScript in :doc:`JavaScript <js/index>` or
+Yes, you can choose from an implementation of GeoScript in `JavaScript <js>`_ or
 `Python <http://github.com/jdeolive/geoscript-py/tree/master>`_.
 
-
-.. toctree::
-    :hidden:
-
-    js/index
