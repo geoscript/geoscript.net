@@ -1,6 +1,0 @@
-# Sphinx inventory version 1
-# Project: GeoScript
-# Version: 0.1
-geoscript.geom mod js/api/geoscript/geom.html
-geoscript.proj mod js/api/geoscript/proj.html
-geoscript.feature mod js/api/geoscript/feature.html
