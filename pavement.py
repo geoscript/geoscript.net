@@ -41,7 +41,7 @@ def pull_docs():
     curdir.chdir()
 
 @task
-#@needs(["pull_docs"])
+@needs(["pull_docs"])
 def build_js():
     jsbuild = options.build / "js"
     jsbuild.makedirs()
