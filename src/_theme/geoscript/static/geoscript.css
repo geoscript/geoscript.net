@@ -76,10 +76,14 @@ div.sphinxsidebar h3, div.sphinxsidebar h4, div.sphinxsidebar h3 a, div.sphinxsi
     color: inherit !important;
 }
 
+div.related {
+    margin: 0.5em 1.5em 1em;    
+}
+
 div.related ul {
     background: transparent;
     border: 0;
-    display: none;
+    padding: 0;
 }
 
 pre {

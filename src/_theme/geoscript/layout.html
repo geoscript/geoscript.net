@@ -15,7 +15,7 @@
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
-          <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+            <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
         {%- endfor %}
         <li><a href="#">{{ title }}</a></li>
       </ul>
@@ -28,12 +28,10 @@
             <h4>geoscript.js commits</h4>
             <div id="jscommits"></div>
             <a href="http://github.com/tschaub/geoscript/commits/master/">see all ...</a>
-            <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
 
             <h4>geoscript.py commits</h4>
             <div id="pycommits"></div>
             <a href="http://github.com/jdeolive/geoscript-py/commits/master/">see all ...</a>
-            <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
 
             <div id="gitcommits">
                 <ul>
@@ -57,6 +55,8 @@
                     </li>
                 </ul>
             </div>
+            <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
+            <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
         </div>
     </div>
 {%- endmacro %}
@@ -73,7 +73,7 @@
         <div class="wrap">
             <h1 id="logo"><a href="{{ pathto('index') }}">GeoScript</a></h1>
             <ul id="top-nav">
-                <li class="first"><a>Details</a></li>
+                <!--<li class="first"><a>Details</a></li>-->
                 <li><a href="{{ pathto('js/index') }}">JavaScript</a></li>
                 <li><a href="http://github.com/jdeolive/geoscript-py/tree/master">Python</a></li>
             </ul>
@@ -92,7 +92,6 @@
 {% endblock %}
 
 {% block relbar1 %}
-    {%- if pagename != 'index' %}{{ customrelbar(False) }}{% endif %}
 {% endblock %}
 
 {% block sidebarsearch %}{% endblock %}

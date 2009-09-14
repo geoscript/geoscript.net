@@ -33,7 +33,7 @@ def clone_docs():
         sh("git clone %s %s" % (options.js.repo, js))
 
 @task
-@needs(['clone_docs'])
+@needs(["clone_docs"])
 def pull_docs():
     js = options.repo_cache / "js"
     js.chdir()
@@ -41,12 +41,16 @@ def pull_docs():
     curdir.chdir()
 
 @task
-#@needs(['pull_docs'])
-def build_site():
+#@needs(["pull_docs"])
+def build_js():
     jsbuild = options.build / "js"
     jsbuild.makedirs()
     jssrc = options.repo_cache / "js" / options.js.docs
-    sh("sphinx-build -E -b html -c %s -D html_theme=geoscript-js %s %s" % (curdir / "src", jssrc, jsbuild))
+    sh("sphinx-build -E -b html -c %s -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js %s %s" % (curdir / "src", jssrc, jsbuild))
+
+@task
+@needs(["build_js"])
+def build_site():
 
     sh("sphinx-build -E -b html %s %s" % (curdir / "src", options.build))
 

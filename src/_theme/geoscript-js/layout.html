@@ -1,9 +1,29 @@
-{% extends "../geoscript/layout.html" %}
-
-{%- macro index_sidebar_js() %}
+{% extends "sphinxdoc/layout.html" %}
+{%- macro customrelbar(showrel=True) %}
+    <div class="related">
+      <h3>{{ _('Navigation') }}</h3>
+      <ul>
+        {%- if showrel %}
+            {%- for rellink in rellinks %}
+            <li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+              <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags }}"
+                 {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+              {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
+            {%- endfor %}
+        {%- endif %}
+        {%- block rootrellink %}
+        <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
+        {%- endblock %}
+        {%- for parent in parents %}
+            <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+        {%- endfor %}
+        <li><a href="#">{{ title }}</a></li>
+      </ul>
+    </div>
+{%- endmacro %}
+{%- macro index_sidebar() %}
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h2></h2>
         </div>
     </div>
 {%- endmacro %}
@@ -11,10 +31,10 @@
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <h1 id="logo"><a href="{{ pathto('index') or '.' }}/..">GeoScript</a></h1>
+            <h1 id="logo"><a href="{{ pathto('index')|replace('index.html', '') }}..">GeoScript</a></h1>
             <ul id="top-nav">
-                <li><a href="{{ pathto('index') }}">JavaScript</a></li>
-                <li><a href="{{ pathto('quickstart/index') }}">Quick-Start</a></li>
+                <li class="first"><a href="{{ pathto('index') }}">JavaScript</a></li>
+                <li><a href="{{ pathto('quickstart/index') }}">Quick Start</a></li>
                 <li><a href="{{ pathto('api/index') }}">API Reference</a></li>
             </ul>
             {%- if pagename != "search" %}
@@ -31,7 +51,16 @@
     </div>
 {% endblock %}
 
+{% block relbar1 %}
+{% endblock %}
+
+{% block sidebarsearch %}{% endblock %}
+
 {%- block sidebar1 %}
-    {%- if pagename == 'index' %}{{ index_sidebar_js() }}{% else %}{{ super() }}{% endif %}
+    {%- if pagename == 'index' %}{{ index_sidebar() }}{% else %}{{ super() }}{% endif %}
 {% endblock %}
 {%- block sidebar2 %}{% endblock %}
+
+{%- block relbar2 %}
+    {%- if pagename != 'index' %}{{ customrelbar(True) }}{% endif %}
+{% endblock %}
