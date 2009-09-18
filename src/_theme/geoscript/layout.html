@@ -55,8 +55,6 @@
                     </li>
                 </ul>
             </div>
-            <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
-            <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
         </div>
     </div>
 {%- endmacro %}
@@ -103,4 +101,10 @@
 
 {%- block relbar2 %}
     {%- if pagename != 'index' %}{{ customrelbar(True) }}{% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
+    <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
 {% endblock %}
