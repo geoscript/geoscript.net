@@ -24,24 +24,36 @@ options(
 )
  
 @task
-def clone_docs():
+def clone_js():
     repo_cache = options.repo_cache
     repo_cache.makedirs()
-    # clone js
     js = repo_cache / "js"
     if not js.exists():
         sh("git clone %s %s" % (options.js.repo, js))
 
 @task
-@needs(["clone_docs"])
-def pull_docs():
+@needs(["clone_js"])
+def pull_js():
     js = options.repo_cache / "js"
     js.chdir()
     sh("git pull")
     curdir.chdir()
 
 @task
-@needs(["pull_docs"])
+@needs(["pull_js"])
+def parse_js():
+    from jstools import jst
+    repo = options.repo_cache / "js"
+    parser = jst.DocParser({
+        "root": repo / "lib/geoscript",
+        "template": repo / "doc/api/module.jst",
+        "output": repo / "doc/api"
+    })
+    parser.add_section("geoscript.js")
+    parser.run()
+
+@task
+@needs(["parse_js"])
 def build_js():
     jsbuild = options.build / "js"
     jsbuild.makedirs()
