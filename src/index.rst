@@ -22,5 +22,5 @@ Wait, is that JavaScript?
 -------------------------
 
 Yes, you can choose from an implementation of GeoScript in `JavaScript <js>`_ or
-`Python <http://github.com/jdeolive/geoscript-py/tree/master>`_.
+`Python <py>`_.
 

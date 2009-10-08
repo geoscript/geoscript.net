@@ -24,56 +24,18 @@
 {%- macro index_sidebar() %}
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h2>Activity</h2>
-            <h4>geoscript.js commits</h4>
-            <div id="jscommits"></div>
-            <a href="http://github.com/tschaub/geoscript/commits/master/">see all ...</a>
-
-            <h4>geoscript.py commits</h4>
-            <div id="pycommits"></div>
-            <a href="http://github.com/jdeolive/geoscript-py/commits/master/">see all ...</a>
-
-            <div id="gitcommits">
-                <ul>
-                    <li jugl:repeat="commit commits.slice(0, 3)">
-                        <a jugl:attributes="href commit.url"
-                           jugl:content="commit.message">
-                            commit message here
-                        </a><br />
-                        <span class="mini">
-                            [by
-                            <a jugl:attributes="href 'http://github.com/' + commit.author.name"
-                               jugl:content="commit.author.name">
-                                commit author here
-                            </a>
-                            on
-                            <span jugl:replace="commit.authored_date.substring(0, 10)">
-                                commit date here
-                            </span>
-                            ]
-                        </span>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 {%- endmacro %}
 
-{% block extrahead %}
-    {% if pagename == "index" %}
-    <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
-    <script src="{{ pathto('_static/site.js', 1) }}"></script>
-    {% endif %}
-{% endblock %}
-
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <h1 id="logo"><a href="{{ pathto('index') }}">GeoScript</a></h1>
+            <h1 id="logo"><a href="{{ pathto('index')|replace('index.html', '') }}..">GeoScript</a></h1>
             <ul id="top-nav">
-                <!--<li class="first"><a>Details</a></li>-->
-                <li><a href="{{ pathto('js/index') }}">JavaScript</a></li>
-                <li><a href="{{ pathto('py/index') }}">Python</a></li>
+                <li class="first"><a href="{{ pathto('index') }}">Python</a></li>
+                <li><a href="{{ pathto('quickstart') }}">Quick Start</a></li>
+                <li><a href="{{ pathto('api/index') }}">API Reference</a></li>
             </ul>
             {%- if pagename != "search" %}
             <div id="searchbox">
@@ -101,10 +63,4 @@
 
 {%- block relbar2 %}
     {%- if pagename != 'index' %}{{ customrelbar(True) }}{% endif %}
-{% endblock %}
-
-{% block footer %}
-    {{ super() }}
-    <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
-    <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
 {% endblock %}

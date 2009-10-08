@@ -20,6 +20,10 @@ options(
     js = Bunch(
         repo = "git://github.com/tschaub/geoscript.git",
         docs = "doc"
+    ),
+    py = Bunch(
+        repo = "git://github.com/jdeolive/geoscript-py.git",
+        docs = "doc"
     )
 )
  
@@ -60,8 +64,33 @@ def build_js():
     jssrc = options.repo_cache / "js" / options.js.docs
     sh("sphinx-build -E -b html -c %s -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js %s %s" % (curdir / "src", jssrc, jsbuild))
 
+
 @task
-@needs(["build_js"])
+def clone_py():
+    repo_cache = options.repo_cache
+    repo_cache.makedirs()
+    py = repo_cache / "py"
+    if not py.exists():
+        sh("git clone %s %s" % (options.py.repo, py))
+
+@task
+@needs(["clone_py"])
+def pull_py():
+    py = options.repo_cache / "py"
+    py.chdir()
+    sh("git pull")
+    curdir.chdir()
+
+@task
+@needs(["pull_py"])
+def build_py():
+    pybuild = options.build / "py"
+    pybuild.makedirs()
+    pysrc = options.repo_cache / "py" / options.py.docs
+    sh("sphinx-build -E -b html -c %s -D html_title='GeoScript PY' -D html_short_title='GeoScript PY' -D html_theme=geoscript-py %s %s" % (curdir / "src", pysrc, pybuild))
+
+@task
+@needs(["build_js", "build_py"])
 def build_site():
 
     sh("sphinx-build -E -b html %s %s" % (curdir / "src", options.build))
