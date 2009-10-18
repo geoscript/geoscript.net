@@ -3,6 +3,12 @@ Introducing GeoScript
 
 GeoScript provides geospatial data access, manipulation, and rendering ability to dynamic scripting languages.
 
+.. toctree::
+   :hidden: 
+
+   about
+   get_involved
+
 .. code-block:: javascript
 
     js> var geom = require('geoscript/geom');
@@ -17,10 +23,23 @@ GeoScript provides geospatial data access, manipulation, and rendering ability t
     js> poly.getArea()
     31214.45152247697
 
+.. code-block:: python
 
-Wait, is that JavaScript?
--------------------------
+    >>> from geoscript import geom
+    >>> p = geom.Point(-111.0, 45.7)
+    >>> p
+    POINT(-111 45.7)
+    >>> from geoscript import proj
+    >>> p2 = proj.transform(p, 'epsg:4326', 'epsg:26912')
+    >>> p2
+    POINT (499999.42501775385 5060716.092032814)
+    >>> poly = p2.buffer(100)
+    >>> poly.getArea()
+    31214.45152247697
 
-Yes, you can choose from an implementation of GeoScript in `JavaScript <js>`_ or
-`Python <py>`_.
+What language is that?
+----------------------
 
+Currently you can choose between GeoScript implementations in `JavaScript <js>`_ and `Python <py>`_.
+
+Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.
