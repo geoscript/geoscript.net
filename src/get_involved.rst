@@ -13,7 +13,7 @@ The GeoScript Google Group is the best place to ask questions and report issues.
 Source Code
 -----------
 
-The GeoScript sources are stored at `gitup <https://github.com/>`_.
+The GeoScript sources are stored at `github <https://github.com/>`_.
 
 JavaScript:
 
