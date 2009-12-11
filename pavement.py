@@ -90,7 +90,11 @@ def build_py():
     sh("sphinx-build -E -b html -c %s -D html_title='GeoScript PY' -D html_short_title='GeoScript PY' -D html_theme=geoscript-py %s %s" % (curdir / "src", pysrc, pybuild))
 
 @task
-@needs(["build_js", "build_py"])
+def clean(): 
+    options.build.rmtree()
+
+@task
+@needs(["clean", "build_js", "build_py"])
 def build_site():
 
     sh("sphinx-build -E -b html %s %s" % (curdir / "src", options.build))
