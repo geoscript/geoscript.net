@@ -85,11 +85,14 @@
        <arg line="-E -b html . ${basedir}/build/py"/>
      </exec>
    </target>
-
-   <target name="site" depends="js-doc, py-doc">
+   
+   <target name="site-doc" depends="init">
      <exec executable="sphinx-build" dir="${basedir}/src">
        <arg line="-E -b html . ${basedir}/build"/>
      </exec>
+   </target>  
+
+   <target name="site" depends="js-doc, py-doc, site-doc">
    </target>
 
    <target name="clean">

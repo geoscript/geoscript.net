@@ -33,7 +33,7 @@ Python:
 
 
 Bug Tracker
-----------
+-----------
 
 Report any bugs or problems with GeoScript in the issue tracker.
 
