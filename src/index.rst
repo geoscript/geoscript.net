@@ -11,17 +11,18 @@ GeoScript provides geospatial data access, manipulation, and rendering ability t
 
 .. code-block:: javascript
 
-    js> var geom = require('geoscript/geom');
+    js> var geom = require("geoscript/geom");
     js> var p = new geom.Point([-111.0, 45.7]);
     js> p
-    POINT (-111 45.7)
-    js> var proj = require('geoscript/proj');
-    js> var p2 = proj.transform(p, 'epsg:4326', 'epsg:26912');
+    <Point POINT (-111 45.7)>
+    js> var proj = require("geoscript/proj");
+    js> var p2 = proj.transform(p, "epsg:4326", "epsg:26912");
     js> p2
-    POINT (499999.42501775385 5060716.092032814)
+    <Point POINT (499999.42501775385 5060716.092032814)>
     js> var poly = p2.buffer(100);
-    js> poly.getArea()
+    js> poly.area
     31214.45152247697
+
 
 .. code-block:: python
 
