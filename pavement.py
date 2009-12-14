@@ -18,7 +18,7 @@ options(
     repo_cache = curdir / ".repos",
     build = curdir / "build",
     js = Bunch(
-        repo = "git://github.com/tschaub/geoscript.git",
+        repo = "git://github.com/tschaub/geoscript-js.git",
         docs = "doc"
     ),
     py = Bunch(

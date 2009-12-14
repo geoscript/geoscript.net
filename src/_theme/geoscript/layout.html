@@ -27,7 +27,7 @@
             <h2>Activity</h2>
             <h4>geoscript.js commits</h4>
             <div id="jscommits"></div>
-            <a href="http://github.com/tschaub/geoscript/commits/master/">see all ...</a>
+            <a href="http://github.com/tschaub/geoscript-js/commits/master/">see all ...</a>
 
             <h4>geoscript.py commits</h4>
             <div id="pycommits"></div>
@@ -105,6 +105,6 @@
 
 {% block footer %}
     {{ super() }}
-    <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript/master/?callback=site.showCommits('jscommits')"></script>
+    <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript-js/master/?callback=site.showCommits('jscommits')"></script>
     <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
 {% endblock %}

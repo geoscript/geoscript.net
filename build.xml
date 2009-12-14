@@ -43,7 +43,7 @@
    <target name="js-clone" unless="repo.js.exists">
      <exec executable="git" dir="${repos}">
        <arg value="clone"/> 
-       <arg value="git://github.com/tschaub/geoscript.git"/>
+       <arg value="git://github.com/tschaub/geoscript-js.git"/>
        <arg value="js"/>
      </exec>
    </target>
