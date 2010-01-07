@@ -25,6 +25,10 @@ a.headerlink {
     font-size: 0.1em;
 }
 
+div.body {
+    padding-top: 0;
+}
+
 div.header {
     text-align: left;
     margin: 1em 1.5em 0.5em;
@@ -32,6 +36,7 @@ div.header {
 }
 
 div.header h1 {
+    padding-top: 0.25em;
     font-size: 2.5em;
 }
 
@@ -90,8 +95,12 @@ div.related ul {
 pre {
     background: white;
     font-size: 0.9em;
-    border: 0;
+    border: 1px solid #AAAAAA;
     padding: 1em;
+}
+
+.ui-widget pre {
+    border: 0 none;
 }
 
 tt {
