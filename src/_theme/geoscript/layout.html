@@ -60,14 +60,15 @@
 {%- endmacro %}
 
 {% block extrahead %}
-    {% if pagename == "index" %}
-    <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
     <script src="{{ pathto('_static/site.js', 1) }}"></script>
+    <script src="{{ pathto('_static/jquery.cookie.js', 1) }}"></script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-    <script>
-        $(site.makeTabs);
-    </script>
+    {% if pagename == "index" %}
+    <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
+    <script>$(site.makeTabs);</script>
+    {% else %}
+    <script>$(site.prepPage);</script>
     {% endif %}
 {% endblock %}
 
@@ -76,7 +77,7 @@
         <div class="wrap">
             <h1 id="logo"><a href="{{ pathto('index') }}">GeoScript</a></h1>
             <ul id="top-nav">
-                <!--<li class="first"><a>Details</a></li>-->
+                <li class="first"><a href="{{ pathto('learning/index') }}">Learning</a></li>
                 <li><a href="{{ pathto('js/index') }}">JavaScript</a></li>
                 <li><a href="{{ pathto('py/index') }}">Python</a></li>
             </ul>
@@ -90,6 +91,15 @@
                 </form>
             </div>
             {%- endif %}
+            {%- if pagename != 'index' %}
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

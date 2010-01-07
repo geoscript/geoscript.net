@@ -1,5 +1,7 @@
 var site = {
     
+    code: "js",
+    
     showCommits: function(id) {
         var template = new jugl.Template("gitcommits");
         return function(data) {
@@ -45,7 +47,79 @@ var site = {
         
         $(selectors.join(", ")).wrapAll("<div id='tab-group'></div>");
 
-        $("#tab-group").prepend(list).tabs();
+        $("#tab-group").prepend(list).tabs({
+            cookie: {
+                name: "code-tab",
+                expires: 180
+            },
+            show: function(event, ui) {
+                var lang = ui.panel.id.split("-").pop();
+                site.code = lang;
+                $.cookie("code", lang, {expires: 180});
+            }
+        });
+        
+    },
+    
+    prepPage: function() {
+        
+        // determine whether chooser should be shown
+        if ($(".show-chooser").length > 0) {
+            $("#code-chooser").show();
+        }
+        
+        // prep buttons
+        $(".fg-button:not(.ui-state-disabled)")
+        .hover(
+            function() { 
+                $(this).addClass("ui-state-hover"); 
+            },
+            function() { 
+                $(this).removeClass("ui-state-hover"); 
+            }
+        )
+        .mousedown(function() {
+            $(this)
+            .parents('.fg-buttonset-single:first')
+            .find(".fg-button.ui-state-active")
+            .removeClass("ui-state-active");
+
+            if ($(this).is('.ui-state-active.fg-button-toggleable, .fg-buttonset-multi .ui-state-active')) {
+                $(this).removeClass("ui-state-active");
+            } else {
+                $(this).addClass("ui-state-active");
+                var language = this.id.split("-").pop();
+                site.showCode(language);
+            }	
+        })
+        .mouseup(function() {
+            if (!$(this).is('.fg-button-toggleable, .fg-buttonset-single .fg-button,  .fg-buttonset-multi .fg-button')) {
+                $(this).removeClass("ui-state-active");
+            }
+        });
+
+        // show language specific blocks
+        site.showCode();
+        
+    },
+    
+    showCode: function(language) {
+        
+        language = language || $.cookie("code") || site.code;
+        $(".code").hide();
+        $(".code." + language).show();
+        
+        $(".refs").hide();
+        $(".refs." + language).show();
+        
+        var chooser = $("#chooser-" + language);
+        if (chooser && !chooser.hasClass("ui-state-active")) {
+            chooser.addClass("ui-state-active");
+        }
+        
+        $.cookie("code", language, {expires: 180});
+        
+        return language;
         
     }
     
