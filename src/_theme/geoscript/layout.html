@@ -63,6 +63,11 @@
     {% if pagename == "index" %}
     <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
     <script src="{{ pathto('_static/site.js', 1) }}"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <script>
+        $(site.makeTabs);
+    </script>
     {% endif %}
 {% endblock %}
 
@@ -105,6 +110,8 @@
 
 {% block footer %}
     {{ super() }}
+    {% if pagename == "index" %}
     <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript-js/master/?callback=site.showCommits('jscommits')"></script>
     <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
+    {% endif %}
 {% endblock %}

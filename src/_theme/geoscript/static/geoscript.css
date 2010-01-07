@@ -66,6 +66,7 @@ div.document {
 
 div.sphinxsidebar {
     width: 240px;
+    height: 0;
 }
 
 div.sphinxsidebar li {
@@ -87,7 +88,7 @@ div.related ul {
 }
 
 pre {
-    background: #EEEEEE;
+    background: white;
     font-size: 0.9em;
     border: 0;
     padding: 1em;
@@ -104,4 +105,18 @@ div.footer {
 
 #gitcommits {
     display: none;
+}
+
+/* override jquery style */
+
+.ui-widget {
+    font-size: 1em !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+    font-size: 0.8em;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 0 !important;
 }

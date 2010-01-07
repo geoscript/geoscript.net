@@ -1,13 +1,10 @@
 Introducing GeoScript
 =====================
 
-GeoScript provides geospatial data access, manipulation, and rendering ability to dynamic scripting languages.
+GeoScript provides geospatial data access, manipulation, and rendering ability
+to dynamic scripting languages.
 
-.. toctree::
-   :hidden: 
-
-   about
-   get_involved
+.. cssclass:: tab-js ui-tabs-hide
 
 .. code-block:: javascript
 
@@ -23,6 +20,7 @@ GeoScript provides geospatial data access, manipulation, and rendering ability t
     js> poly.area
     31214.45152247697
 
+.. cssclass:: tab-py ui-tabs-hide
 
 .. code-block:: python
 
@@ -38,9 +36,15 @@ GeoScript provides geospatial data access, manipulation, and rendering ability t
     >>> poly.getArea()
     31214.45152247697
 
-What language is that?
-----------------------
 
-Currently you can choose between GeoScript implementations in `JavaScript <js>`_ and `Python <py>`_.
+Currently you can choose between GeoScript implementations in `JavaScript <js>`_
+and `Python <py>`_.
 
-Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.
+Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
+involved <get_involved>`.
+
+.. toctree::
+   :hidden: 
+
+   about
+   get_involved
