@@ -93,13 +93,14 @@ div.related ul {
 }
 
 pre {
-    background: white;
+    background: #EEEEEE;
     font-size: 0.9em;
     border: 1px solid #AAAAAA;
     padding: 1em;
 }
 
 .ui-widget pre {
+    background: white;
     border: 0 none;
 }
 
