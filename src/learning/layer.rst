@@ -72,7 +72,7 @@ the features of a layer.
 
 
 The :attr:`Layer.schema` property of a
-layer is a reference to the :class:`featire.Schema` of the features of the
+layer is a reference to the :class:`feature.Schema` of the features of the
 layer. The schema describes the structure of the features in the layer.
 
 .. cssclass:: code py
