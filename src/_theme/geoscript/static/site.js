@@ -1,7 +1,5 @@
 var site = {
     
-    code: "js",
-    
     showCommits: function(id) {
         var template = new jugl.Template("gitcommits");
         return function(data) {
@@ -26,6 +24,8 @@ var site = {
     
     makeTabs: function() {
         
+        var language = site.getLanguage();
+        
         var languages = [{
             id: "js", title: "JavaScript"
         }, {
@@ -34,9 +34,13 @@ var site = {
         
         var list = $("<ul></ul>");
 
-        var selectors = [], lang, sel, id, href, li;
+        var selectors = [], lang, id, href, li;
+        var activeIndex = 0;
         for (var i = 0; i<languages.length; ++i) {
             lang = languages[i];
+            if (lang.id === language) {
+                activeIndex = i;
+            }
             id = "tab-" + lang.id;
             href = "#" + id;
             $("." + id).eq(0).each(function() {this.id = id});
@@ -48,15 +52,11 @@ var site = {
         $(selectors.join(", ")).wrapAll("<div id='tab-group'></div>");
 
         $("#tab-group").prepend(list).tabs({
-            cookie: {
-                name: "code-tab",
-                expires: 180
-            },
             show: function(event, ui) {
-                var lang = ui.panel.id.split("-").pop();
-                site.code = lang;
-                $.cookie("code", lang, {expires: 180});
-            }
+                var language = ui.panel.id.split("-").pop();
+                site.setLanguage(language);
+            },
+            selected: activeIndex
         });
         
     },
@@ -105,7 +105,7 @@ var site = {
     
     showCode: function(language) {
         
-        language = language || $.cookie("code") || site.code;
+        language = language || site.getLanguage();
         $(".code").hide();
         $(".code." + language).show();
         
@@ -117,10 +117,17 @@ var site = {
             chooser.addClass("ui-state-active");
         }
         
-        $.cookie("code", language, {expires: 180});
-        
+        site.setLanguage(language);        
         return language;
         
+    },
+    
+    getLanguage: function() {
+        return $.cookie("code") || "js";
+    },
+    
+    setLanguage: function(language) {
+        $.cookie("code", language, {expires: 180, path: "/"});
     }
     
 };
