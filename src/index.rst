@@ -41,10 +41,13 @@ Currently you can choose between GeoScript implementations in `JavaScript <js>`_
 and `Python <py>`_.
 
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
-involved <get_involved>`.
+involved <get_involved>`.  See the :ref:`learning center <learning>` for an
+overview of the library.
+
 
 .. toctree::
    :hidden: 
 
    about
+   learning/index
    get_involved
