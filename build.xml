@@ -1,106 +1,101 @@
 <project name="geoscript.org" default="info" basedir=".">
 
-   <property name="repos" value="${basedir}/.repos"/>
-   <property name="t" value="&#x0009;"/>
-  
-   <target name="info">
-     <echo message="Checks out GeoScript sources and builds the site. The built site is located in the build directory."/>
-     <echo message=""/>
-     <echo message="Available tasks:"/>
-     <echo message="${t}site:       Build the entire site."/>
-     <echo message="${t}js-doc:     Build the js docs."/>
-     <echo message="${t}py-doc:     Build the py docs."/>
-     <echo message="${t}init:       Check out or update local git repos."/>
-     <echo message="${t}clean:      Delete doc builds."/>
-     <echo message="${t}clean-full: Delete doc builds and local git repos."/>
-   </target>
-
-   <target name="init">
-     <mkdir dir="${basedir}/build"/>
-
-     <condition property="repos.exists">
-       <available file="${basdir}/.repos"/>
-     </condition>
-     <antcall target="init-repos"/>
-
-     <condition property="repo.js.exists">
-       <available file="${repos}/js"/>
-     </condition>
-     <antcall target="js-clone"/>
-     <antcall target="js-pull"/>
-
-     <condition property="repo.py.exists">
-       <available file="${repos}/py"/>
-     </condition>
-     <antcall target="py-clone"/>
-     <antcall target="py-pull"/>
-   </target>
-
-   <target name="init-repos" unless="repos.exists">
-     <mkdir dir="${repos}"/>
-   </target>
-
-   <target name="js-clone" unless="repo.js.exists">
-     <exec executable="git" dir="${repos}">
-       <arg value="clone"/> 
-       <arg value="git://github.com/tschaub/geoscript-js.git"/>
-       <arg value="js"/>
-     </exec>
-   </target>
-
-   <target name="js-pull" if="repo.js.exists">
-     <exec executable="git" dir="${repos}/js">
-       <arg value="pull"/>
-     </exec>
-   </target>
-
-   <target name="py-clone" unless="repo.py.exists">
-     <exec executable="git" dir="${repos}">
-       <arg value="clone"/> 
-       <arg value="git://github.com/jdeolive/geoscript-py.git"/>
-       <arg value="py"/>
-     </exec>
-   </target>
-
-   <target name="py-pull" if="repo.pysexists">
-     <exec executable="git" dir="${repos}/py">
-       <arg value="pull"/>
-     </exec>
-   </target>
-
-   <target name="js-doc" depends="init">
-     <exec executable="python">
-       <arg value="jsdoc.py"/>
-       <arg value="${repos}/js/lib/geoscript"/>
-       <arg value="${repos}/js/doc/api/module.jst"/>
-       <arg value="${repos}/js/doc/api"/>
-     </exec>
-     <exec executable="sphinx-build" dir="${repos}/js/doc">
-       <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js . ${basedir}/build/js"/>
-     </exec>
-   </target>
-
-   <target name="py-doc" depends="init">
-     <exec executable="sphinx-build" dir="${repos}/py/doc">
-       <arg line="-E -b html . ${basedir}/build/py"/>
-     </exec>
-   </target>
-   
-   <target name="site-doc" depends="init">
-     <exec executable="sphinx-build" dir="${basedir}/src">
-       <arg line="-E -b html . ${basedir}/build"/>
-     </exec>
-   </target>  
-
-   <target name="site" depends="js-doc, py-doc, site-doc">
-   </target>
-
-   <target name="clean">
-     <delete dir="${basedir}/build"/>
-   </target>
-
-   <target name="clean-full" depends="clean">
-     <delete dir="${repos}"/>
-   </target>
+    <property name="repos" value="${basedir}/.repos"/>
+    <property name="t" value="&#x0009;"/>
+    
+    <target name="info">
+        <echo message="Checks out GeoScript sources and builds the site. The built site is located in the build directory."/>
+        <echo message=""/>
+        <echo message="Available tasks:"/>
+        <echo message="${t}site:       Build the entire site."/>
+        <echo message="${t}js-doc:     Build the js docs (js-pull first)."/>
+        <echo message="${t}js-pull:    Update js repo."/>
+        <echo message="${t}py-doc:     Build the py docs (py-pull first)."/>
+        <echo message="${t}py-pull:    Update py repo."/>
+        <echo message="${t}init:       Check out local git repos."/>
+        <echo message="${t}clean:      Delete doc builds."/>
+        <echo message="${t}clean-full: Delete doc builds and local git repos."/>
+    </target>
+    
+    <target name="init">
+        <mkdir dir="${basedir}/build"/>
+        <mkdir dir="${repos}"/>
+        <condition property="repo.js.exists">
+            <available file="${repos}/js"/>
+        </condition>
+        <condition property="repo.py.exists">
+            <available file="${repos}/py"/>
+        </condition>
+    </target>
+    
+    <target name="init-js" depends="init">
+        <antcall target="js-clone"/>
+    </target>
+    
+    <target name="js-clone" unless="repo.js.exists">
+        <exec executable="git" dir="${repos}">
+            <arg value="clone"/> 
+            <arg value="git://github.com/tschaub/geoscript-js.git"/>
+            <arg value="js"/>
+        </exec>
+    </target>
+    
+    <target name="js-pull" if="repo.js.exists" depends="init-js">
+        <exec executable="git" dir="${repos}/js">
+            <arg value="pull"/>
+        </exec>
+    </target>
+    
+    <target name="js-doc" depends="init-js">
+        <exec executable="python">
+            <arg value="jsdoc.py"/>
+            <arg value="${repos}/js/lib/geoscript"/>
+            <arg value="${repos}/js/doc/api/module.jst"/>
+            <arg value="${repos}/js/doc/api"/>
+        </exec>
+        <exec executable="sphinx-build" dir="${repos}/js/doc">
+            <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js . ${basedir}/build/js"/>
+        </exec>
+    </target>
+    
+    <target name="init-py" depends="init">
+        <antcall target="py-clone"/>
+    </target>
+    
+    <target name="py-clone" unless="repo.py.exists">
+        <exec executable="git" dir="${repos}">
+            <arg value="clone"/> 
+            <arg value="git://github.com/jdeolive/geoscript-py.git"/>
+            <arg value="py"/>
+        </exec>
+    </target>
+    
+    <target name="py-pull" if="repo.pysexists" depends="init-py">
+        <exec executable="git" dir="${repos}/py">
+            <arg value="pull"/>
+        </exec>
+    </target>
+    
+    <target name="py-doc" depends="init-py">
+        <exec executable="sphinx-build" dir="${repos}/py/doc">
+            <arg line="-E -b html . ${basedir}/build/py"/>
+        </exec>
+    </target>
+    
+    <target name="site-doc" depends="init">
+        <exec executable="sphinx-build" dir="${basedir}/src">
+            <arg line="-E -b html . ${basedir}/build"/>
+        </exec>
+    </target>  
+    
+    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, site-doc"/>
+    
+    <target name="clean">
+        <delete dir="${basedir}/build"/>
+    </target>
+    
+    <target name="clean-full" depends="clean">
+        <delete dir="${repos}"/>
+    </target>
 
 </project>
