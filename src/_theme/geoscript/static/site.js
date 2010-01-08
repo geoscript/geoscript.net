@@ -61,6 +61,23 @@ var site = {
         
     },
     
+    prepIndex: function() {
+        
+        site.makeTabs();        
+        var repos = {
+            js: "tschaub/geoscript-js",
+            py: "jdeolive/geoscript-py",
+        };
+        var head = document.getElementsByTagName("head")[0];
+        var script;
+        for (var key in repos) {
+            script = document.createElement("script");
+            script.src = "http://github.com/api/v2/json/commits/list/" + repos[key] + "/master/?callback=site.showCommits('" + key + "commits')";
+            head.appendChild(script);
+        }
+        
+    },
+    
     prepPage: function() {
         
         // determine whether chooser should be shown

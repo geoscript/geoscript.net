@@ -66,7 +66,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
     {% if pagename == "index" %}
     <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
-    <script>$(site.makeTabs);</script>
+    <script>$(site.prepIndex);</script>
     {% else %}
     <script>$(site.prepPage);</script>
     {% endif %}
@@ -116,12 +116,4 @@
 
 {%- block relbar2 %}
     {%- if pagename != 'index' %}{{ customrelbar(True) }}{% endif %}
-{% endblock %}
-
-{% block footer %}
-    {{ super() }}
-    {% if pagename == "index" %}
-    <script defer="defer" src="http://github.com/api/v2/json/commits/list/tschaub/geoscript-js/master/?callback=site.showCommits('jscommits')"></script>
-    <script defer="defer" src="http://github.com/api/v2/json/commits/list/jdeolive/geoscript-py/master/?callback=site.showCommits('pycommits')"></script>
-    {% endif %}
 {% endblock %}
