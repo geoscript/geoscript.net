@@ -10,9 +10,11 @@ Projections
 The :mod:`proj` module provides support for representing spatial reference
 systems and transforming data between spatial projections.
 
-The :class:`proj.Projection` class is used to represennt spatial reference
-system. A common way to represent a spatial reference system is with an `epsg
+The :class:`Projection` class is used to represent a spatial reference
+system. A common way to identify a spatial reference system is with an `EPSG
 <http://en.wikipedia.org/wiki/European_Petroleum_Survey_Group>`_ code.
+
+GeoScript projections can be created with an EPSG code.
 
 .. cssclass:: code py
 
@@ -40,7 +42,7 @@ system. A common way to represent a spatial reference system is with an `epsg
     js> prj
     <Projection EPSG:4326>
 
-The :attr:`Projection.id` attribute of a Projection returns its epsg code.
+The EPSG code can also be accessed for any projection.
 
 .. cssclass:: code py
 
@@ -60,10 +62,10 @@ The :attr:`Projection.id` attribute of a Projection returns its epsg code.
     js> prj.id
     EPSG:4326
 
-Often a spatial reference system is defined by `well known text
+Often a spatial reference system is defined by `well-known text
 <http://en.wikipedia.org/wiki/Well-known_text#Spatial_reference_systems>`_
-rather than an epsg code. A Projection object can be created directly from well
-known text.
+rather than an EPSG code. A :class:`Projection` object can be created directly
+from well known text.
 
 .. cssclass:: code py
 
@@ -92,8 +94,8 @@ known text.
     js> prj
     <Projection EPSG:4326>
 
-The :attr:`Projection.wkt` attribute returns the well known text of a
-Projection.
+The well-known text can also be accessed for any projection, regardless of how
+it was constructed.
 
 .. cssclass:: code py
 
@@ -134,8 +136,8 @@ Projection.
       AUTHORITY["EPSG","26912"]]
 
 
-The :meth:`Projection.transform()` is used to transform data between spatial
-reference systems.
+Coordinates in one spatial reference system can be transformed
+into coordinates in a different spatial reference system.
 
 .. cssclass:: code py
 
@@ -163,3 +165,17 @@ reference systems.
     <Point [499999.42501775385, 5060716.092032814]>
 
 
+.. cssclass:: refs py
+
+.. seealso::
+
+    See the :mod:`proj` module in the `Python API reference <../js/api/proj.html>`__
+    for the details on the properties and method available on projection objects.
+
+
+.. cssclass:: refs js
+
+.. seealso::
+
+    See the :mod:`proj` module in the `JavaScript API reference <../js/api/proj.html>`__
+    for the details on the properties and method available on projection objects.

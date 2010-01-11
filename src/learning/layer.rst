@@ -41,13 +41,14 @@ and the spatial bounds of the data.
     <Layer name: states, count: 49>
     js> shp.count
     49
-    js> // TODO layer.bounds
+    js> shp.bounds
+    <Bounds [-124.73142200000001, 24.955967, -66.969849, 49.371735] EPSG...>
 
 
 Each entry in a Layer is known as a *feature* and represented by the
-:class:`feature.Feature` class. A feature is a set of attributes and an
-associated geometry. The :meth:`Layer.features` method provides an iterator over
-the features of a layer.
+:class:`Feature` class (in the :mod:`feature` module). A feature is a set of
+attributes and an associated geometry. You can iterate through all features
+on a layer to access feature information.
 
 .. cssclass:: code py
 
@@ -70,10 +71,8 @@ the features of a layer.
     <Feature the_geom: <MultiPolygon>, STATE_NAME: "Delaware", STATE_FIPS...>
     ...
 
-
-The :attr:`Layer.schema` property of a
-layer is a reference to the :class:`feature.Schema` of the features of the
-layer. The schema describes the structure of the features in the layer.
+A layer schema is a set of field descriptions that describe the structure of
+the data in the layer's features.
 
 .. cssclass:: code py
 
@@ -90,9 +89,9 @@ layer. The schema describes the structure of the features in the layer.
     <Schema name: "states", fields: [{"name": "the_geom", "type": "Multi...>
 
 A schema is comprised of fields that describe each attribute of a feature. A
-field describes the name and the type of a feature attribute. The
-:attr:`Schema.fields` property provides a list of all the fields in a schema,
-and the :meth:`feature.Schema.get()` method retrieves a field by name.
+field describes the name and the type of a feature attribute. A list of field 
+names can be accessed for a schema, and individual field descriptors can be 
+accessed given a field name.
 
 .. cssclass:: code py
 
@@ -108,6 +107,9 @@ and the :meth:`feature.Schema.get()` method retrieves a field by name.
 
 .. code-block:: javascript
 
+    js> shp.schema.fieldNames
+    the_geom,STATE_NAME,STATE_FIPS,SUB_REGION,STATE_ABBR,LAND_KM,WATER_KM,PERSONS,FAMILIES,HOUSHOLD,MALE,FEMALE,WORKERS,DRVALONE,CARPOOL,PUBTRANS,EMPLOYED,UNEMPLOY,SERVICE,MANUAL,P_MALE,P_FEMALE,SAMP_POP
+
     js> var field = shp.schema.get("STATE_NAME");
     js> field.name
     STATE_NAME
@@ -115,8 +117,8 @@ and the :meth:`feature.Schema.get()` method retrieves a field by name.
     String
 
 
-Every layer object is part of a :class:`workspace.Workspace`. A workspace is a
-source of layers. You can retrieve a list of layer names for a workspace as
+Every layer object is part of a :class:`Workspace`. A workspace is a
+collection of layers. You can retrieve a list of layer names for a workspace as
 follows:
 
 .. cssclass:: code py
@@ -183,3 +185,14 @@ Create a new layer and add it to an existing workspace as follows:
     js> cities.add({name: "New York", geom: new GEOM.Point([-73.58, 40.47])});
     js> cities.count
     2
+
+.. cssclass:: refs js
+
+.. seealso::
+
+    See the `JavaScript API <../js/api/index.html>`__ for more information:
+    
+    * the `feature <../js/api/feature.html>`__ module
+    * the `layer <../js/api/layer.html>`__ module
+    * the `workspace <../js/api/workspace.html>`__ module
+

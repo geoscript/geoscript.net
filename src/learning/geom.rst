@@ -7,9 +7,9 @@ Geometries
 
 .. rubric:: code chooser
 
-The :mod:`geom` module provides classes for representing two
-dimensional spatial objects, or geometries. Geometry objects are created by
-specifying sets of coordinates.
+The :mod:`geom` module provides classes for representing two dimensional spatial
+objects, or geometries. Geometry objects are created by specifying sets of
+coordinates.
 
 .. cssclass:: code py
 
@@ -65,8 +65,7 @@ Geometries can also be created from `well known text
     <Polygon [[[10, 10], [10, 20], [20, 20], [20, 15], [10, 10]]]>
 
 
-Geometry objects provide a number of methods for calculating properties of a
-geometry. For example methods for obtaining area and length.
+Geometry objects provide properties for statistics such as area and length.
 
 .. cssclass:: code py
 
@@ -121,11 +120,13 @@ geometries such as buffer and centroid.
     js> var poly = line.buffer(10);
     js> poly.area
     1041.9912814842407
-    js> // TODO: add geometry.centroid
+    
+    js> line.centroid
+    <Point [21.12574113277207, 24.188611699158105]>
 
 
-The Geometry class also contains operations and predicates for determining
-spatial relationships such as intersection and containment.
+The :class:`Geometry` class also contains operations and predicates for
+determining spatial relationships such as intersection and containment.
 
 .. cssclass:: code py
 
@@ -153,11 +154,22 @@ spatial relationships such as intersection and containment.
     js> poly.intersection(line)
     <LineString [[10, 10], [20, 20]]>
 
+.. cssclass:: refs py
 
-The geoscript geometry module is based on the `JTS
-<http://tsusiatsoftware.net/jts/main.html>`_ library. Classes in the
-:mod:`geom` module are extensions of their counterparts from JTS which
-means any JTS geometry methods can be called on a geoscript geometry instance.
-See the JTS `javadocs
-<http://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`_
-for more information.
+.. seealso::
+
+    The geoscript geometry module is based on the `JTS
+    <http://tsusiatsoftware.net/jts/main.html>`_ library. Classes in the
+    :mod:`geom` module are extensions of their counterparts from JTS which
+    means any JTS geometry methods can be called on a geoscript geometry instance.
+    See the JTS `javadocs
+    <http://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`_
+    for more information.
+
+.. cssclass:: refs js
+
+.. seealso::
+
+    For full details on the available geometry types and their properties and
+    methods, see the `JavaScript API reference <../js/api/geom.html>`__ for the 
+    :mod:`geom` module.
