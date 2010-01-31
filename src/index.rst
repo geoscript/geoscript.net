@@ -50,4 +50,5 @@ overview of the library.
 
    about
    learning/index
+   examples/index
    get_involved
