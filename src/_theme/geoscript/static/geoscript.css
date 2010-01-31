@@ -25,6 +25,10 @@ a.headerlink {
     font-size: 0.1em;
 }
 
+a.reference em {
+    font-style: normal;
+}
+
 div.body {
     padding-top: 0;
 }
@@ -106,6 +110,14 @@ div.related ul {
     background: transparent;
     border: 0;
     padding: 0;
+}
+
+.toctree-l1 {
+    padding-bottom: 0.4em;
+}
+
+.toctree-l1 ul {
+    padding-top: 0.2em
 }
 
 pre {
