@@ -10,86 +10,51 @@ Geometry Relationships
 Intersection
 ------------
 
-    .. cssclass:: code py
+.. cssclass:: code py
 
-    .. code-block:: python
+.. code-block:: python
 
-       >>> from geoscript import geom
+    >>> from geoscript import geom
+    
+    >>> poly1 = geom.fromWKT('POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))')
+    >>> poly2 = geom.fromWKT('POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))')
+    >>> poly1.intersection(poly2)
+    POLYGON ((5 8, 8 8, 8 5, 5 5, 5 8))
        
-       >>> poly1 = geom.fromWKT('POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))')
-       >>> poly2 = geom.fromWKT('POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))')
-       >>> poly1.intersection(poly2)
-       POLYGON ((5 8, 8 8, 8 5, 5 5, 5 8))
-       
-    .. cssclass:: code js
+.. cssclass:: code js
 
-    .. code-block:: javascript
+.. code-block:: javascript
 
-        js> var GEOM = require("geoscript/geom");
+    js> var GEOM = require("geoscript/geom");
 
-        js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))");
-        js> var poly2 = GEOM.fromWKT("POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))");
-        js> poly1.intersection(poly2)
-        <Polygon [[[5, 8], [8, 8], [8, 5], [5, 5], [5, 8]]]>
+    js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))");
+    js> var poly2 = GEOM.fromWKT("POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))");
+    js> poly1.intersection(poly2)
+    <Polygon [[[5, 8], [8, 8], [8, 5], [5, 5], [5, 8]]]>
 
 
 Union
 -----
 
-    .. cssclass:: code py
+.. cssclass:: code py
 
-    .. code-block:: python
+.. code-block:: python
 
-       >>> from geoscript import geom
+    >>> from geoscript import geom
+    
+    >>> poly1 = geom.fromWKT('POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))')
+    >>> poly2 = geom.fromWKT('POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))')
+    >>> poly1.union(poly2)
+    POLYGON ((8 5, 8 0, 0 0, 0 8, 5 8, 5 13, 13 13, 13 5, 8 5))
        
-       >>> poly1 = geom.fromWKT('POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))')
-       >>> poly2 = geom.fromWKT('POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))')
-       >>> poly1.union(poly2)
-       POLYGON ((8 5, 8 0, 0 0, 0 8, 5 8, 5 13, 13 13, 13 5, 8 5))
-       
-    .. cssclass:: code js
+.. cssclass:: code js
 
-    .. code-block:: javascript
+.. code-block:: javascript
 
-        js> var GEOM = require("geoscript/geom");
+    js> var GEOM = require("geoscript/geom");
 
-        js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))");
-        js> var poly2 = GEOM.fromWKT("POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))");
-        js> poly1.union(poly2)
-        <Polygon [[[8, 5], [8, 0], [0, 0], [0, 8], [5, 8], [5, 13], [13, 13],...>
-
-       
-Prepared Geometries
--------------------
-
-    .. cssclass:: code py
-
-    .. code-block:: python
-
-       >>> from geoscript import geom
-       
-       >>> poly1 = geom.fromWKT('POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))')
-       >>> prep = geom.prepare(poly1)
-       >>> poly2 = geom.fromWKT('POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))')
-       >>> prep.intersects(poly2)
-       True
-       >>> prep.contains(poly2)
-       False
-       
-    .. cssclass:: code js
-
-    .. code-block:: javascript
-
-        js> var GEOM = require("geoscript/geom");
-
-        js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))");
-        js> poly1.prepared
-        false
-        js> poly1.prepare();
-        <Polygon [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]>
-        js> var poly2 = GEOM.fromWKT("POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))");
-        js> poly1.intersects(poly2)
-        true
-        js> poly1.contains(poly2)
-        false
+    js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))");
+    js> var poly2 = GEOM.fromWKT("POLYGON ((5 5, 13 5, 13 13, 5 13, 5 5))");
+    js> poly1.union(poly2)
+    <Polygon [[[8, 5], [8, 0], [0, 0], [0, 8], [5, 8], [5, 13], [13, 13],...>
 

@@ -3,13 +3,13 @@
 Geometries
 ==========
 
-  .. cssclass:: show-chooser
+.. cssclass:: show-chooser
 
-  .. rubric:: code chooser
+.. rubric:: code chooser
 
-  .. toctree::
+.. toctree::
 
-     wkt
-     ops 
-     relate
-     prepare
+    wkt
+    ops 
+    relate
+    prepare
