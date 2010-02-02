@@ -25,7 +25,13 @@ Buffering
 
   .. code-block:: javascript
 
-     TODO
+    js> var GEOM = require("geoscript/geom");
+
+    js> var point = new GEOM.Point([0, 0]);
+    js> var poly = point.buffer(10);
+    js> poly
+    <Polygon [[[10, 0], [9.807852804032304, -1.9509032201612824], [9.2387...>
+
 
 Centroid
 --------
@@ -44,7 +50,11 @@ Centroid
 
   .. code-block:: javascript
 
-     TODO
+    js> var GEOM = require("geoscript/geom");
+
+    js> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
+    js> poly.centroid
+    <Point [5, 5]>
 
 Visualizing
 -----------
@@ -68,5 +78,13 @@ Visualizing
 
   .. code-block:: javascript
 
-     TODO
+    js> var GEOM = require("geoscript/geom");
+    js> var VIEWER = require("geoscript/viewer");
 
+    js> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
+    js> VIEWER.draw(poly)
+
+    js> var line = new GEOM.LineString([[2, 2], [8, 9]]);
+    js> VIEWER.draw(line)    
+
+    js> VIEWER.draw([poly, line, new GEOM.Point([5, 5]).buffer(1)])
