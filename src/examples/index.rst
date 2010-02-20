@@ -12,7 +12,7 @@ This section provides a library of examples showing various GeoScript usage.
 :ref:`examples.geom`
     Creating and manipulating geometry objects. 
 
-.. :ref:`examples.proj`
+:ref:`examples.proj`
     Projections and coordinate reference systems.
 
 .. :ref:`examples.layer`
@@ -23,4 +23,4 @@ This section provides a library of examples showing various GeoScript usage.
     :hidden:
     
     geom/index
-
+    proj/index
