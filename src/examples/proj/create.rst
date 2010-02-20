@@ -3,9 +3,9 @@
 Creating Projections
 ====================
 
-  .. cssclass:: show-chooser
+.. cssclass:: show-chooser
 
-  .. rubric:: code chooser
+.. rubric:: code chooser
 
 From an EPSG Code
 -----------------
@@ -44,6 +44,13 @@ From an EPSG Code
 
 .. code-block:: javascript
 
+    js> var PROJ = require("geoscript/proj");
+
+    js> var projection = new PROJ.Projection("epsg:26912");
+    js> projection
+    <Projection EPSG:26912>
+
+
 From Well Known Text
 --------------------
   
@@ -67,3 +74,11 @@ From Well Known Text
 .. cssclass:: code js
 
 .. code-block:: javascript
+
+    js> var PROJ = require("geoscript/proj");
+
+    js> var wkt = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]'; 
+    js> var projection = new PROJ.Projection(wkt);
+    js> projection
+    <Projection EPSG:4326>
+
