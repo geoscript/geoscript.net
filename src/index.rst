@@ -36,9 +36,27 @@ to dynamic scripting languages.
     >>> poly.getArea()
     31214.45152247697
 
+.. cssclass:: tab-scala ui-tabs-hide
 
-Currently you can choose between GeoScript implementations in `JavaScript <js>`_
-and `Python <py>`_.
+.. code-block:: scala
+
+   scala> import org.geoscript.geometry._
+   import org.geoscript.geometry._
+   
+   scala> import org.geoscript.projection._
+   import org.geoscript.projection._
+   
+   scala> val p = Point(-110, 45.7) in Projection("EPSG:4326")
+   p: org.geoscript.geometry.Point = POINT (-110 45.7)
+   
+   scala> val p2 = p in Projection("EPSG:26912")               
+   p2: org.geoscript.geometry.Point = POINT (-370416.94184711506 -7935053.5498699695)
+   
+   scala> p2.buffer(100).area
+   res0: Double = 31214.451522477902
+    
+
+Currently you can choose between GeoScript implementations in `JavaScript <js>`_, `Python <py>`_, and `Scala <scala>`_.
 
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
 involved <get_involved>`.  See the :ref:`learning center <learning>` for an

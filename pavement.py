@@ -24,6 +24,10 @@ options(
     py = Bunch(
         repo = "git://github.com/jdeolive/geoscript-py.git",
         docs = "doc"
+    ),
+    scala = Bunch(
+        repo = "git://github.com/dwins/geoscript.scala.git",
+        docs = "docs"
     )
 )
  
@@ -90,11 +94,35 @@ def build_py():
     sh("sphinx-build -E -b html -c %s -D html_title='GeoScript PY' -D html_short_title='GeoScript PY' -D html_theme=geoscript-py %s %s" % (curdir / "src", pysrc, pybuild))
 
 @task
+def clone_scala():
+    repo_cache = options.repo_cache
+    repo_cache.makedirs()
+    scala = repo_cache / "scala"
+    if not scala.exists():
+        sh("git clone %s %s" % (options.scala.repo, scala))
+
+@task
+@needs(["clone_scala"])
+def pull_scala():
+    scala = options.repo_cache / "scala"
+    scala.chdir()
+    sh("git pull")
+    curdir.chdir()
+
+@task
+@needs(["pull_scala"])
+def build_scala():
+    scalabuild = options.build / "scala"
+    scalabuild.makedirs()
+    scalasrc = options.repo_cache / "scala" / options.scala.docs
+    sh("sphinx-build -E -b html -c %s -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-py %s %s" % (curdir / "src", scalasrc, scalabuild))
+
+@task
 def clean(): 
     options.build.rmtree()
 
 @task
-@needs(["clean", "build_js", "build_py"])
+@needs(["clean", "build_js", "build_py", "build_scala"])
 def build_site():
 
     sh("sphinx-build -E -b html %s %s" % (curdir / "src", options.build))

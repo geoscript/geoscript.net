@@ -30,6 +30,8 @@ var site = {
             id: "js", title: "JavaScript"
         }, {
             id: "py", title: "Python"
+        }, {
+            id: "scala", title: "Scala"
         }];
         
         var list = $("<ul></ul>");
