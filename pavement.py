@@ -115,7 +115,7 @@ def build_scala():
     scalabuild = options.build / "scala"
     scalabuild.makedirs()
     scalasrc = options.repo_cache / "scala" / options.scala.docs
-    sh("sphinx-build -E -b html -c %s -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-py %s %s" % (curdir / "src", scalasrc, scalabuild))
+    sh("sphinx-build -E -b html -c %s -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-scala %s %s" % (curdir / "src", scalasrc, scalabuild))
 
 @task
 def clean(): 
