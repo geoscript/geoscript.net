@@ -12,6 +12,8 @@
         <echo message="${t}js-pull:    Update js repo."/>
         <echo message="${t}py-doc:     Build the py docs (py-pull first)."/>
         <echo message="${t}py-pull:    Update py repo."/>
+        <echo message="${t}scala-doc:     Build the scala docs (scala-pull first)."/>
+        <echo message="${t}scala-pull:    Update scala repo."/>
         <echo message="${t}init:       Check out local git repos."/>
         <echo message="${t}clean:      Delete doc builds."/>
         <echo message="${t}clean-full: Delete doc builds and local git repos."/>
@@ -82,13 +84,43 @@
         </exec>
     </target>
     
+    <target name="init-scala" depends="init">
+        <antcall target="scala-clone"/>
+    </target>
+
+    <target name="scala-clone" unless="repo.scala.exists">
+        <exec executable="git" dir="${repos}">
+            <arg value="clone"/> 
+            <arg value="git://github.com/dwins/geoscript.scala.git"/>
+            <arg value="scala"/>
+        </exec>
+    </target>
+    
+    <target name="scala-pull" if="repo.scala.exists" depends="init-scala">
+        <exec executable="git" dir="${repos}/scala">
+            <arg value="pull"/>
+        </exec>
+    </target>
+    
+    <target name="scala-doc" depends="init-scala">
+        <exec executable="sphinx-build" dir="${repos}/scala/docs">
+            <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-scala . ${basedir}/build/scala"/>
+        </exec>
+        <exec executable="sbt" dir="${repos}/scala/">
+            <arg value="update"/>
+            <arg value="doc"/>
+        </exec>
+        <move file="${repos}/scala/geoscript/target/doc/main/api/" 
+            todir="${basedir}/build/scala/"/>
+    </target>
+
     <target name="site-doc" depends="init">
         <exec executable="sphinx-build" dir="${basedir}/src">
             <arg line="-E -b html . ${basedir}/build"/>
         </exec>
     </target>  
     
-    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, site-doc"/>
+    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, scala-pull, scala-doc, site-doc"/>
     
     <target name="clean">
         <delete dir="${basedir}/build"/>
