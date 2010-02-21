@@ -240,3 +240,7 @@ button.fg-button {
 .fg-toolbar .fg-button {
     font-size: 1em;
 }
+
+div.footer a img {
+    vertical-align: middle;
+}
