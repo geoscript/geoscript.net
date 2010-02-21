@@ -12,8 +12,8 @@
         <echo message="${t}js-pull:    Update js repo."/>
         <echo message="${t}py-doc:     Build the py docs (py-pull first)."/>
         <echo message="${t}py-pull:    Update py repo."/>
-        <echo message="${t}scala-doc:     Build the scala docs (scala-pull first)."/>
-        <echo message="${t}scala-pull:    Update scala repo."/>
+        <echo message="${t}scala-doc:  Build the scala docs (scala-pull first)."/>
+        <echo message="${t}scala-pull: Update scala repo."/>
         <echo message="${t}init:       Check out local git repos."/>
         <echo message="${t}clean:      Delete doc builds."/>
         <echo message="${t}clean-full: Delete doc builds and local git repos."/>
@@ -27,6 +27,9 @@
         </condition>
         <condition property="repo.py.exists">
             <available file="${repos}/py"/>
+        </condition>
+        <condition property="repo.scala.exists">
+            <available file="${repos}/scala"/>
         </condition>
     </target>
     
@@ -72,7 +75,7 @@
         </exec>
     </target>
     
-    <target name="py-pull" if="repo.pysexists" depends="init-py">
+    <target name="py-pull" if="repo.py.exists" depends="init-py">
         <exec executable="git" dir="${repos}/py">
             <arg value="pull"/>
         </exec>
@@ -129,5 +132,4 @@
     <target name="clean-full" depends="clean">
         <delete dir="${repos}"/>
     </target>
-
 </project>
