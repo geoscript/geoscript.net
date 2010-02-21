@@ -32,6 +32,18 @@ Buffering
     js> poly
     <Polygon [[[10, 0], [9.807852804032304, -1.9509032201612824], [9.2387...>
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+    scala> import org.geoscript.geometry._
+    import org.geoscript.geometry._
+
+    scala> val p = Point(0, 0)
+    p: org.geoscript.geometry.Point = POINT (0 0)
+
+    scala> val poly = p.buffer(10)
+    poly: org.geoscript.geometry.Geometry = POLYGON ((10 0, 9.807852804032304 -1.9509032201612824, 9.238795325112868 -3.826834323650898, 8.314696123025453 -5.555702330196022, 7.0710678118654755 -7.071067811865475, 5.555702330196023 -8.314696123025453, 3.8268343236508984 -9.238795325112868, 1.9509032201612833 -9.807852804032304, 0.0000000000000006 -10, -1.950903220161282 -9.807852804032304...
+
 
 Centroid
 --------
@@ -56,6 +68,17 @@ Centroid
     js> poly.centroid
     <Point [5, 5]>
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+    scala> import org.geoscript.geometry._
+    import org.geoscript.geometry._
+
+    scala> val poly = Geometry.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))") 
+    poly: org.geoscript.geometry.Geometry = POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
+
+    scala> poly.centroid
+    res0: org.geoscript.geometry.Point = POINT (5 5)
 
 Visualizing
 -----------
@@ -89,3 +112,28 @@ Visualizing
     js> VIEWER.draw(line)    
 
     js> VIEWER.draw([poly, line, new GEOM.Point([5, 5]).buffer(1)])
+
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.geometry._
+    import org.geoscript.geometry._
+
+    scala> import org.geoscript.viewer._  
+    import org.geoscript.viewer._
+
+    scala> import org.geoscript.GeoScript._
+    import org.geoscript.GeoScript._
+
+    scala> val poly = Geometry.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))")         
+    poly: org.geoscript.geometry.Geometry = POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
+
+    scala> Viewer.draw(poly)                                                              
+
+    scala> val line = LineString((2, 2), (8, 8))         
+    line: org.geoscript.geometry.LineString = LINESTRING (2 2, 8 8)
+
+    scala> Viewer.draw(line)                             
+
+    scala> Viewer.draw(List(poly, line, Point(5, 5).buffer(1)))         

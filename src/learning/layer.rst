@@ -44,6 +44,21 @@ and the spatial bounds of the data.
     js> shp.bounds
     <Bounds [-124.73142200000001, 24.955967, -66.969849, 49.371735] EPSG...>
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.layer._                                       
+    import org.geoscript.layer._
+
+    scala> val shp = Shapefile("states.shp")
+    shp: org.geoscript.layer.Layer = <Layer name: states, count: 49>
+
+    scala> shp.count
+    res0: Int = 49
+
+    scala> shp.bounds
+    res1: (Double, Double, Double, Double, String) = (-124.73142200000001,24.955967,-66.969849,49.371735,EPSG:4326)
 
 Each entry in a Layer is known as a *feature* and represented by the
 :class:`Feature` class (in the :mod:`feature` module). A feature is a set of
@@ -71,6 +86,15 @@ on a layer to access feature information.
     <Feature the_geom: <MultiPolygon>, STATE_NAME: "Delaware", STATE_FIPS...>
     ...
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> for (feature <- shp.features) { println(f) }
+    <Feature EMPLOYED: 5417967.0, ... the_geom: <MultiPolygon>, PUBTRANS: ... >
+    <Feature EMPLOYED: 303994.0,  ... the_geom: <MultiPolygon>, PUBTRANS: ... >
+    <Feature EMPLOYED: 335147.0,  ... the_geom: <MultiPolygon>, PUBTRANS: ... >
+
 A layer schema is a set of field descriptions that describe the structure of
 the data in the layer's features.
 
@@ -87,6 +111,13 @@ the data in the layer's features.
 
     js> shp.schema
     <Schema name: "states", fields: [{"name": "the_geom", "type": "Multi...>
+
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> shp.schema                                                         
+    res0: org.geoscript.layer.Schema = <Schema name: states, fields: [the_geom: MultiPolygon, STATE_NAME: String, STATE_FIPS: String, SUB_REGION: String, STATE_ABBR: String, LAND_KM: Double, WATER_KM: Double, PERSONS: Double, FAMILIES: Double, HOUSHOLD: Double, MALE: Double, FEMALE: Double, WORKERS: Double, DRVALONE: Double, CARPOOL: Double, PUBTRANS: Double, EMPLOYED: Double, UNEMPLOY: D...
 
 A schema is comprised of fields that describe each attribute of a feature. A
 field describes the name and the type of a feature attribute. A list of field 
@@ -116,6 +147,21 @@ accessed given a field name.
     js> field.type
     String
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> shp.schema.fieldNames
+    res1: Seq[String] = ArrayBufferRO(the_geom, STATE_NAME, STATE_FIPS, SUB_REGION, STATE_ABBR, LAND_KM, WATER_KM, PERSONS, FAMILIES, HOUSHOLD, MALE, FEMALE, WORKERS, DRVALONE, CARPOOL, PUBTRANS, EMPLOYED, UNEMPLOY, SERVICE, MANUAL, P_MALE, P_FEMALE, SAMP_POP)
+
+    scala> shp.schema.get("STATE_NAME")
+    res2: org.geoscript.layer.Field = STATE_NAME: String
+
+    scala> res2.name
+    res3: String = STATE_NAME
+
+    scala> res2.binding
+    res4: java.lang.Class[_] = class java.lang.String
 
 Every layer object is part of a :class:`Workspace`. A workspace is a
 collection of layers. You can retrieve a list of layer names for a workspace as
@@ -149,6 +195,15 @@ follows:
     js> dir.names
     states
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> val dir = shp.workspace
+    dir: org.geoscript.workspace.Workspace = <Directory: [file:/data/]>
+
+    scala> dir.names
+    res1: Seq[String] = Array(states)
 
 Create a new layer and add it to an existing workspace as follows:
 
@@ -195,4 +250,39 @@ Create a new layer and add it to an existing workspace as follows:
     * the `feature <../js/api/feature.html>`__ module
     * the `layer <../js/api/layer.html>`__ module
     * the `workspace <../js/api/workspace.html>`__ module
+
+.. cssclass:: code scala 
+
+.. code-block:: scala
+
+    scala> import org.geoscript.geometry._
+    import org.geoscript.geometry._
+
+    scala> import org.geoscript.projection._
+    import org.geoscript.projection._
+
+    scala> import org.geoscript.workspace._
+    import org.geoscript.workspace._
+
+    scala> import org.geoscript.layer._
+    import org.geoscript.layer._
+
+    scala> val ws = Directory("/data/")
+    ws: org.geoscript.workspace.Workspace = <Directory [file:/data]>
+
+    scala> val layer = ws.create("cities", Field("the_geom", classOf[Point]), Field("name", classOf[String]))
+    layer: org.geoscript.layer.Layer = <Layer name: cities, count: 0>
+
+    scala> ws.names
+    res0: Seq[String] = Array(cities, states)
+
+    scala> layer.count
+    res1: Int = 0
+
+    scala> layer += Feature("the_geom" -> Point(37.78, -122.42), "name -> "San Francisco")
+
+    scala> layer += Feature("the_geom" -> Point(40.47, -73.58), "name" -> "New York")
+
+    scala> l.count
+    res2: Int = 2
 

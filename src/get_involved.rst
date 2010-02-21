@@ -31,6 +31,14 @@ Python:
 
      git clone git://github.com/jdeolive/geoscript-py.git
 
+Scala:
+
+   http://github.com/dwins/geoscript.scala
+
+   ::
+
+     git clone git://github.com/dwins/geoscript.scala.git
+
 
 Bug Tracker
 -----------
@@ -44,4 +52,8 @@ JavaScript:
 Python:
 
    http://github.com/jdeolive/geoscript-py/issues
+
+Scala:
+
+   http://github.com/dwins/geoscript.scala/issues
 

@@ -44,3 +44,26 @@ multiple calls to ``contains``, ``coveredBy``, ``covers``, ``crosses``,
     js> poly1.contains(poly2)
     false
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.geometry._
+
+    scala> var poly1 = Geometry.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))")
+    poly1: org.geoscript.geometry.Geometry = POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))
+
+    scala> poly1.prepared
+    res0: Boolean = false
+
+    scala> val prepared = poly1.prepare()
+    prepared: org.geoscript.geometry.Geometry = POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))
+
+    scala> var poly2 = GEOM.fromWKT("POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))")
+    poly2: org.geoscript.geometry.Geometry = POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))
+
+    scala> prepared.intersects(poly2)
+    res1: Boolean = true
+
+    scala> prepared.contains(poly2)
+    res2: Boolean = false

@@ -39,6 +39,21 @@ Reading from WKT
     js> var collection = GEOM.fromWKT("GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))");
 
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.geometry._
+
+    val point = Geometry.fromWKT("POINT(6 10)").asInstanceOf[Point]
+    val line = Geometry.fromWKT("LINESTRING(3 4,10 50,20 25)").asInstanceOf[LineString]
+    val poly = Geometry.fromWKT("POLYGON((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2))").asInstanceOf[Polygon]
+    val points = Geometry.fromWKT("MULTIPOINT(3.5 5.6, 4.8 10.5)").asInstanceOf[MultiPoint]
+    val lines = Geometry.fromWKT("MULTILINESTRING((3 4,10 50,20 25),(-5 -8,-10 -8,-15 -4))").asInstanceOf[MultiLineString]
+    val polys = Geometry.fromWKT("MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2)),((3 3,6 2,6 4,3 3)))").asInstanceOf[MultiPolygon]
+    val collection = Geometry.fromWKT("GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))").asInstanceOf[GeometryCollection]
+
+
 Writing to WKT 
 --------------
   
@@ -70,3 +85,21 @@ Writing to WKT
     js> var line = new GEOM.LineString([[3, 4], [10, 15], [20, 25]]);
     js> line.wkt
     LINESTRING (3 4, 10 15, 20 25)
+
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.geometry._
+
+    scala> val point = Point(6, 10)
+    point: org.geoscript.geometry.Point = POINT (6 10)
+
+    scala> point.wkt
+    res0: String = POINT (6 10)
+
+    scala> val line = LineString([[3, 4], [10, 15], [20, 25]]);
+    line: org.geoscript.geometry.LineString= LINESTRING (3 4, 10 15, 20 25)
+
+    scala> line.wkt
+    res1: String = LINESTRING (3 4, 10 15, 20 25)
