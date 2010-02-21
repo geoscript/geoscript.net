@@ -28,6 +28,12 @@
     </div>
 {%- endmacro %}
 
+{% block extrahead %}
+    <script src="{{ pathto('_static/site.js', 1) }}"></script>
+    <script src="{{ pathto('_static/jquery.cookie.js', 1) }}"></script>
+    <script>site.setLanguage("py")</script>
+{% endblock %}
+
 {% block header %}
     <div class="header">
         <div class="wrap">
