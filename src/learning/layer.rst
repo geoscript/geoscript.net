@@ -49,8 +49,6 @@ and the spatial bounds of the data.
 .. code-block:: scala
 
     scala> import org.geoscript.layer._                                       
-    import org.geoscript.layer._
-
     scala> val shp = Shapefile("states.shp")
     shp: org.geoscript.layer.Layer = <Layer name: states, count: 49>
 
@@ -256,17 +254,9 @@ Create a new layer and add it to an existing workspace as follows:
 .. code-block:: scala
 
     scala> import org.geoscript.geometry._
-    import org.geoscript.geometry._
-
     scala> import org.geoscript.projection._
-    import org.geoscript.projection._
-
     scala> import org.geoscript.workspace._
-    import org.geoscript.workspace._
-
     scala> import org.geoscript.layer._
-    import org.geoscript.layer._
-
     scala> val ws = Directory("/data/")
     ws: org.geoscript.workspace.Workspace = <Directory [file:/data]>
 
@@ -283,6 +273,6 @@ Create a new layer and add it to an existing workspace as follows:
 
     scala> layer += Feature("the_geom" -> Point(40.47, -73.58), "name" -> "New York")
 
-    scala> l.count
+    scala> layer.count
     res2: Int = 2
 

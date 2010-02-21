@@ -47,8 +47,6 @@ GeoScript projections can be created with an EPSG code.
 .. code-block:: scala
 
     scala> import org.geoscript.projection.Projection
-    import org.geoscript.projection.Projection
-
     scala> val prj = new Projection("epsg:4326")
     proj: org.geoscript.projection.Projection = EPSG:4326
 
@@ -77,8 +75,6 @@ The EPSG code can also be accessed for any projection.
 .. code-block:: scala
 
     scala> import org.geoscript.projection._ 
-    import org.geoscript.projection._
-
     scala> val proj = Projection("epsg:4326")
     proj: org.geoscript.projection.Projection = EPSG:4326
 
@@ -121,8 +117,6 @@ from well known text.
 .. code-block:: scala
 
     scala> import org.geoscript.projection._         
-    import org.geoscript.projection._
-
     scala> val proj = Projection("""GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]""")
     proj: org.geoscript.projection.Projection = GCS_WGS_1984 
 
@@ -172,8 +166,6 @@ it was constructed.
 .. code-block:: scala
 
     scala> import org.geoscript.projection._
-    import org.geoscript.projection._
-
     scala> val proj = Projection("epsg:26912")
     proj: org.geoscript.projection.Projection = EPSG:26912
 
@@ -222,11 +214,7 @@ into coordinates in a different spatial reference system.
 .. code-block:: scala
 
     scala> import org.geoscript.projection._   
-    import org.geoscript.projection._
-
     scala> import org.geoscript.geometry._     
-    import org.geoscript.geometry._
-
     scala> val src = Projection("epsg:4326")   
     src: org.geoscript.projection.Projection = EPSG:4326
 

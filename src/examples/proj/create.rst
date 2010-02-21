@@ -50,6 +50,13 @@ From an EPSG Code
     js> projection
     <Projection EPSG:26912>
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.projection.Projection
+    scala> val proj = Projection("epsg:26912")
+    proj: org.geoscript.projection.Projection = EPSG:26912
 
 From Well Known Text
 --------------------
@@ -82,3 +89,12 @@ From Well Known Text
     js> projection
     <Projection EPSG:4326>
 
+.. cssclass:: code scala
+
+.. code-block:: scala
+
+    scala> import org.geoscript.projection.Projection
+    scala> val wkt = """GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]""" 
+    wkt: java.lang.String = GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]
+    scala> val proj = Projection(wkt)
+    proj: org.geoscript.projection.Projection = GCS_WGS_1984

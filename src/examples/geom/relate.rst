@@ -37,8 +37,6 @@ Intersection
 .. code-block:: scala
 
     scala> import org.geoscript.geometry.Geometry
-    import org.geoscript.geometry.Geometry
-
     scala> val poly1 = Geometry.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))")
     poly1: org.geoscript.geometry.Geometry = POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))
 
@@ -79,8 +77,6 @@ Union
 .. code-block:: scala
 
     scala> import org.geoscript.geometry.Geometry
-    import org.geoscript.geometry.Geometry
-
     scala> val poly1 = Geometry.fromWKT("POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))")
     poly1: org.geoscript.geometry.Geometry = POLYGON ((0 0, 8 0, 8 8, 0 8, 0 0))
 

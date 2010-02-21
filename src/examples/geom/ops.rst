@@ -35,9 +35,8 @@ Buffering
 .. cssclass:: code scala
 
 .. code-block:: scala
-    scala> import org.geoscript.geometry._
-    import org.geoscript.geometry._
 
+    scala> import org.geoscript.geometry._
     scala> val p = Point(0, 0)
     p: org.geoscript.geometry.Point = POINT (0 0)
 
@@ -71,9 +70,8 @@ Centroid
 .. cssclass:: code scala
 
 .. code-block:: scala
-    scala> import org.geoscript.geometry._
-    import org.geoscript.geometry._
 
+    scala> import org.geoscript.geometry._
     scala> val poly = Geometry.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))") 
     poly: org.geoscript.geometry.Geometry = POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
 
@@ -118,14 +116,8 @@ Visualizing
 .. code-block:: scala
 
     scala> import org.geoscript.geometry._
-    import org.geoscript.geometry._
-
     scala> import org.geoscript.viewer._  
-    import org.geoscript.viewer._
-
     scala> import org.geoscript.GeoScript._
-    import org.geoscript.GeoScript._
-
     scala> val poly = Geometry.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))")         
     poly: org.geoscript.geometry.Geometry = POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
 

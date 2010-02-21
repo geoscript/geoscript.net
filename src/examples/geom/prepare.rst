@@ -49,7 +49,6 @@ multiple calls to ``contains``, ``coveredBy``, ``covers``, ``crosses``,
 .. code-block:: scala
 
     scala> import org.geoscript.geometry._
-
     scala> var poly1 = Geometry.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))")
     poly1: org.geoscript.geometry.Geometry = POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))
 

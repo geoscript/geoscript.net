@@ -43,8 +43,7 @@ Reading from WKT
 
 .. code-block:: scala
 
-    scala> import org.geoscript.geometry._
-
+    import org.geoscript.geometry._
     val point = Geometry.fromWKT("POINT(6 10)").asInstanceOf[Point]
     val line = Geometry.fromWKT("LINESTRING(3 4,10 50,20 25)").asInstanceOf[LineString]
     val poly = Geometry.fromWKT("POLYGON((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2))").asInstanceOf[Polygon]
@@ -91,7 +90,6 @@ Writing to WKT
 .. code-block:: scala
 
     scala> import org.geoscript.geometry._
-
     scala> val point = Point(6, 10)
     point: org.geoscript.geometry.Point = POINT (6 10)
 

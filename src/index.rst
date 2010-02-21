@@ -41,11 +41,7 @@ to dynamic scripting languages.
 .. code-block:: scala
 
    scala> import org.geoscript.geometry._
-   import org.geoscript.geometry._
-   
    scala> import org.geoscript.projection._
-   import org.geoscript.projection._
-   
    scala> val p = Point(-110, 45.7) in Projection("EPSG:4326")
    p: org.geoscript.geometry.Point = POINT (-110 45.7)
    
