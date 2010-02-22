@@ -171,11 +171,12 @@ div.footer {
 .fg-button {
     outline: 0;
     margin:0 4px 0 0;
-    padding: .4em 1em;
+    padding: 0.4em;
     text-decoration:none !important;
     cursor:pointer;
     position: relative;
     text-align: center;
+    font-size: 0.7em;
     zoom: 1;
 }
 
@@ -239,4 +240,8 @@ button.fg-button {
 }
 .fg-toolbar .fg-button {
     font-size: 1em;
+}
+
+div.footer a img {
+    vertical-align: middle;
 }
