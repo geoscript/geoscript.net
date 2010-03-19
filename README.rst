@@ -22,6 +22,6 @@ This pulls in all dependencies and creates what you need for a virtual
 environment. With this environment, you can run paver tasks to build the site::
 
     ~/geoscript.org$ . bin/activate
-    (geoscript.org)~/geoscript.org$ paver build_site
+    (geoscript.org)~/geoscript.org$ ant site-doc
 
 This will generate the website in a `build` directory.
