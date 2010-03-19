@@ -118,7 +118,7 @@
     </target>
 
     <target name="site-doc" depends="init">
-        <exec executable="sphinx-build" dir="${basedir}/src">
+        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
             <arg line="-E -b html . ${basedir}/build"/>
         </exec>
     </target>  

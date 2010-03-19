@@ -185,3 +185,11 @@ latex_documents = [
 
 # If false, no module index is generated.
 #latex_use_modindex = True
+
+# extension point
+def setup(app):
+    import sys, os
+    sys.path.append(os.getcwd())
+    from lexer import GroovyLexer
+    groovy = GroovyLexer()
+    app.add_lexer("groovy", groovy)
