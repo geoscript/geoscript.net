@@ -978,7 +978,6 @@ def after_install(options, home_dir):
     subprocess.call([join(bin_dir, 'easy_install'), 'sphinx'])
     subprocess.call([join(bin_dir, 'easy_install'), 'jstools'])
 
-
 ##file site.py
 SITE_PY = """
 eJy1PGtz2za23/krUHoylFKZTtJuZ8epeycPZ+sdN8nW6TR3XY+WIiGJNUWyBGlZu3Pvb7/nAYDg

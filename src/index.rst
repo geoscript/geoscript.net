@@ -50,9 +50,22 @@ to dynamic scripting languages.
    
    scala> p2.buffer(100).area
    res0: Double = 31214.451522477902
-    
 
-Currently you can choose between GeoScript implementations in `JavaScript <js>`_, `Python <py>`_, and `Scala <scala>`_.
+.. cssclass:: tab-groovy ui-tabs-hide
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    groovy:000> import geoscript.proj.Projection
+    groovy:000> p = new Point(-110, 45.7)
+    ===> POINT (-110 45.7)
+    groovy:000> p2 = Projection.transform(p, 'epsg:4326', 'epsg:26912')
+    ===> POINT (-370416.94184711506 -7935053.5498699695)
+    groovy:000> poly = p2.buffer(100)
+    groovy:000> poly.area
+    ===> 31214.451522477902
+
+Currently you can choose between GeoScript implementations in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, and `Groovy <groovy>`_.
 
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
 involved <get_involved>`.  See the :ref:`learning center <learning>` for an

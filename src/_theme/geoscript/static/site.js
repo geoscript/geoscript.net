@@ -32,6 +32,8 @@ var site = {
             id: "py", title: "Python"
         }, {
             id: "scala", title: "Scala"
+        }, {
+            id: "groovy", title: "Groovy"
         }];
         
         var list = $("<ul></ul>");

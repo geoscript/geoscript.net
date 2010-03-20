@@ -52,6 +52,33 @@ Reading from WKT
     val polys = Geometry.fromWKT("MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2)),((3 3,6 2,6 4,3 3)))").asInstanceOf[MultiPolygon]
     val collection = Geometry.fromWKT("GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))").asInstanceOf[GeometryCollection]
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.Geometry
+    ===> [import geoscript.geom.Geometry]
+
+    groovy:000> point = Geometry.fromWKT('POINT(6 10)')
+    ===> POINT(6 10)
+
+    groovy:000> line = Geometry.fromWKT('LINESTRING(3 4,10 50,20 25)')
+    ===> LINESTRING(3 4,10 50,20 25)
+
+    groovy:000> poly = Geometry.fromWKT('POLYGON((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2))')
+    ===> POLYGON((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2))
+
+    groovy:000> points = Geometry.fromWKT('MULTIPOINT(3.5 5.6, 4.8 10.5)')
+    ===> MULTIPOINT(3.5 5.6, 4.8 10.5)
+
+    groovy:000> lines = Geometry.fromWKT('MULTILINESTRING((3 4,10 50,20 25),(-5 -8,-10 -8,-15 -4))')
+    ===> MULTILINESTRING((3 4,10 50,20 25),(-5 -8,-10 -8,-15 -4))
+
+    groovy:000> polys = Geometry.fromWKT('MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2)),((3 3,6 2,6 4,3 3)))')
+    ===> MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2, 3 2, 3 3, 2 3,2 2)),((3 3,6 2,6 4,3 3)))
+
+    groovy:000> collection = Geometry.fromWKT('GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))')
+    ===> GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))
 
 Writing to WKT 
 --------------
@@ -101,3 +128,22 @@ Writing to WKT
 
     scala> line.wkt
     res1: String = LINESTRING (3 4, 10 15, 20 25)
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.Geometry
+    ===> [import geoscript.geom.Geometry]
+
+    groovy:000> point = new Point(6, 10)
+    ===> POINT (6 10)
+
+    groovy:000> point.wkt
+    ===> POINT (6 10)
+
+    groovy:000> line = new LineString([3,4],[10,15],[20,25])
+    ===> LINESTRING (3 4, 10 15, 20 25)
+
+    groovy:000> line.wkt
+    ===> LINESTRING (3 4, 10 15, 20 25)

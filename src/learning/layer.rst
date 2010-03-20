@@ -58,6 +58,22 @@ and the spatial bounds of the data.
     scala> shp.bounds
     res1: (Double, Double, Double, Double, String) = (-124.73142200000001,24.955967,-66.969849,49.371735,EPSG:4326)
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.layer.Shapefile
+    ===> [import geoscript.layer.Shapefile]
+
+    groovy:000> shp = new Shapefile('data/shp/states.shp')
+    ===> geoscript.layer.Shapefile@4597871d
+
+    groovy:000> shp.count()
+    ===> 49
+
+    groovy:000> shp.bounds()
+    ===> (-124.73142200000001,24.955967,-66.969849,49.371735,EPSG:4326)
+
 Each entry in a Layer is known as a *feature* and represented by the
 :class:`Feature` class (in the :mod:`feature` module). A feature is a set of
 attributes and an associated geometry. You can iterate through all features
@@ -93,6 +109,14 @@ on a layer to access feature information.
     <Feature EMPLOYED: 303994.0,  ... the_geom: <MultiPolygon>, PUBTRANS: ... >
     <Feature EMPLOYED: 335147.0,  ... the_geom: <MultiPolygon>, PUBTRANS: ... >
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> shp.features.each{f -> println(f)}
+    states.1 the_geom: MULTIPOLYGON (((-88.071564 37.51099000000001, ...
+    states.2 the_geom: MULTIPOLYGON (((-77.008232 38.966556999999995, ...
+
 A layer schema is a set of field descriptions that describe the structure of
 the data in the layer's features.
 
@@ -116,6 +140,13 @@ the data in the layer's features.
 
     scala> shp.schema                                                         
     res0: org.geoscript.layer.Schema = <Schema name: states, fields: [the_geom: MultiPolygon, STATE_NAME: String, STATE_FIPS: String, SUB_REGION: String, STATE_ABBR: String, LAND_KM: Double, WATER_KM: Double, PERSONS: Double, FAMILIES: Double, HOUSHOLD: Double, MALE: Double, FEMALE: Double, WORKERS: Double, DRVALONE: Double, CARPOOL: Double, PUBTRANS: Double, EMPLOYED: Double, UNEMPLOY: D...
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> shp.schema
+    ===> states the_geom: MultiPolygon(EPSG:4326), STATE_NAME: String, STATE_FIPS: String, SUB_REGION: String, STATE_ABBR: String, LAND_KM: java.lang.Double, WATER_KM: java.lang.Double, PERSONS: java.lang.Double, FAMILIES: java.lang.Double, HOUSHOLD: java.lang.Double, MALE: java.lang.Double, FEMALE: java.lang.Double, WORKERS: java.lang.Double, DRVALONE: java.lang.Double, CARPOOL: java.lang.Double, PUBTRANS: java.lang.Double, EMPLOYED: java.lang.Double, UNEMPLOY: java.lang.Double, SERVICE: java.lang.Double, MANUAL: java.lang.Double, P_MALE: java.lang.Double, P_FEMALE: java.lang.Double, SAMP_POP: java.lang.Double
 
 A schema is comprised of fields that describe each attribute of a feature. A
 field describes the name and the type of a feature attribute. A list of field 
@@ -161,6 +192,19 @@ accessed given a field name.
     scala> res2.binding
     res4: java.lang.Class[_] = class java.lang.String
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> f = shp.schema.field('STATE_NAME')
+    ===> STATE_NAME: String
+
+    groovy:000> f.name
+    ===> STATE_NAME
+
+    groovy:000> f.typ
+    ===> String
+
 Every layer object is part of a :class:`Workspace`. A workspace is a
 collection of layers. You can retrieve a list of layer names for a workspace as
 follows:
@@ -202,6 +246,16 @@ follows:
 
     scala> dir.names
     res1: Seq[String] = Array(states)
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> dir = shp.workspace
+    ===> Directory[/Users/jericks/Downloads/data/shp/]
+
+    groovy:000> dir.layers
+    ===> [states]
 
 Create a new layer and add it to an existing workspace as follows:
 
@@ -276,3 +330,30 @@ Create a new layer and add it to an existing workspace as follows:
     scala> layer.count
     res2: Int = 2
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> l = dir.create('cities',[['geom','Point'],['name','str']])
+    Mar 10, 2010 8:01:45 PM org.geotools.data.shapefile.ShapefileDataStore createSchema
+
+    WARNING: PRJ file not generated for null CoordinateReferenceSystem
+    ===> geoscript.layer.Layer@11da5362
+
+    groovy:000> dir.layers
+    ===> [states, cities]
+
+    groovy:000> l.count()
+    ===> 0
+
+    groovy:000> import geoscript.geom.Point
+    ===> [import geoscript.layer.Shapefile, import geoscript.geom.Point]
+
+    groovy:000> l.add([new Point(37.78, -122.42),'San Francisco'])
+    ===> null
+
+    groovy:000> l.add([new Point(40.47, -73.58),'New York'])
+    ===> null
+
+    groovy:000> l.count()
+    ===> 2

@@ -58,6 +58,17 @@ From an EPSG Code
     scala> val proj = Projection("epsg:26912")
     proj: org.geoscript.projection.Projection = EPSG:26912
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> proj = new Projection("epsg:26912")
+    ===> EPSG:26912
+
+
 From Well Known Text
 --------------------
   
@@ -98,3 +109,16 @@ From Well Known Text
     wkt: java.lang.String = GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]
     scala> val proj = Projection(wkt)
     proj: org.geoscript.projection.Projection = GCS_WGS_1984
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> wkt = """GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]"""
+    ===> GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]
+
+    groovy:000> proj = new Projection(wkt)
+    ===> EPSG:4326

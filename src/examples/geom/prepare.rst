@@ -66,3 +66,25 @@ multiple calls to ``contains``, ``coveredBy``, ``covers``, ``crosses``,
 
     scala> prepared.contains(poly2)
     res2: Boolean = false
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+
+    groovy:000> poly1 = Geometry.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))")
+    ===> POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))
+
+    groovy:000> prepared = poly1.prepare()
+    ===> POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))
+
+    groovy:000> poly2 = Geometry.fromWKT("POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))")
+    ===> POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))
+
+    groovy:000> prepared.intersects(poly2)
+    ===> true
+
+    groovy:000> prepared.contains(poly2)
+    ===> false

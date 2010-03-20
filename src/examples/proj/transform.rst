@@ -54,6 +54,22 @@ Transforming Points
     scala> val p2 = p1 in Projection("epsg:26912")
     p2: org.geoscript.geometry.Point = POINT (-412539.9935856778 -7830632.25817681)
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> import geoscript.geom.Point
+    ===> [import geoscript.proj.Projection, import geoscript.geom.Point]
+
+    groovy:000> p1 = new Point(-111, 45.7)
+    ===> POINT (-111 45.7)
+
+    groovy:000> p2 = Projection.transform(p1, 'epsg:4326', 'epsg:26912')
+    ===> POINT (-412539.9935856778 -7830632.25817681)
+
 Transforming Geometries
 -----------------------
   
@@ -93,7 +109,9 @@ Transforming Geometries
     js> poly.transform("epsg:26912");
     <Polygon [[[680759.8175153742, 5886801.367604256], [370998.6792364947...>.. cssclass:: code js
 
-.. code-block:: javascript
+.. cssclass:: code scala
+
+.. code-block:: scala
 
     scala> import org.geoscript.geometry._ 
     scala> import org.geoscript.projection._ 
@@ -110,3 +128,35 @@ Transforming Geometries
 
     scala> val poly2 = poly in Projection("epsg:26912")
     poly2: org.geoscript.geometry.Polygon = POLYGON ((680759.8175153742 5886801.367604256, 370998.67923649476 5217678.697813773, 661154.8855028747 4840496.861362906, 680759.8175153742 5886801.367604256))
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.geom.*, import geoscript.proj.Projection]
+
+    groovy:000> prj = new Projection('epsg:4326')
+    ===> EPSG:4326
+
+    groovy:000> pt = new Point(-111, 45.7)
+    ===> POINT (-111 45.7)
+
+    groovy:000> line = new LineString([-110.1,57.6], [-111.5,50], [-109,43])
+    ===> LINESTRING (-110.1 57.6, -111.5 50, -109 43)
+
+    groovy:000> poly = new Polygon([-108.3,53.1],[-112.7,47.1],[-109,43.7],[-108.3,53.1])
+    ===> POLYGON ((-108.3 53.1, -112.7 47.1, -109 43.7, -108.3 53.1))
+
+    groovy:000> prj.transform(pt, 'epsg:26912')
+    ===> POINT (-412539.9935856778 -7830632.25817681)
+
+    groovy:000> prj.transform(line, 'epsg:26912')
+    ===> LINESTRING (64971.64258713304 -7795528.649301183, -266610.029102562 -7718263.928822785, -418931.9422064803 -8078714.807026271)
+
+    groovy:000> prj.transform(poly, 'epsg:26912')
+    ===> POLYGON ((-51461.2296841651 -8028678.665519956, -426754.7978043163 -7630837.138739225, -395538.4437005599 -8068093.241481589, -51461.2296841651 -8028678.665519956))
+

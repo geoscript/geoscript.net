@@ -39,6 +39,14 @@ Scala:
 
      git clone git://github.com/dwins/geoscript.scala.git
 
+Groovy:
+    
+    http://github.com/jericks/geoscript-groovy
+
+    ::
+
+     git clone git://github.com/jericks/geoscript-groovy.git
+
 
 Bug Tracker
 -----------
@@ -57,3 +65,6 @@ Scala:
 
    http://github.com/dwins/geoscript.scala/issues
 
+Groovy:
+
+   http://github.com/jericks/geoscript-groovy/issues

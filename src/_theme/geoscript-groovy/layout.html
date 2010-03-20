@@ -24,37 +24,6 @@
 {%- macro index_sidebar() %}
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h2>Activity</h2>
-            <h4>geoscript.js commits</h4>
-            <div id="jscommits"></div>
-            <a href="http://github.com/tschaub/geoscript-js/commits/master/">see all ...</a>
-
-            <h4>geoscript.py commits</h4>
-            <div id="pycommits"></div>
-            <a href="http://github.com/jdeolive/geoscript-py/commits/master/">see all ...</a>
-
-            <div id="gitcommits">
-                <ul>
-                    <li jugl:repeat="commit commits.slice(0, 3)">
-                        <a jugl:attributes="href commit.url"
-                           jugl:content="commit.message">
-                            commit message here
-                        </a><br />
-                        <span class="mini">
-                            [by
-                            <a jugl:attributes="href 'http://github.com/' + commit.author.name"
-                               jugl:content="commit.author.name">
-                                commit author here
-                            </a>
-                            on
-                            <span jugl:replace="commit.authored_date.substring(0, 10)">
-                                commit date here
-                            </span>
-                            ]
-                        </span>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 {%- endmacro %}
@@ -62,27 +31,17 @@
 {% block extrahead %}
     <script src="{{ pathto('_static/site.js', 1) }}"></script>
     <script src="{{ pathto('_static/jquery.cookie.js', 1) }}"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-    {% if pagename == "index" %}
-    <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
-    <script>$(site.prepIndex);</script>
-    {% else %}
-    <script>$(site.prepPage);</script>
-    {% endif %}
+    <script>site.setLanguage("groovy")</script>
 {% endblock %}
 
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <h1 id="logo"><a href="{{ pathto('index') }}">GeoScript</a></h1>
+            <h1 id="logo"><a href="{{ pathto('index')|replace('index.html', '')|replace('#', '') }}..">GeoScript</a></h1>
             <ul id="top-nav">
-                <li class="first"><a href="{{ pathto('learning/index') }}">Learning</a></li>
-                <li class="first"><a href="{{ pathto('examples/index') }}">Examples</a></li>
-                <li><a href="{{ pathto('js/index') }}">JavaScript</a></li>
-                <li><a href="{{ pathto('py/index') }}">Python</a></li>
-                <li><a href="{{ pathto('scala/index') }}">Scala</a></li>
-                <li><a href="{{ pathto('groovy/index') }}">Groovy</a></li>
+                <li class="first"><a href="{{ pathto('index') }}">Groovy</a></li>
+                <li><a href="{{ pathto('quickstart') }}">Quick Start</a></li>
+                <li><a href="{{ pathto('api/index') }}">API Reference</a></li>
             </ul>
             {%- if pagename != "search" %}
             <div id="searchbox">
@@ -94,17 +53,6 @@
                 </form>
             </div>
             {%- endif %}
-            {%- if pagename != 'index' %}
-            <div id="code-chooser">
-                <h3>Language for Examples</h3>
-                <div class="fg-buttonset fg-buttonset-single">
-                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
-                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
-                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
-                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
-                </div>
-            </div>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

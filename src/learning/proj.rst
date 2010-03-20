@@ -50,6 +50,16 @@ GeoScript projections can be created with an EPSG code.
     scala> val prj = new Projection("epsg:4326")
     proj: org.geoscript.projection.Projection = EPSG:4326
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> prj = new Projection("epsg:4326")
+    ===> EPSG:4326
+
 The EPSG code can also be accessed for any projection.
 
 .. cssclass:: code py
@@ -80,6 +90,19 @@ The EPSG code can also be accessed for any projection.
 
     scala> proj.id                           
     res0: String = EPSG:4326
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> proj = new Projection("epsg:4326")
+    ===> EPSG:4326
+
+    groovy:000> proj.id
+    ===> EPSG:4326
 
 Often a spatial reference system is defined by `well-known text
 <http://en.wikipedia.org/wiki/Well-known_text#Spatial_reference_systems>`_
@@ -119,6 +142,16 @@ from well known text.
     scala> import org.geoscript.projection._         
     scala> val proj = Projection("""GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]""")
     proj: org.geoscript.projection.Projection = GCS_WGS_1984 
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> proj = new Projection("""GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]""")
+    ===> EPSG:4326
 
 The well-known text can also be accessed for any projection, regardless of how
 it was constructed.
@@ -181,6 +214,39 @@ it was constructed.
         UNIT["degree", 0.017453292519943295], 
         AXIS["Geo...
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> proj = new Projection("epsg:26912")
+    ===> EPSG:26912
+
+    groovy:000> proj.wkt
+    ===> PROJCS["NAD83 / UTM zone 12N",
+      GEOGCS["NAD83",
+        DATUM["North American Datum 1983",
+          SPHEROID["GRS 1980", 6378137.0, 298.257222101, AUTHORITY["EPSG","7019"]],
+          TOWGS84[1.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0],
+          AUTHORITY["EPSG","6269"]],
+        PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
+        UNIT["degree", 0.017453292519943295],
+        AXIS["Geodetic latitude", NORTH],
+        AXIS["Geodetic longitude", EAST],
+        AUTHORITY["EPSG","4269"]],
+      PROJECTION["Transverse Mercator", AUTHORITY["EPSG","9807"]],
+      PARAMETER["central_meridian", -111.0],
+      PARAMETER["latitude_of_origin", 0.0],
+      PARAMETER["scale_factor", 0.9996],
+      PARAMETER["false_easting", 500000.0],
+      PARAMETER["false_northing", 0.0],
+      UNIT["m", 1.0],
+      AXIS["Easting", EAST],
+      AXIS["Northing", NORTH],
+      AUTHORITY["EPSG","26912"]]
+
 Coordinates in one spatial reference system can be transformed
 into coordinates in a different spatial reference system.
 
@@ -223,6 +289,25 @@ into coordinates in a different spatial reference system.
 
     scala> point in Projection("epsg:26912")   
     res0: org.geoscript.geometry.Point = POINT (-412539.9935856778 -7830632.25817681)
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+    ===> [import geoscript.proj.Projection]
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.proj.Projection, import geoscript.geom.*]
+
+    groovy:000> src = new Projection("epsg:4326")
+    ===> EPSG:4326
+
+    groovy:000> point = new Point(-111, 45.7)
+    ===> POINT (-111 45.7)
+
+    groovy:000> src.transform(point,"epsg:26912")
+    ===> POINT (-412539.9935856778 -7830632.25817681)
 
 .. cssclass:: refs py
 
