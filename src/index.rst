@@ -1,8 +1,8 @@
-Introducing GeoScript
-=====================
+.. cssclass:: tagline
 
-GeoScript provides geospatial data access, manipulation, and rendering ability
-to dynamic scripting languages.
+    GeoScript adds spatial capabilities to dynamic scripting languages 
+
+GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, and `Groovy <groovy>`_.
 
 .. cssclass:: tab-js ui-tabs-hide
 
@@ -64,8 +64,6 @@ to dynamic scripting languages.
     groovy:000> poly = p2.buffer(100)
     groovy:000> poly.area
     ===> 31214.451522477902
-
-Currently you can choose between GeoScript implementations in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, and `Groovy <groovy>`_.
 
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
 involved <get_involved>`.  See the :ref:`learning center <learning>` for an

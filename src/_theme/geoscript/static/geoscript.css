@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5 {
     background: transparent !important;
     border: 0 !important;
     padding-left: 0 !important;
-    color: #000066;
+    color: black;
 }
 
 a {
@@ -35,8 +35,12 @@ div.body {
 
 div.header {
     text-align: left;
-    margin: 1em 1.5em 0.5em;
+    margin: 0 -2em;
     position: relative;
+    overflow: hidden;
+    left: 0;
+    height: 80px;
+    background: #3e6d42 url(img/header-bg.png) repeat-x 0 0;
 }
 
 div.header h1 {
@@ -50,7 +54,10 @@ div.header h3 {
 
 #top-nav {
     margin: 0;
-    padding: 0;
+    position: absolute;
+    bottom: 5px;
+    right: 1.5em;
+    height: 20px;
     list-style: none;
 }
 
@@ -58,7 +65,16 @@ div.header h3 {
     font-weight: bold;
     display: inline;
     margin: 0;
-    padding: 0 1em 0 0;
+    padding: 0 1em 1em;
+    vertical-align: middle;
+}
+
+#top-nav li a {
+    color: white;
+}
+
+#top-nav li a:hover {
+    color: #777777;
 }
 
 #searchbox {
@@ -69,29 +85,36 @@ div.header h3 {
 }
 
 #code-chooser {
-    position: absolute;
-    width: 240px;
-    top: 10px;
-    right: 0;
-    display: none;
+    float: right;
+    width: 225px;
+    margin-bottom: 2em;
+}
+
+#code-chooser h3 {
+    margin-bottom: 1em;
+    text-align: left;
 }
 
 .show-chooser {
     display: none;
 }
 
-div.bodywrapper {
-    border: 0;
-    margin-right: 270px;
-}
-
 div.document {
-    background: transparent;
+    margin: 1em 2em;
+    background-image: none;
+    /*background-color: white;*/
 }
 
 div.sphinxsidebar {
+    /*float: right;*/
+    clear: both;
     width: 240px;
     height: 0;
+    margin-left: 0;
+}
+
+div.sphinxsidebarwrapper {
+   padding: 10px 5px 0 10px;
 }
 
 div.sphinxsidebar li {
@@ -104,12 +127,17 @@ div.sphinxsidebar h3, div.sphinxsidebar h4, div.sphinxsidebar h3 a, div.sphinxsi
 
 div.related {
     margin: 0.5em 1.5em 1em;    
+    width: 90%;
 }
 
 div.related ul {
     background: transparent;
     border: 0;
     padding: 0;
+}
+
+div.related ul li a {
+    color: #3e6d42;
 }
 
 .toctree-l1 {
@@ -244,4 +272,40 @@ button.fg-button {
 
 div.footer a img {
     vertical-align: middle;
+}
+
+#logo {
+   margin: 0.5em;
+}
+
+#logo a {
+   color: white;
+}
+
+a.news {
+    background: transparent url(img/feed.png) no-repeat 160px 0;
+    color: black;
+    display: block;
+    font-size: 1.5em;
+    height: 32px;
+    margin-top: 1em;
+}
+
+p.tagline {
+   color: black; 
+   font-size: 150%; 
+   margin: 1em 0 1.5em;
+}
+
+div.download {
+   background: transparent url(img/go-down.png) no-repeat 100px 5px;
+}
+
+div.download p {
+  margin-top: -0.25em;
+  /*margin-left: 1em;*/
+}
+
+ul.rss_items li {
+  border: 0 !important;
 }
