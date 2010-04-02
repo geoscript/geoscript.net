@@ -173,6 +173,10 @@ div.footer {
     text-align: center;
 }
 
+div.warning p.admonition-title {
+    background-color: #CF6600;
+}
+
 #gitcommits {
     display: none;
 }
