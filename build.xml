@@ -1,6 +1,6 @@
 <project name="geoscript.org" default="info" basedir=".">
 
-    <property name="js.version" value="0.9"/>
+    <property name="js.version" value="0.8"/>
     <property name="py.version" value="1.0"/>
     <property name="scala.version" value="0.9"/>
     <property name="groovy.version" value="0.9"/>
