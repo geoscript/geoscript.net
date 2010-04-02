@@ -77,6 +77,13 @@
         });
     </script>
     {% endif %}
+    {% if pagename == "download" %}
+    <script>
+        $(function() {
+            site.prepDownloads('{{theme_impl_short}}', '{{theme_impl_repo}}')
+        });
+    </script>
+    {% endif %}
 {% endblock %}
 
 {% block header %}
