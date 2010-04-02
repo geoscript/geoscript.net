@@ -35,9 +35,9 @@
             {{ download() }}
 
             <h2>Activity</h2>
-            <h4>geoscript.{{ impl_short }} commits</h4>
-            <div id="{{impl_short}}commits" class="commits"></div>
-            <a href="http://github.com/{{impl_repo}}/commits/master/">see all ...</a>
+            <h4>geoscript.{{ theme_impl_short }} commits</h4>
+            <div id="{{theme_impl_short}}commits" class="commits"></div>
+            <a href="http://github.com/{{theme_impl_repo}}/commits/master/">see all ...</a>
             <div id="gitcommits">
                 <ul>
                     <li jugl:repeat="commit commits.slice(0, 3)">
@@ -66,14 +66,14 @@
 {% block extrahead %}
     <script src="{{ pathto('_static/site.js', 1) }}"></script>
     <script src="{{ pathto('_static/jquery.cookie.js', 1) }}"></script>
-    {%- if impl_short %}
-    <script>site.setLanguage('{{impl_short}}')</script>
+    {%- if theme_impl_short %}
+    <script>site.setLanguage('{{theme_impl_short}}')</script>
     {%- endif %}
     {% if pagename == "index" %}
     <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
     <script>
         $(function() {
-            site.prepCommits('{{impl_short}}', '{{impl_repo}}')
+            site.prepCommits('{{theme_impl_short}}', '{{theme_impl_repo}}')
         });
     </script>
     {% endif %}
@@ -82,15 +82,15 @@
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <h1 id="logo" class="logo-{{ impl_short }}"><a href="{{ pathto('index')|replace('index.html', '')|replace('#', '') }}..">GeoScript</a></h1>
+            <h1 id="logo" class="logo-{{ theme_impl_short }}"><a href="{{ pathto('index')|replace('index.html', '')|replace('#', '') }}..">GeoScript</a></h1>
             <ul id="top-nav">
-                {%- if impl_long %}
-                <li class="first"><a href="{{ pathto('index') }}">{{ impl_long }}</a></li>
+                {%- if theme_impl_long %}
+                <li class="first"><a href="{{ pathto('index') }}">{{ theme_impl_long }}</a></li>
                 {%- endif %}
                 <li><a href="{{ pathto('quickstart') }}">Quick Start</a></li>
                 <li><a href="{{ pathto('api/index') }}">API</a></li>
                 {%- for impl in [('js', 'JavaScript'), ('py', 'Python'), ('scala', 'Scala'), ('groovy', 'Groovy')] %}
-                {%- if impl[0] != impl_short %}
+                {%- if impl[0] != theme_impl_short %}
                 <li><a href="{{ pathto('../' + impl[0] + '/index') }}">{{impl[1]}}</a></li>
                 {%- endif %}
                 {%- endfor %}

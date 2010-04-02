@@ -1,9 +1,24 @@
 <project name="geoscript.org" default="info" basedir=".">
 
     <property name="js.version" value="0.8"/>
+    <property name="js.short" value="js"/>
+    <property name="js.long" value="JavaScript"/>
+    <property name="js.repo" value="tschaub/geoscript-js"/>
+
     <property name="py.version" value="1.0"/>
+    <property name="py.short" value="py"/>
+    <property name="py.long" value="Python"/>
+    <property name="py.repo" value="jdeolive/geoscript-py"/>
+
     <property name="scala.version" value="0.9"/>
+    <property name="scala.short" value="scala"/>
+    <property name="scala.long" value="Scala"/>
+    <property name="scala.repo" value="dwins/geoscript.scala"/>
+
     <property name="groovy.version" value="0.9"/>
+    <property name="groovy.short" value="groovy"/>
+    <property name="groovy.long" value="Groovy"/>
+    <property name="groovy.repo" value="jericks/geoscript-groovy"/>
 
     <property name="repos" value="${basedir}/.repos"/>
     <property name="t" value="&#x0009;"/>
@@ -30,16 +45,16 @@
         <mkdir dir="${basedir}/build"/>
         <mkdir dir="${repos}"/>
         <condition property="repo.js.exists">
-            <available file="${repos}/js"/>
+            <available file="${repos}/${js.short}"/>
         </condition>
         <condition property="repo.py.exists">
-            <available file="${repos}/py"/>
+            <available file="${repos}/${py.short}"/>
         </condition>
         <condition property="repo.scala.exists">
-            <available file="${repos}/scala"/>
+            <available file="${repos}/${scala.short}"/>
         </condition>
         <condition property="repo.groovy.exists">
-            <available file="${repos}/groovy"/>
+            <available file="${repos}/${groovy.short}"/>
         </condition>
     </target>
     
@@ -50,13 +65,13 @@
     <target name="js-clone" unless="repo.js.exists">
         <exec executable="git" dir="${repos}">
             <arg value="clone"/> 
-            <arg value="git://github.com/tschaub/geoscript-js.git"/>
-            <arg value="js"/>
+            <arg value="git://github.com/${js.repo}.git"/>
+            <arg value="${js.short}"/>
         </exec>
     </target>
     
     <target name="js-pull" if="repo.js.exists" depends="init-js">
-        <exec executable="git" dir="${repos}/js">
+        <exec executable="git" dir="${repos}/${js.short}">
             <arg value="pull"/>
         </exec>
     </target>
@@ -64,12 +79,12 @@
     <target name="js-doc" depends="init-js">
         <exec executable="python">
             <arg value="jsdoc.py"/>
-            <arg value="${repos}/js/lib/geoscript"/>
-            <arg value="${repos}/js/doc/api/module.jst"/>
-            <arg value="${repos}/js/doc/api"/>
+            <arg value="${repos}/${js.short}/lib/geoscript"/>
+            <arg value="${repos}/${js.short}/doc/api/module.jst"/>
+            <arg value="${repos}/${js.short}/doc/api"/>
         </exec>
-        <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js ${repos}/js/doc ${basedir}/build/js"/>
+        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${basedir}/build/${js.short}"/>
         </exec>
     </target>
     
@@ -80,20 +95,20 @@
     <target name="py-clone" unless="repo.py.exists">
         <exec executable="git" dir="${repos}">
             <arg value="clone"/> 
-            <arg value="git://github.com/jdeolive/geoscript-py.git"/>
-            <arg value="py"/>
+            <arg value="git://github.com/${py.repo}.git"/>
+            <arg value="${py.short}"/>
         </exec>
     </target>
     
     <target name="py-pull" if="repo.py.exists" depends="init-py">
-        <exec executable="git" dir="${repos}/py">
+        <exec executable="git" dir="${repos}/${py.short}">
             <arg value="pull"/>
         </exec>
     </target>
     
     <target name="py-doc" depends="init-py">
-        <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html ${repos}/py/doc ${basedir}/build/py"/>
+        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+            <arg line="-E -b html ${repos}/${py.short}/doc ${basedir}/build/${py.short}"/>
         </exec>
     </target>
     
@@ -104,27 +119,27 @@
     <target name="scala-clone" unless="repo.scala.exists">
         <exec executable="git" dir="${repos}">
             <arg value="clone"/> 
-            <arg value="git://github.com/dwins/geoscript.scala.git"/>
-            <arg value="scala"/>
+            <arg value="git://github.com/${scala.repo}.git"/>
+            <arg value="${scala.short}"/>
         </exec>
     </target>
     
     <target name="scala-pull" if="repo.scala.exists" depends="init-scala">
-        <exec executable="git" dir="${repos}/scala">
+        <exec executable="git" dir="${repos}/${scala.short}">
             <arg value="pull"/>
         </exec>
     </target>
     
     <target name="scala-doc" depends="init-scala">
-        <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-scala ${repos}/scala/docs ${basedir}/build/scala"/>
+        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${scala.repo}' -D html_theme_options.impl_long='${scala.long}' -D html_theme_options.impl_short='${scala.short}' -D version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-common ${repos}/${scala.short}/docs ${basedir}/build/${scala.short}"/>
         </exec>
-        <exec executable="sbt" dir="${repos}/scala/">
+        <exec executable="sbt" dir="${repos}/${scala.short}/">
             <arg value="update"/>
             <arg value="doc"/>
         </exec>
-        <move file="${repos}/scala/geoscript/target/scala_2.7.7/doc/main/api/"
-            todir="${basedir}/build/scala/"/>
+        <move file="${repos}/${scala.short}/geoscript/target/scala_2.7.7/doc/main/api/"
+            todir="${basedir}/build/${scala.short}/"/>
     </target>
 
     <target name="init-groovy" depends="init">
@@ -134,28 +149,28 @@
     <target name="groovy-clone" unless="repo.groovy.exists">
         <exec executable="git" dir="${repos}">
             <arg value="clone"/>
-            <arg value="git://github.com/jericks/geoscript-groovy.git"/>
-            <arg value="groovy"/>
+            <arg value="git://github.com/${groovy.repo}.git"/>
+            <arg value="${groovy.short}"/>
         </exec>
     </target>
 
     <target name="groovy-pull" if="repo.groovy.exists" depends="init-groovy">
-        <exec executable="git" dir="${repos}/groovy">
+        <exec executable="git" dir="${repos}/${groovy.short}">
             <arg value="pull"/>
         </exec>
     </target>
 
     <target name="groovy-doc" depends="init-groovy">
-        <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-groovy ${repos}/groovy/doc ${basedir}/build/groovy"/>
+        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${groovy.repo}' -D html_theme_options.impl_long='${groovy.long}' -D html_theme_options.impl_short='${groovy.short}' -D version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-common ${repos}/${groovy.short}/doc ${basedir}/build/${groovy.short}"/>
         </exec>
-        <exec executable="mvn" dir="${repos}/groovy/">
+        <exec executable="mvn" dir="${repos}/${groovy.short}/">
             <arg line="-Dmaven.test.skip=true"/>
             <arg line="package"/>
         </exec>
-        <mkdir dir="${basedir}/build/groovy/api"/>
-        <copy todir="${basedir}/build/groovy/api">
-            <fileset dir="${repos}/groovy/target/groovydoc/">
+        <mkdir dir="${basedir}/build/${groovy.short}/api"/>
+        <copy todir="${basedir}/build/${groovy.short}/api">
+            <fileset dir="${repos}/${groovy.short}/target/groovydoc/">
                 <include name="**/*"/>
             </fileset>
         </copy>
