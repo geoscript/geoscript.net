@@ -1,5 +1,10 @@
 <project name="geoscript.org" default="info" basedir=".">
 
+    <property name="js.version" value="0.9"/>
+    <property name="py.version" value="1.0"/>
+    <property name="scala.version" value="0.9"/>
+    <property name="groovy.version" value="0.9"/>
+
     <property name="repos" value="${basedir}/.repos"/>
     <property name="t" value="&#x0009;"/>
     
@@ -64,7 +69,7 @@
             <arg value="${repos}/js/doc/api"/>
         </exec>
         <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js ${repos}/js/doc ${basedir}/build/js"/>
+            <arg line="-E -b html -c ${basedir}/src -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-js ${repos}/js/doc ${basedir}/build/js"/>
         </exec>
     </target>
     
@@ -112,7 +117,7 @@
     
     <target name="scala-doc" depends="init-scala">
         <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-scala ${repos}/scala/docs ${basedir}/build/scala"/>
+            <arg line="-E -b html -c ${basedir}/src version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-scala ${repos}/scala/docs ${basedir}/build/scala"/>
         </exec>
         <exec executable="sbt" dir="${repos}/scala/">
             <arg value="update"/>
@@ -142,7 +147,7 @@
 
     <target name="groovy-doc" depends="init-groovy">
         <exec executable="sphinx-build" dir="${basedir}/src">
-            <arg line="-E -b html -c ${basedir}/src -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-groovy ${repos}/groovy/doc ${basedir}/build/groovy"/>
+            <arg line="-E -b html -c ${basedir}/src version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-groovy ${repos}/groovy/doc ${basedir}/build/groovy"/>
         </exec>
         <exec executable="mvn" dir="${repos}/groovy/">
             <arg line="-Dmaven.test.skip=true"/>
