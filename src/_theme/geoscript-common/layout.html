@@ -32,35 +32,35 @@
 {%- macro index_sidebar() %}
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-           {{ download() }}
-           
-           <h2>Activity</h2>
-           <h4>geoscript.{{ impl_short }} commits</h4>
-           <div id="{{impl_short}}commits" class="commits"></div>
-           <a href="http://github.com/{{impl_repo}}/commits/master/">see all ...</a>
-           <div id="gitcommits">
-             <ul>
-                 <li jugl:repeat="commit commits.slice(0, 3)">
-                     <a jugl:attributes="href commit.url"
-                        jugl:content="commit.message">
-                             commit message here
-                     </a><br />
-                     <span class="mini">
-                         [by
-                         <a jugl:attributes="href 'http://github.com/' + commit.author.name"
-                            jugl:content="commit.author.name">
-                              commit author here
-                         </a>
-                          on
-                          <span jugl:replace="commit.authored_date.substring(0, 10)">
-                              commit date here
-                          </span>
-                          ]
-                     </span>
-                  </li>
-              </ul>
+            {{ download() }}
+
+            <h2>Activity</h2>
+            <h4>geoscript.{{ impl_short }} commits</h4>
+            <div id="{{impl_short}}commits" class="commits"></div>
+            <a href="http://github.com/{{impl_repo}}/commits/master/">see all ...</a>
+            <div id="gitcommits">
+                <ul>
+                    <li jugl:repeat="commit commits.slice(0, 3)">
+                        <a jugl:attributes="href commit.url"
+                            jugl:content="commit.message">
+                            commit message here
+                        </a><br />
+                        <span class="mini">
+                            [by
+                            <a jugl:attributes="href 'http://github.com/' + commit.author.name"
+                                jugl:content="commit.author.name">
+                                commit author here
+                            </a>
+                            on
+                            <span jugl:replace="commit.authored_date.substring(0, 10)">
+                                commit date here
+                            </span>
+                            ]
+                        </span>
+                    </li>
+                </ul>
            </div>
-    </div>
+       </div>
   </div>
 {%- endmacro %}
 
