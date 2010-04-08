@@ -23,10 +23,14 @@
     <property name="repos" value="${basedir}/.repos"/>
     <property name="t" value="&#x0009;"/>
     
+    <condition property="mvn.offline" value="-o" else="">
+       <istrue value="${maven.offline}"/>
+    </condition>
+
     <target name="info">
         <echo message="Checks out GeoScript sources and builds the site. The built site is located in the build directory."/>
         <echo message=""/>
-        <echo message="Available tasks:"/>
+        <echo message="Tasks:"/>
         <echo message="${t}site:        Build the entire site."/>
         <echo message="${t}js-doc:      Build the js docs (js-pull first)."/>
         <echo message="${t}js-pull:     Update js repo."/>
@@ -39,6 +43,11 @@
         <echo message="${t}init:        Check out local git repos."/>
         <echo message="${t}clean:       Delete doc builds."/>
         <echo message="${t}clean-full:  Delete doc builds and local git repos."/>
+
+        <echo message=""/>
+        <echo message="Properties:"/>
+        <echo message="${t}-Dmaven.offline=[t|f]:   Runs maven builds offline."/>
+
     </target>
     
     <target name="init">
@@ -107,7 +116,19 @@
     </target>
     
     <target name="py-doc" depends="init-py">
+        <exec executable="mvn" dir="${repos}/${py.short}/" failonerror="true">
+            <arg line="${mvn.offline}"/>
+            <arg line="-Dmaven.test.skip=true"/>
+            <arg line="clean"/>
+            <arg line="install"/>
+        </exec>
+        <path id="py.jarpath">
+          <fileset dir="${repos}/${py.short}/jars" includes="*.jar"/>
+        </path>
+        <property name="py.classpath" refid="py.jarpath"/>
+        <echo message="${py.classpath}"/>
         <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+            <env key="CLASSPATH" path="${py.classpath}"/>
             <arg line="-E -b html ${repos}/${py.short}/doc ${basedir}/build/${py.short}"/>
         </exec>
     </target>
@@ -165,6 +186,7 @@
             <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${groovy.repo}' -D html_theme_options.impl_long='${groovy.long}' -D html_theme_options.impl_short='${groovy.short}' -D version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-common ${repos}/${groovy.short}/doc ${basedir}/build/${groovy.short}"/>
         </exec>
         <exec executable="mvn" dir="${repos}/${groovy.short}/">
+            <arg line="${mvn.offline}"/>
             <arg line="-Dmaven.test.skip=true"/>
             <arg line="package"/>
         </exec>
