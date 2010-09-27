@@ -57,10 +57,10 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
 
     groovy:000> import geoscript.geom.*
     groovy:000> import geoscript.proj.Projection
-    groovy:000> p = new Point(-110, 45.7)
-    ===> POINT (-110 45.7)
+    groovy:000> p = new Point(-111, 45.7)
+    ===> POINT (-111 45.7)
     groovy:000> p2 = Projection.transform(p, 'epsg:4326', 'epsg:26912')
-    ===> POINT (-370416.94184711506 -7935053.5498699695)
+    ===> POINT (499999.42501775385, 5060716.092032814)
     groovy:000> poly = p2.buffer(100)
     groovy:000> poly.area
     ===> 31214.451522477902
