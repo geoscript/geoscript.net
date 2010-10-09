@@ -21,6 +21,8 @@ top right.
 :ref:`learning.layer`
     Accessing data with layers and workspaces.
 
+:ref:`learning.map`
+    Draw Layers using Maps and Styles
  
 .. toctree:: 
     :hidden:
@@ -28,4 +30,4 @@ top right.
     geom
     proj
     layer
-
+    map
