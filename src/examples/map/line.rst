@@ -23,15 +23,7 @@ Options
 
 .. rubric:: code chooser
 
-Import the package
-------------------
 
-.. cssclass:: code groovy
-
-.. code-block:: groovy
-
-    groovy:000> import geoscript.style.LineSymbolizer
-    ===> [import geoscript.style.LineSymbolizer]
 
 Create a LineSymbolizer with a simple stroke
 ---------------------------------------------
@@ -40,11 +32,27 @@ Create a LineSymbolizer with a simple stroke
 
 .. code-block:: groovy
 
+    groovy:000> import geoscript.style.LineSymbolizer
+    ===> [import geoscript.style.LineSymbolizer]
+
     groovy:000> sym = new LineSymbolizer(
             strokeColor: "#000000",
             strokeWidth: 3,
             strokeOpacity: 0.5
         )
+
+.. cssclass:: code js
+
+.. code-block:: javascript
+
+    >> var LineSymbolizer = require("geoscript/style").LineSymbolizer;
+
+    >> var sym = new LineSymbolizer({
+    ..     strokeColor: "#000000",
+    ..     strokeWidth: 3,
+    ..     strokeOpacity: 0.5
+    .. });
+
 
 Create a LineSymbolizer with a dashed line
 ------------------------------------------
@@ -59,6 +67,17 @@ Create a LineSymbolizer with a dashed line
             strokeDashArray: "5 2"
         )
 
+.. cssclass:: code js
+
+.. code-block:: javascript
+
+    >> var sym = new LineSymbolizer({
+    ..     strokeColor: "#0000FF",
+    ..     strokeWidth: 3,
+    ..     strokeDashArray: "5 2"
+    .. });
+
+
 Create a LineSymbolizer with a graphic stroked line
 ---------------------------------------------------
 
@@ -72,3 +91,4 @@ Create a LineSymbolizer with a graphic stroked line
             graphicStrokeMarkStrokeWidth: 1,
             graphicStrokeMarkSize: 12
         )
+
