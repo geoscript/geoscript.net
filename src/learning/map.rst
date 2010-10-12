@@ -4,6 +4,7 @@ Map and Styles
 ==============
 
 .. cssclass:: show-chooser
+
 .. rubric:: code chooser
 
 A :class:`Map` can draw one or more :class:`Layers` using :class:`Styles`.
@@ -33,9 +34,25 @@ A :class:`Map` can draw one or more :class:`Layers` using :class:`Styles`.
     groovy:000> map.render("states1.png")
     ===> null
 
-Layers have a default Style but we can customize that Style with Rules and Symbolizers.
+.. cssclass:: code js
+
+.. code-block:: javascript
+
+    >> var Map = require("geoscript/map").Map;
+    >> var Layer = require("geoscript/layer").Layer;
+
+    >> var map = new Map();
+    >> var layer = new Layer({
+    ..     name: "states", 
+    ..     workspace: "data"
+    .. });
+    >> map.add(layer);
+    >> map.render({path: "states1.png"});
+
 
 .. image:: states1.png
+
+Layers have a default Style but we can customize that Style with Rules and Symbolizers.
 
 .. cssclass:: code groovy
 
@@ -49,5 +66,17 @@ Layers have a default Style but we can customize that Style with Rules and Symbo
     
     groovy:000> map.render("states2.png")
     ===> null
+
+
+.. cssclass:: code js
+
+.. code-block:: javascript
+
+    >> layer.style = {
+    ..     fillColor: "#999999",
+    ..     strokeColor: "#666666",
+    ..     strokeWidth: 0.1
+    .. };
+    >> map.render({path: "states2.png"});
     
 .. image:: states2.png
