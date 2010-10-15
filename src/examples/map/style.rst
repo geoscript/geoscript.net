@@ -103,8 +103,8 @@ Create a Style from Rules
             )
         ])
 
-Create a Style with z-indicices (double line roads)
----------------------------------------------------
+Create a Style with z-indices (double line roads)
+-------------------------------------------------
 
 .. cssclass:: code groovy
 
