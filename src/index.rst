@@ -65,9 +65,10 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
     groovy:000> poly.area
     ===> 31214.451522477902
 
-Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get
-involved <get_involved>`.  See the :ref:`learning center <learning>` for an
+Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.  See the :ref:`learning center <learning>` for an
 overview of the library.
+
+GeoScript is open source and licenced under the `MIT License <http://en.wikipedia.org/wiki/MIT_License>`_.  
 
 
 .. toctree::
