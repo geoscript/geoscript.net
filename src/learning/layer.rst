@@ -35,13 +35,13 @@ and the spatial bounds of the data.
 
 .. code-block:: javascript
 
-    js> var LAYER = require("geoscript/layer");
-    js> var shp = new LAYER.Layer({workspace: "data/shp", name: "states"});
-    js> shp
+    >> var LAYER = require("geoscript/layer");
+    >> var shp = new LAYER.Layer({workspace: "data/shp", name: "states"});
+    >> shp
     <Layer name: states, count: 49>
-    js> shp.count
+    >> shp.count
     49
-    js> shp.bounds
+    >> shp.bounds
     <Bounds [-124.73142200000001, 24.955967, -66.969849, 49.371735] EPSG...>
 
 .. cssclass:: code scala
@@ -92,7 +92,7 @@ on a layer to access feature information.
 
 .. code-block:: javascript
 
-    js> shp.features.forEach(function(feature) {
+    >> shp.features.forEach(function(feature) {
       >     print(feature);
       > });
     <Feature the_geom: <MultiPolygon>, STATE_NAME: "Illinois", STATE_FIPS...>
@@ -131,7 +131,7 @@ the data in the layer's features.
 
 .. code-block:: javascript
 
-    js> shp.schema
+    >> shp.schema
     <Schema name: "states", fields: [{"name": "the_geom", "type": "Multi...>
 
 .. cssclass:: code scala
@@ -167,13 +167,13 @@ accessed given a field name.
 
 .. code-block:: javascript
 
-    js> shp.schema.fieldNames
+    >> shp.schema.fieldNames
     the_geom,STATE_NAME,STATE_FIPS,SUB_REGION,STATE_ABBR,LAND_KM,WATER_KM,PERSONS,FAMILIES,HOUSHOLD,MALE,FEMALE,WORKERS,DRVALONE,CARPOOL,PUBTRANS,EMPLOYED,UNEMPLOY,SERVICE,MANUAL,P_MALE,P_FEMALE,SAMP_POP
 
-    js> var field = shp.schema.get("STATE_NAME");
-    js> field.name
+    >> var field = shp.schema.get("STATE_NAME");
+    >> field.name
     STATE_NAME
-    js> field.type
+    >> field.type
     String
 
 .. cssclass:: code scala
@@ -231,10 +231,10 @@ follows:
 
 .. code-block:: javascript
 
-    js> var dir = shp.workspace;     
-    js> dir
+    >> var dir = shp.workspace;     
+    >> dir
     <Directory ["states"]>
-    js> dir.names
+    >> dir.names
     states
 
 .. cssclass:: code scala
@@ -278,7 +278,7 @@ Create a new layer and add it to an existing workspace as follows:
 
 .. code-block:: javascript
 
-    js> var cities = new LAYER.Layer({
+    >> var cities = new LAYER.Layer({
       >     name: "cities",
       >     fields: [{
       >         name: "name", type: "String"
@@ -286,11 +286,11 @@ Create a new layer and add it to an existing workspace as follows:
       >         name: "geom", type: "Point"
       >     }]
       > });
-    js> dir.add(cities);
-    js> var GEOM = require("geoscript/geom");
-    js> cities.add({name: "San Francisco", geom: new GEOM.Point([-122.42, 37.78])});
-    js> cities.add({name: "New York", geom: new GEOM.Point([-73.58, 40.47])});
-    js> cities.count
+    >> dir.add(cities);
+    >> var GEOM = require("geoscript/geom");
+    >> cities.add({name: "San Francisco", geom: new GEOM.Point([-122.42, 37.78])});
+    >> cities.add({name: "New York", geom: new GEOM.Point([-73.58, 40.47])});
+    >> cities.count
     2
 
 .. cssclass:: refs js

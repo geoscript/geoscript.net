@@ -37,9 +37,9 @@ GeoScript projections can be created with an EPSG code.
 
 .. code-block:: javascript
 
-    js> var Projection = require("geoscript/proj").Projection;
-    js> var prj = new Projection("epsg:4326");
-    js> prj
+    >> var Projection = require("geoscript/proj").Projection;
+    >> var prj = new Projection("epsg:4326");
+    >> prj
     <Projection EPSG:4326>
 
 .. cssclass:: code scala
@@ -75,9 +75,9 @@ The EPSG code can also be accessed for any projection.
 
 .. code-block:: javascript
 
-    js> var Projection = require("geoscript/proj").Projection;
-    js> var prj = new Projection("epsg:4326");
-    js> prj.id
+    >> var Projection = require("geoscript/proj").Projection;
+    >> var prj = new Projection("epsg:4326");
+    >> prj.id
     EPSG:4326
 
 .. cssclass:: code scala
@@ -129,10 +129,10 @@ from well known text.
 
 .. code-block:: javascript
 
-    js> var Projection = require("geoscript/proj").Projection;
-    js> var wkt = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]';
-    js> var prj = new Projection(wkt);
-    js> prj
+    >> var Projection = require("geoscript/proj").Projection;
+    >> var wkt = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]';
+    >> var prj = new Projection(wkt);
+    >> prj
     <Projection EPSG:4326>
 
 .. cssclass:: code scala
@@ -169,9 +169,9 @@ it was constructed.
 
 .. code-block:: javascript
 
-    js> var Projection = require("geoscript/proj").Projection;
-    js> var prj = new Projection("epsg:26912");
-    js> prj.wkt
+    >> var Projection = require("geoscript/proj").Projection;
+    >> var prj = new Projection("epsg:26912");
+    >> prj.wkt
     PROJCS["NAD83 / UTM zone 12N", 
       GEOGCS["NAD83", 
         DATUM["North American Datum 1983", 
@@ -268,11 +268,11 @@ into coordinates in a different spatial reference system.
 
 .. code-block:: javascript
 
-    js> var Projection = require("geoscript/proj").Projection;
-    js> var src = new Projection("epsg:4326");
-    js> var GEOM = require("geoscript/geom");
-    js> var point = new GEOM.Point([-111, 45.7]);
-    js> src.transform(point, "epsg:26912")
+    >> var Projection = require("geoscript/proj").Projection;
+    >> var src = new Projection("epsg:4326");
+    >> var GEOM = require("geoscript/geom");
+    >> var point = new GEOM.Point([-111, 45.7]);
+    >> src.transform(point, "epsg:26912")
     <Point [499999.42501775385, 5060716.092032814]>
 
 .. cssclass:: code scala

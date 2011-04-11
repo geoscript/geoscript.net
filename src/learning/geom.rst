@@ -30,14 +30,14 @@ coordinates.
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var point = new GEOM.Point([10, 10]);
-    js> point
+    >> var point = new GEOM.Point([10, 10]);
+    >> point
     <Point [10, 10]>
 
-    js> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
-    js> line
+    >> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
+    >> line
     <LineString [[10, 10], [20, 20], [30, 40]]>
 
 
@@ -84,10 +84,10 @@ Geometries can also be created from `well known text
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
-    js> poly
+    >> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
+    >> poly
     <Polygon [[[10, 10], [10, 20], [20, 20], [20, 15], [10, 10]]]>
 
 .. cssclass:: code scala
@@ -128,12 +128,12 @@ Geometry objects provide properties for statistics such as area and length.
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
-    js> poly.area
+    >> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
+    >> poly.area
     75
-    js> poly.length
+    >> poly.length
     36.180339887498945
 
 .. cssclass:: code scala
@@ -191,14 +191,14 @@ geometries such as buffer and centroid.
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
-    js> var poly = line.buffer(10);
-    js> poly.area
+    >> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
+    >> var poly = line.buffer(10);
+    >> poly.area
     1041.9912814842407
     
-    js> line.centroid
+    >> line.centroid
     <Point [21.12574113277207, 24.188611699158105]>
 
 
@@ -263,13 +263,13 @@ determining spatial relationships such as intersection and containment.
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
-    js> var poly = new GEOM.Polygon([[[10, 10], [10, 20], [20, 20], [20, 15], [10, 10]]]);
-    js> poly.intersects(line)
+    >> var line = new GEOM.LineString([[10, 10], [20, 20], [30, 40]]);
+    >> var poly = new GEOM.Polygon([[[10, 10], [10, 20], [20, 20], [20, 15], [10, 10]]]);
+    >> poly.intersects(line)
     true
-    js> poly.intersection(line)
+    >> poly.intersection(line)
     <LineString [[10, 10], [20, 20]]>
 
 .. cssclass:: code scala

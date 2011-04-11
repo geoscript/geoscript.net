@@ -25,11 +25,11 @@ Buffering
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var point = new GEOM.Point([0, 0]);
-    js> var poly = point.buffer(10);
-    js> poly
+    >> var point = new GEOM.Point([0, 0]);
+    >> var poly = point.buffer(10);
+    >> poly
     <Polygon [[[10, 0], [9.807852804032304, -1.9509032201612824], [9.2387...>
 
 .. cssclass:: code scala
@@ -73,10 +73,10 @@ Centroid
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
-    js> poly.centroid
+    >> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
+    >> poly.centroid
     <Point [5, 5]>
 
 .. cssclass:: code scala
@@ -125,16 +125,16 @@ Visualizing
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
-    js> var VIEWER = require("geoscript/viewer");
+    >> var GEOM = require("geoscript/geom");
+    >> var VIEWER = require("geoscript/viewer");
 
-    js> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
-    js> VIEWER.draw(poly)
+    >> var poly = GEOM.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))");
+    >> VIEWER.draw(poly)
 
-    js> var line = new GEOM.LineString([[2, 2], [8, 9]]);
-    js> VIEWER.draw(line)    
+    >> var line = new GEOM.LineString([[2, 2], [8, 9]]);
+    >> VIEWER.draw(line)    
 
-    js> VIEWER.draw([poly, line, new GEOM.Point([5, 5]).buffer(1)])
+    >> VIEWER.draw([poly, line, new GEOM.Point([5, 5]).buffer(1)])
 
 .. cssclass:: code scala
 

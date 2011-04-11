@@ -44,10 +44,10 @@ From an EPSG Code
 
 .. code-block:: javascript
 
-    js> var PROJ = require("geoscript/proj");
+    >> var PROJ = require("geoscript/proj");
 
-    js> var projection = new PROJ.Projection("epsg:26912");
-    js> projection
+    >> var projection = new PROJ.Projection("epsg:26912");
+    >> projection
     <Projection EPSG:26912>
 
 .. cssclass:: code scala
@@ -93,11 +93,11 @@ From Well Known Text
 
 .. code-block:: javascript
 
-    js> var PROJ = require("geoscript/proj");
+    >> var PROJ = require("geoscript/proj");
 
-    js> var wkt = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]'; 
-    js> var projection = new PROJ.Projection(wkt);
-    js> projection
+    >> var wkt = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]'; 
+    >> var projection = new PROJ.Projection(wkt);
+    >> projection
     <Projection EPSG:4326>
 
 .. cssclass:: code scala

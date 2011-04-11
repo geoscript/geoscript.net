@@ -31,17 +31,17 @@ multiple calls to ``contains``, ``coveredBy``, ``covers``, ``crosses``,
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))");
-    js> poly1.prepared
+    >> var poly1 = GEOM.fromWKT("POLYGON ((0 0, 5 0, 5 5, 0 5, 0 0))");
+    >> poly1.prepared
     false
-    js> poly1.prepare();
+    >> poly1.prepare();
     <Polygon [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]>
-    js> var poly2 = GEOM.fromWKT("POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))");
-    js> poly1.intersects(poly2)
+    >> var poly2 = GEOM.fromWKT("POLYGON ((2 2, 8 2, 8 8, 2 8, 2 2))");
+    >> poly1.intersects(poly2)
     true
-    js> poly1.contains(poly2)
+    >> poly1.contains(poly2)
     false
 
 .. cssclass:: code scala
