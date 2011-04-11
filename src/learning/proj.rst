@@ -272,8 +272,11 @@ into coordinates in a different spatial reference system.
     >> var src = new Projection("epsg:4326");
     >> var GEOM = require("geoscript/geom");
     >> var point = new GEOM.Point([-111, 45.7]);
-    >> src.transform(point, "epsg:26912")
-    <Point [499999.42501775385, 5060716.092032814]>
+    >> point.projection = src;
+    <Projection EPSG:4326>
+    >> point.transform("epsg:26912")
+    <Point [500000, 5060716.31816507]>
+
 
 .. cssclass:: code scala
 
