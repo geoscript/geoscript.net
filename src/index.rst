@@ -8,17 +8,18 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
 
 .. code-block:: javascript
 
-    js> var geom = require("geoscript/geom");
-    js> var p = new geom.Point([-111.0, 45.7]);
-    js> p
+    >> var geom = require("geoscript/geom");
+    >> var p = new geom.Point([-111.0, 45.7]);
+    >> p
     <Point [-111, 45.7]>
-    js> var proj = require("geoscript/proj");
-    js> var p2 = proj.transform(p, "epsg:4326", "epsg:26912");
-    js> p2
-    <Point [499999.42501775385, 5060716.092032814]>
-    js> var poly = p2.buffer(100);
-    js> poly.area
-    31214.45152247697
+    >> var proj = require("geoscript/proj");
+    >> var p2 = proj.transform(p, "epsg:4326", "epsg:26912");
+    >> p2
+    <Point [500000, 5060716.31816507]>
+    >> var poly = p2.buffer(100);
+    >> poly.area
+    31214.451522458345
+
 
 .. cssclass:: tab-py ui-tabs-hide
 

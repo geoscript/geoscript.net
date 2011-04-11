@@ -32,14 +32,16 @@ Transforming Points
 
 .. code-block:: javascript
 
-    js> var PROJ = require("geoscript/proj");
-    js> var GEOM = require("geoscript/geom");
+    >> var PROJ = require("geoscript/proj");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var p1 = new GEOM.Point([-111, 45.7]);
-    js> p1.projection = new PROJ.Projection("epsg:4326");
-    js> var p2 = p1.transform("epsg:26912");
-    js> p2
-    <Point [499999.42501775385, 5060716.092032814]>
+    >> var p1 = new GEOM.Point([-111, 45.7]);
+    >> p1.projection = new PROJ.Projection("epsg:4326");
+    <Projection EPSG:4326>
+    >> var p2 = p1.transform("epsg:26912");
+    >> p2
+    <Point [500000, 5060716.31816507]>
+
 
 .. cssclass:: code scala
 
@@ -98,16 +100,18 @@ Transforming Geometries
 
 .. code-block:: javascript
 
-    js> var GEOM = require("geoscript/geom");
+    >> var GEOM = require("geoscript/geom");
 
-    js> var line = new GEOM.LineString([[-110.1, 57.6], [-111.5, 50], [-109, 43]]);
-    js> line.projection = "EPSG:4326";
-    js> line.transform("epsg:26912") 
-    <LineString [[553788.6739161084, 6384534.487570734], [464165.9748020574,...>
-    
-    js> var poly = new GEOM.Polygon([[[-108.3, 53.1], [-112.7, 47.1], [-109, 43.7], [-108.3, 53.1]]]);
-    js> poly.transform("epsg:26912");
-    <Polygon [[[680759.8175153742, 5886801.367604256], [370998.6792364947...>.. cssclass:: code js
+    >> var line = new GEOM.LineString([[-110.1, 57.6], [-111.5, 50], [-109, 43]]);
+    >> line.projection = "EPSG:4326";
+    EPSG:4326
+    >> line.transform("epsg:26912")
+    <LineString [[553789.2618259685, 6384535.0424553305], [464166.5408325899...>
+    >> var poly = new GEOM.Polygon([[[-108.3, 53.1], [-112.7, 47.1], [-109, 43.7], [-108.3, 53.1]]]);
+    >> poly.projection = "EPSG:4326";
+    EPSG:4326
+    >> poly.transform("epsg:26912");
+    <Polygon [[[680760.4370496429, 5886801.801175731], [370999.2216732587...>
 
 .. cssclass:: code scala
 
