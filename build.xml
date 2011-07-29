@@ -5,7 +5,7 @@
     <property name="js.long" value="JavaScript"/>
     <property name="js.repo" value="tschaub/geoscript-js"/>
 
-    <property name="py.version" value="1.0"/>
+    <property name="py.version" value="1.1"/>
     <property name="py.short" value="py"/>
     <property name="py.long" value="Python"/>
     <property name="py.repo" value="jdeolive/geoscript-py"/>
@@ -159,7 +159,7 @@
             <arg value="update"/>
             <arg value="doc"/>
         </exec>
-        <move file="${repos}/${scala.short}/geoscript/target/scala_2.8.0/doc/main/api/"
+        <move file="${repos}/${scala.short}/geoscript/target/scala_2.8.1/doc/main/api/"
             todir="${basedir}/build/${scala.short}/"/>
     </target>
 
