@@ -78,4 +78,5 @@ GeoScript is open source and licenced under the `MIT License <http://en.wikipedi
    about
    learning/index
    examples/index
+   tutorials/index
    get_involved
