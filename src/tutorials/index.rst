@@ -52,6 +52,8 @@ JavaScript
     :hidden:
     
     geom-basic/index
-    proj/index
-    geom-advanced-py/index
+    geom-advanced/index
+    proj-basic/index
+    data-basic/index
+    style-basic/index
 
