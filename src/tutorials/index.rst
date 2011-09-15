@@ -45,8 +45,6 @@ Python
 :ref:`tutorials.web-flask-py`
     Building geo web applications with the Flask micro framework.
 
-JavaScript
-^^^^^^^^^^
 
 .. toctree:: 
     :hidden:

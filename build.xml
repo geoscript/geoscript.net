@@ -1,6 +1,6 @@
 <project name="geoscript.org" default="info" basedir=".">
 
-    <property name="js.version" value="0.9"/>
+    <property name="js.version" value="0.10"/>
     <property name="js.short" value="js"/>
     <property name="js.long" value="JavaScript"/>
     <property name="js.repo" value="tschaub/geoscript-js"/>
