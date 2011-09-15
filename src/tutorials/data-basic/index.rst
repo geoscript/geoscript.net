@@ -26,7 +26,7 @@ This tutorial makes use of the following datasets.
 
     Shapefiles from the Denver, Colarado area. Made available courtesy of the `City of Denver <http://www.denvergov.org/GIS>`_.
 
-  `colorado_shapefiles.zip <http://data.opengeo.org/geoscript/colarado_shapefiles.zip>`_
+  `colorado_shapefiles.zip <http://data.opengeo.org/geoscript/colorado_shapefiles.zip>`_
 
     Open Street Map based Shapefiles from Colorado state. Made available courtesy of `Cloudmade <http://downloads.cloudmade.com/>`_. 
 
