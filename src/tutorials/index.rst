@@ -19,14 +19,13 @@ The following tutorials are basic in nature and provide code samples in all impl
     Introduction to the geometry module.
 
 :ref:`tutorials.proj-basic`
-    Introduction to projections and coordinate reference systems.
+    Projections and coordinate reference systems.
 
 :ref:`tutorials.data-basic`
-    Introduction to Data access with layers and workspaces.
+    Data access with layers and workspaces.
 
 :ref:`tutorials.style-basic`
-    Draw Layers using Maps and Styles
-
+    Styling and visualization. 
 
 Advanced
 --------
@@ -37,7 +36,13 @@ Python
 ^^^^^^
 
 :ref:`tutorials.geom-advanced-py`
-    Geometry avanced.
+    Advanced geometry concepts such as affine transformations and Voronoi diagrams.
+
+:ref:`tutorials.style-theming-py`
+    Interpolating thematic styles with statistical layer analysis.
+
+:ref:`tutorials.web-flask-py`
+    Building geo web applications with the Flask micro framework.
 
 JavaScript
 ^^^^^^^^^^
