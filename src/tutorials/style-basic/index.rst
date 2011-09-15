@@ -21,7 +21,7 @@ Prerequisites
 The :ref:`tutorials.data-basic` tutorial must be completed before proceeding as the data set up 
 there will be used as the base of this tutorial.
 
-Download ...
+Download `smiley.png <http://data.opengeo.org/geoscript/smiley.png>`_ and save it in the working directory.
 
 Symbolizers
 -----------
