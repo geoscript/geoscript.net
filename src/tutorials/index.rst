@@ -18,6 +18,10 @@ The following tutorials are basic in nature and provide code samples in all impl
 :ref:`tutorials.geom-basic`
     Introduction to the geometry module.
 
+:ref:`tutorials.geom-advanced`
+    Additional geometry concepts such as affine transformations and triangulation.
+
+
 :ref:`tutorials.proj-basic`
     Projections and coordinate reference systems.
 
@@ -35,9 +39,6 @@ Additional tutorials of a more advanced nature that focus in on a specific langu
 Python
 ^^^^^^
 
-:ref:`tutorials.geom-advanced-py`
-    Advanced geometry concepts such as affine transformations and Voronoi diagrams.
-
 :ref:`tutorials.style-theming-py`
     Interpolating thematic styles with statistical layer analysis.
 
@@ -51,6 +52,8 @@ JavaScript
     :hidden:
     
     geom-basic/index
-    proj/index
-    geom-advanced-py/index
+    geom-advanced/index
+    proj-basic/index
+    data-basic/index
+    style-basic/index
 

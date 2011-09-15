@@ -38,16 +38,16 @@ A :class:`Map` can draw one or more :class:`Layers` using :class:`Styles`.
 
 .. code-block:: javascript
 
-    >> var Map = require("geoscript/map").Map;
-    >> var Layer = require("geoscript/layer").Layer;
+    js> var Map = require("geoscript/map").Map;
+    js> var Layer = require("geoscript/layer").Layer;
+    js> var map = new Map();
+    js> var layer = new Layer({
+      >     name: "states",
+      >     workspace: "data"
+      > });
+    js> map.add(layer);
 
-    >> var map = new Map();
-    >> var layer = new Layer({
-    ..     name: "states", 
-    ..     workspace: "data"
-    .. });
-    >> map.add(layer);
-    >> map.render({path: "states1.png"});
+    js> map.render("states1.png");
 
 
 .. image:: states1.png
@@ -72,11 +72,11 @@ Layers have a default Style but we can customize that Style with Rules and Symbo
 
 .. code-block:: javascript
 
-    >> layer.style = {
-    ..     fillColor: "#999999",
-    ..     strokeColor: "#666666",
-    ..     strokeWidth: 0.1
-    .. };
-    >> map.render({path: "states2.png"});
+    js> var {Stroke, Fill} = require("geoscript/style")
+
+    js> layer.style = Stroke({width: 0.1, brush: "#666666"}).and(Fill("#999999"))
+    <Style parts: <Stroke width: 0.1, opacity: 1, brush: <Color value: ...>
+
+    js> map.render("states2.png")
     
 .. image:: states2.png

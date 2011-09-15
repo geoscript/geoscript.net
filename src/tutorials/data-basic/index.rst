@@ -26,7 +26,7 @@ This tutorial makes use of the following datasets.
 
     Shapefiles from the Denver, Colarado area. Made available courtesy of the `City of Denver <http://www.denvergov.org/GIS>`_.
 
-  `colorado_shapefiles.zip <http://data.opengeo.org/geoscript/colarado_shapefiles.zip>`_
+  `colorado_shapefiles.zip <http://data.opengeo.org/geoscript/colorado_shapefiles.zip>`_
 
     Open Street Map based Shapefiles from Colorado state. Made available courtesy of `Cloudmade <http://downloads.cloudmade.com/>`_. 
 
@@ -62,6 +62,23 @@ and reading data, in addition to methods that allow for modification of the unde
 
 .. code-block:: javascript
 
+    js> var Point = require("geoscript/geom").Point;
+    js> var Layer = require("geoscript/layer").Layer;
+
+    js> var layer = Layer("points");
+    js> layer.add({geom: Point([0, 0])});
+    js> layer.add({geom: Point([1, 1])});
+    js> layer.add({geom: Point([2, 2])});
+    js> layer.add({geom: Point([3, 3])});
+    js> layer.add({geom: Point([4, 4])});
+
+    js> layer.count
+    5
+
+    js> layer.bounds
+    <Bounds [0, 0, 4, 4]>
+
+
 The contents of a layer are *Feature* objects. A feature is a set of attributes and an associated geometry. Through a layer object one can get at the underlying features.
 
 .. cssclass:: code py
@@ -80,6 +97,16 @@ The contents of a layer are *Feature* objects. A feature is a set of attributes 
 
 .. code-block:: javascript
 
+    js> layer.features.forEach(function(feature) {
+      >     print(feature);                       
+      > })
+    <Feature geom: <Point>>
+    <Feature geom: <Point>>
+    <Feature geom: <Point>>
+    <Feature geom: <Point>>
+    <Feature geom: <Point>>
+
+
 Filters can be used to constrain the result set of a feature query. A 
 filter is specified as `Contextual Query Language <http://docs.geotools.org/latest/userguide/library/cql/index.html>`_ (CQL), a concise format for specifying predicates when working with geospatial data. 
 
@@ -95,7 +122,11 @@ filter is specified as `Contextual Query Language <http://docs.geotools.org/late
 
 .. code-block:: javascript
 
-.. code-block:: javascript
+    js> layer.query("INTERSECTS(geom, POLYGON ((1.5 1.5, 1.5 3.5, 3.5 3.5, 3.5 1.5, 1.5 1.5)))").forEach(function(feature) {
+      >     print(feature.geometry);                                                                                        
+      > })                                                                                                                  
+    <Point [2, 2]>
+    <Point [3, 3]>
 
 .. cssclass:: refs py
 
@@ -147,6 +178,45 @@ A *Workspace* is a container for a collection of layers that allows one to look 
 
 .. code-block:: javascript
 
+    js> var Memory = require("geoscript/workspace").Memory;
+    js> var Layer = require("geoscript/layer").Layer;
+
+    js> var ws = Memory();
+
+    js> var roads = Layer({
+      >     name: "roads",
+      >     fields: [
+      >         {name: "geom", type: "LineString"},
+      >         {name: "name", type: "String"}
+      >     ]
+      > });
+    js> ws.add(roads);
+    <Layer name: roads, count: 0>
+
+    js> var cities = Layer({
+      >     name: "cities",
+      >     fields: [
+      >         {name: "geom", type: "Point"},
+      >         {name: "name", type: "String"},
+      >         {name: "pop", type: "Float"} 
+      >     ]
+      > });
+    js> ws.add(cities) 
+    <Layer name: cities, count: 0>
+
+    js> var states = Layer({
+      >     name: "states",
+      >     fields: [
+      >         {name: "geom", type: "MultiPolygon"},
+      >         {name: "name", type: "String"}
+      >     ]
+      > });
+    js> ws.add(states)
+    <Layer name: states, count: 0>
+
+    js> ws
+    <Memory ["cities", "states", "roads"]>
+
 .. cssclass:: refs py
 
 .. seealso::
@@ -178,7 +248,14 @@ Now that the layer and workspace concepts are familiar it is time to start worki
 
 .. code-block:: javascript
 
-.. cssclass:: refs py
+    js> var Directory = require("geoscript/workspace").Directory;
+    js> var dir = Directory("denver_shapefiles");
+
+    js> dir
+    <Directory ["census_boundaries", "neighborhoods", "city_boundary", "ele...>
+
+    js> dir.names
+    census_boundaries,neighborhoods,city_boundary,election_precincts
 
 .. note::
 
@@ -203,6 +280,15 @@ Iterate through the layers of the workspace to gather some information.
 
 .. code-block:: javascript
 
+    js> dir.names.forEach(function(name) {  
+      >     var layer = dir.get(name);      
+      >     print(layer);                      
+      > })
+    <Layer name: census_boundaries, count: 485>
+    <Layer name: neighborhoods, count: 78>
+    <Layer name: city_boundary, count: 12>
+    <Layer name: election_precincts, count: 429>
+
 .. cssclass:: refs py
 
 .. note::
@@ -221,6 +307,10 @@ Visualize the *city_boundary* layer.
 .. cssclass:: code js
 
 .. code-block:: javascript
+
+    js> var viewer = require("geoscript/viewer");
+    js> var city = dir.get("city_boundary");
+    js> viewer.draw(city);
 
 Format Translation
 ------------------
@@ -251,6 +341,19 @@ Java database.
 .. cssclass:: code js
 
 .. code-block:: javascript
+
+    js> var PostGIS = require("geoscript/workspace").PostGIS;
+    js> var db = PostGIS("denver");
+    js> dir.names.forEach(function(name) {
+      >     db.add(dir.get(name));
+      > });
+
+    js> db
+    <PostGIS ["census_boundaries", "city_boundary", "election_precincts",...>
+
+    js> db.names
+    census_boundaries,city_boundary,election_precincts,neighborhoods
+
 
 .. cssclass:: refs py
 
@@ -294,12 +397,23 @@ Create a new workspace for the Colorado shapefiles and analyze the data.
 
 .. code-block:: javascript
 
+    js> var dir = Directory("colorado_shapefiles");
+    js> dir
+    <Directory ["colorado_water", "colorado_highway", "colorado_poi", "colo...>
+
+    js> var hwy = dir.get("colorado_highway");
+    js> hwy.projection
+    <Projection EPSG:4326>
+
+    js> hwy.bounds
+    <Bounds [-109.160738, 36.892251, -101.942736, 41.1053726] EPSG:4326>
+
 Analyzing the highway layer illustrates two things:
 
-* The OSM data is in a geographic (lat/lon) projection, whereas our existing data is in a NAD stateplane projection. 
+* The OSM data is in a geographic (lat/lon) projection, whereas our existing data is in a NAD State Plane projection. 
 * The OSM data contains the entire state, whereas our existing data extends to the extent of Denver county.
 
-To address these issues the OSM data will first reproject into the stateplane projection, and then clip the result. Since these types of operations are more efficient when done in a database 
+To address these issues the OSM data will first reproject into the State Plane projection, and then clip the result. Since these types of operations are more efficient when done in a database 
 the data will be first be added to PostGIS as in the last section. 
 
 .. cssclass:: code py
@@ -328,6 +442,38 @@ the data will be first be added to PostGIS as in the last section.
 
 .. code-block:: javascript
 
-  
+    js> var city = db.get("city_boundary");
 
+    js> // union all city boundary parts
+    js> var boundary;
+    js> city.features.forEach(function(feature) {
+      >     var geometry = feature.geometry;
+      >     boundary = boundary ? boundary.union(geometry) : geometry;
+      > });
+    js> boundary
+    <Polygon [[[3181740.363649994, 1665985.0072000027], [3181811.09655000...>
+
+    js> // simplify to speed things up later
+    js> boundary = boundary.simplify(100); 
+    <Polygon [[[3181740.363649994, 1665985.0072000027], [3183390.72814999...>
+
+    js> // transform the boundary to EPSG:4326
+    js> boundary.projection = "epsg:2877";
+    js> boundary = boundary.transform("epsg:4326");
+    <Polygon [[[-104.85448745942264, 39.660159265877176], [-104.854236940...>
+
+    js> // create a cql string for filtering features while adding
+    js> var wkt = require("geoscript/geom/io/wkt");
+    js> var cql = "INTERSECTS(the_geom, " + wkt.write(boundary) + ")";    
+
+    js> // rename and reproject all layers while adding to the db
+    js> dir.names.forEach(function(name) {                           
+      >     var layer = dir.get(name);                               
+      >     db.add(layer, {                                         
+      >         name: name.substr(9),                                
+      >         filter: cql,                                         
+      >         projection: "epsg:2877"                              
+      >     })                                                       
+      > });
+    
 
