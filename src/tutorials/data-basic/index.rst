@@ -249,12 +249,12 @@ Now that the layer and workspace concepts are familiar it is time to start worki
 .. code-block:: javascript
 
     js> var Directory = require("geoscript/workspace").Directory;
-    js> var denver = Directory("denver_shapefiles")
+    js> var dir = Directory("denver_shapefiles");
 
-    js> denver
+    js> dir
     <Directory ["census_boundaries", "neighborhoods", "city_boundary", "ele...>
 
-    js> denver.names
+    js> dir.names
     census_boundaries,neighborhoods,city_boundary,election_precincts
 
 .. note::
@@ -280,8 +280,8 @@ Iterate through the layers of the workspace to gather some information.
 
 .. code-block:: javascript
 
-    js> denver.names.forEach(function(name) {  
-      >     var layer = denver.get(name);      
+    js> dir.names.forEach(function(name) {  
+      >     var layer = dir.get(name);      
       >     print(layer);                      
       > })
     <Layer name: census_boundaries, count: 485>
@@ -309,7 +309,7 @@ Visualize the *city_boundary* layer.
 .. code-block:: javascript
 
     js> var viewer = require("geoscript/viewer");
-    js> var city = denver.get("city_boundary");
+    js> var city = dir.get("city_boundary");
     js> viewer.draw(city);
 
 Format Translation
@@ -339,6 +339,19 @@ Java database.
 
 
 .. cssclass:: code js
+
+    js> var PostGIS = require("geoscript/workspace").PostGIS;
+    js> var db = PostGIS("denver");
+    js> dir.names.forEach(function(name) {
+      >     db.add(dir.get(name));
+      > });
+
+    js> db
+    <PostGIS ["census_boundaries", "city_boundary", "election_precincts",...>
+
+    js> db.names
+    census_boundaries,city_boundary,election_precincts,neighborhoods
+
 
 .. code-block:: javascript
 
@@ -384,12 +397,23 @@ Create a new workspace for the Colorado shapefiles and analyze the data.
 
 .. code-block:: javascript
 
+    js> var dir = Directory("colorado_shapefiles");
+    js> dir
+    <Directory ["colorado_water", "colorado_highway", "colorado_poi", "colo...>
+
+    js> var hwy = dir.get("colorado_highway");
+    js> hwy.projection
+    <Projection EPSG:4326>
+
+    js> hwy.bounds
+    <Bounds [-109.160738, 36.892251, -101.942736, 41.1053726] EPSG:4326>
+
 Analyzing the highway layer illustrates two things:
 
-* The OSM data is in a geographic (lat/lon) projection, whereas our existing data is in a NAD stateplane projection. 
+* The OSM data is in a geographic (lat/lon) projection, whereas our existing data is in a NAD State Plane projection. 
 * The OSM data contains the entire state, whereas our existing data extends to the extent of Denver county.
 
-To address these issues the OSM data will first reproject into the stateplane projection, and then clip the result. Since these types of operations are more efficient when done in a database 
+To address these issues the OSM data will first reproject into the State Plane projection, and then clip the result. Since these types of operations are more efficient when done in a database 
 the data will be first be added to PostGIS as in the last section. 
 
 .. cssclass:: code py
@@ -418,6 +442,18 @@ the data will be first be added to PostGIS as in the last section.
 
 .. code-block:: javascript
 
-  
+    js> var city = db.get("city_boundary");
 
+    js> // union all city boundary parts
+    js> var boundary;
+    js> city.features.forEach(function(feature) {
+      >     var geometry = feature.geometry;
+      >     boundary = boundary ? boundary.union(geometry) : geometry;
+      > });
+    js> boundary
+    <Polygon [[[3181740.363649994, 1665985.0072000027], [3181811.09655000...>
+
+    js> // simplify to speed things up later
+    js> boundary = boundary.simplify(100) 
+    <Polygon [[[3181740.363649994, 1665985.0072000027], [3183390.72814999...>
 
