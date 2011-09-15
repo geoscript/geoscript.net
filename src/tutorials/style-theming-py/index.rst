@@ -65,7 +65,8 @@ The histogram provides a set of intervals/classes that can be used to build up a
 
     >>> draw(census, style, format='mapwindow')
 	
-	
+.. image:: adv-theme1.jpg
+
 Thematic Styles with Color Interpolation
 ----------------------------------------
 
@@ -86,5 +87,5 @@ The *interpolate* function is used to interpolate intermediate values between tw
 
     >>> draw(census, style, format='mapwindow')
 
-
+.. image:: adv-theme2.jpg
 

@@ -13,7 +13,6 @@ This tutorial introduces the modules used for styling and rendering, covering th
 * Labelling
 * Thematic styling
 * Scale dependent rendering
-* ...
 
 Prerequisites
 -------------
@@ -84,10 +83,10 @@ layer as an example determine the space of values for the "TYPE" attribute.
 
    >>> from geoscript.workspace import PostGIS
    >>> db = PostGIS('denver')
-   highway [the_geom: MultiLineString, TYPE: str, NAME: str, ONEWAY: str, LANES: long]
-
+   
    >>> hwy = db['highway']
    >>> hwy.schema
+   highway [the_geom: MultiLineString, TYPE: str, NAME: str, ONEWAY: str, LANES: long]
 
    >>> set([f['TYPE'] for f in hwy.features()])
    set([u'road', u'bridleway', u'service', u'trunk', u'primary_link', u'unclassified', u'motorway', u'path', u'tertiary_link', u'secondary', u'steps', u'secondary_link', u'trunk_link', u'pedestrian', u'footway', u'residential', u'primary', u'tertiary', u'motorway_link', u'track', u'crossing', u'cycleway'])
@@ -102,7 +101,7 @@ Create styling rules to style "primary" and "secondary" highways.
 
 .. code-block:: python
 
-   >>> style = (Stroke(width=5) + Label('NAME").linear()).where("TYPE = 'primary' OR TYPE = 'secondary'")
+   >>> style = (Stroke(width=5) + Label('NAME').linear()).where("TYPE = 'primary' OR TYPE = 'secondary'")
    >>> draw(hwy, style, format='mapwindow')
 
 .. cssclass:: code js
@@ -111,6 +110,8 @@ Create styling rules to style "primary" and "secondary" highways.
 
 In the above the *where* method is used to provide a filter/predicate that constrains what the 
 rule should apply too. 
+
+.. image:: theme1.jpg
 
 The result is not very visually appealing. Create a more visually appealing style.
 
@@ -144,21 +145,9 @@ Now add another rule that encompasses the rest of the roads.
 
 .. code-block:: javascript
 
-.. cssclass:: code py
-
-.. code-block:: python
-
-   >>> for f in l.features('INTERSECTS(geom, POLYGON ((1.5 1.5, 1.5 3.5, 3.5 3.5, 3.5 1.5, 1.5 1.5))'):
-   foo.fid-7f2cfebd_132545fee40_-7ffb {geom: POINT (2 2)}
-   foo.fid-7f2cfebd_132545fee40_-7ff9 {geom: POINT (3 3)}
-
-.. cssclass:: code js
-
-.. code-block:: javascript
-
-.. code-block:: javascript
-
 .. cssclass:: refs py
+
+.. image:: theme2.jpg
 
 .. seealso::
 
@@ -203,5 +192,7 @@ Modify the styles so that non primary roads show up at scales smaller than 1:100
   
 The *range* function is used to apply scale constraints to a symbolizer. Values are specified as 
 scale denominators.
+
+.. image:: scale.jpg
 
 

@@ -154,25 +154,25 @@ A *Workspace* is a container for a collection of layers that allows one to look 
     >>> from geoscript.layer import Layer
     >>> from geoscript.geom import *
 
-	>>> ws = Workspace()
+    >>> ws = Workspace()
 
     # create new layers
-	>>> ws.create('roads', [('geom', LineString), ('name', str)])
-	>>> ws.create('cities', [('geom', Point), ('name', str), ('pop', float)])
-	
-	# add an existing layer
+    >>> ws.create('roads', [('geom', LineString), ('name', str)])
+    >>> ws.create('cities', [('geom', Point), ('name', str), ('pop', float)])
+    
+    # add an existing layer
     >>> l = Layer(schema=Schema('states', [('geom', MultiPolygon), ('name', str)]))
     >>> ws.add(l)
 
-	# list all layers
-	>>> ws.layers()                                                          
-	['cities', 'roads', 'states']
-	
-	# get a layer
-	>>> l = ws['roads']
-	>>> l.schema
-	roads [geom: LineString, name: str]
-	
+    # list all layers
+    >>> ws.layers()                                                          
+    ['cities', 'roads', 'states']
+    
+    # get a layer
+    >>> l = ws['roads']
+    >>> l.schema
+    roads [geom: LineString, name: str]
+
 
 .. cssclass:: code js
 
@@ -274,7 +274,12 @@ Iterate through the layers of the workspace to gather some information.
     ...   print 'Projection: %s' % layer.proj
     ...   print 'Spatial extent: %s' % layer.bounds()
     ...   print 'Feature count: %d' % layer.count()
-    ...   print
+    Layer: census_boundaries
+    Schema: census_boundaries [the_geom: MultiPolygon, ..., SHAPE_LEN: float]
+    Projection: EPSG:2877
+    Spatial extent: (3109862.14515, 1648944.33542, 3252651.33924, 1758893.81935, EPSG:2877)
+    Feature count: 485
+    ...
     
 .. cssclass:: code js
 
