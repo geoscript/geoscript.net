@@ -340,6 +340,8 @@ Java database.
 
 .. cssclass:: code js
 
+.. code-block:: javascript
+
     js> var PostGIS = require("geoscript/workspace").PostGIS;
     js> var db = PostGIS("denver");
     js> dir.names.forEach(function(name) {
@@ -352,8 +354,6 @@ Java database.
     js> db.names
     census_boundaries,city_boundary,election_precincts,neighborhoods
 
-
-.. code-block:: javascript
 
 .. cssclass:: refs py
 
@@ -454,6 +454,26 @@ the data will be first be added to PostGIS as in the last section.
     <Polygon [[[3181740.363649994, 1665985.0072000027], [3181811.09655000...>
 
     js> // simplify to speed things up later
-    js> boundary = boundary.simplify(100) 
+    js> boundary = boundary.simplify(100); 
     <Polygon [[[3181740.363649994, 1665985.0072000027], [3183390.72814999...>
+
+    js> // transform the boundary to EPSG:4326
+    js> boundary.projection = "epsg:2877";
+    js> boundary = boundary.transform("epsg:4326");
+    <Polygon [[[-104.85448745942264, 39.660159265877176], [-104.854236940...>
+
+    js> // create a cql string for filtering features while adding
+    js> var wkt = require("geoscript/geom/io/wkt");
+    js> var cql = "INTERSECTS(the_geom, " + wkt.write(boundary) + ")";    
+
+    js> // rename and reproject all layers while adding to the db
+    js> dir.names.forEach(function(name) {                           
+      >     var layer = dir.get(name);                               
+      >     db.add(layer, {                                         
+      >         name: name.substr(9),                                
+      >         filter: cql,                                         
+      >         projection: "epsg:2877"                              
+      >     })                                                       
+      > });
+    
 
