@@ -98,13 +98,13 @@ constructors.
 
 .. seealso::
 
-   `geom API reference <../py/api/geom/index.html>`__
+   `geom API reference <../../py/api/geom/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `geom API reference <../js/api/geom.html>`__
+   `geom API reference <../../js/api/geom.html>`__
 
 Operations
 ----------
@@ -353,13 +353,13 @@ It is also possible to deserialize from these formats.
 
 .. seealso::
 
-   `geom.io API reference <../py/api/geom/io/index.html>`__
+   `geom.io API reference <../../py/api/geom/io/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `geom.io API reference <../js/api/geom.html>`__
+   `geom.io API reference <../../js/api/geom.html>`__
 
 Visualization
 --------------
@@ -441,5 +441,5 @@ objects.
 
 .. seealso::
 
-   `render API reference <../py/api/render/index.html>`__
+   `render API reference <../../py/api/render/index.html>`__
 

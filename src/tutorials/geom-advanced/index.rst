@@ -60,7 +60,7 @@ the `Douglas-Peucker <http://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_alg
 
 .. seealso::
 
-   `simplify API reference <../py/api/geom/index.html#geoscript.geom.geom.simplify>`__
+   `simplify API reference <../../py/api/geom/index.html#geoscript.geom.geom.simplify>`__
 
 Transformations
 ---------------
@@ -123,7 +123,7 @@ Transformation properties include displacement, scaling, shearing, and rotation.
 
 .. seealso::
 
-   `transform API reference <../py/api/geom/index.html#geoscript.geom.geom.transform>`__
+   `transform API reference <../../py/api/geom/index.html#geoscript.geom.geom.transform>`__
 
 
 Delaunay Triangulation and Voronoi Diagrams
@@ -161,6 +161,6 @@ on the input points.
 
 .. seealso::
 
-   `delaunay API reference <../py/api/geom/index.html#geoscript.geom.geom.delaunay>`__
+   `delaunay API reference <../../py/api/geom/index.html#geoscript.geom.geom.delaunay>`__
 
-   `voronoi API reference <../py/api/geom/index.html#geoscript.geom.geom.voronoi>`__
+   `voronoi API reference <../../py/api/geom/index.html#geoscript.geom.geom.voronoi>`__

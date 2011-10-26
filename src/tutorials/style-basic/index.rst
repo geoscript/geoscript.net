@@ -74,14 +74,14 @@ A style is built by composing different symbolizers together.
 
 .. seealso::
 
-   `style API reference <../py/api/style/index.html>`__
-   `render API reference <../py/api/render/index.html>`__
+   `style API reference <../../py/api/style/index.html>`__
+   `render API reference <../../py/api/render/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `style API reference <../js/api/style.html>`__
+   `style API reference <../../js/api/style.html>`__
 
 Thematic Styling
 ----------------
@@ -183,14 +183,14 @@ Now add another rule that encompasses the rest of the roads.
 
 .. seealso::
 
-   `style API reference <../py/api/style/index.html>`__
-   `render API reference <../py/api/render/index.html>`__
+   `style API reference <../../py/api/style/index.html>`__
+   `render API reference <../../py/api/render/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `style API reference <../js/api/style.html>`__
+   `style API reference <../../js/api/style.html>`__
 
 Scale Dependant Rendering
 -------------------------

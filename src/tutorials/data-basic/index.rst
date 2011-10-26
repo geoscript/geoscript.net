@@ -132,13 +132,13 @@ filter is specified as `Contextual Query Language <http://docs.geotools.org/late
 
 .. seealso::
 
-   `layer API reference <../py/api/layer/index.html>`__
+   `layer API reference <../../py/api/layer/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `proj API reference <../js/api/layer.html>`__
+   `proj API reference <../../js/api/layer.html>`__
 
 
 Workspace Objects
@@ -221,13 +221,13 @@ A *Workspace* is a container for a collection of layers that allows one to look 
 
 .. seealso::
 
-   `layer API reference <../py/api/workspace/index.html>`__
+   `layer API reference <../../py/api/workspace/index.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `proj API reference <../js/api/workspace.html>`__
+   `proj API reference <../../js/api/workspace.html>`__
 
 Exploring and Analyzing Data
 ----------------------------
@@ -364,17 +364,17 @@ Java database.
 
 .. seealso::
 
-   `postgis API reference <../py/api/workspace/postgis.html>`__
+   `postgis API reference <../../py/api/workspace/postgis.html>`__
 
-   `h2 API reference <../py/api/workspace/h2.html>`__
+   `h2 API reference <../../py/api/workspace/h2.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `postgis API reference <../js/api/workspace/postgis.html>`__
+   `postgis API reference <../../js/api/workspace/postgis.html>`__
 
-   `h2 API reference <../js/api/workspace/h2.html>`__
+   `h2 API reference <../../js/api/workspace/h2.html>`__
 
 Data Transformation
 -------------------

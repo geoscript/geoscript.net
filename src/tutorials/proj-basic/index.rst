@@ -84,13 +84,13 @@ by specifying the Well Known Text (WKT) of the coordinate reference system direc
 
 .. seealso::
 
-   `proj API reference <../py/api/proj.html>`__
+   `proj API reference <../../py/api/proj.html>`__
 
 .. cssclass:: refs js
 
 .. seealso::
 
-   `proj API reference <../js/api/proj.html>`__
+   `proj API reference <../../js/api/proj.html>`__
 
 
 Determining EPSG Codes
