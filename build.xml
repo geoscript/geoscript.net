@@ -159,7 +159,7 @@
             <arg value="update"/>
             <arg value="doc"/>
         </exec>
-        <move file="${repos}/${scala.short}/geoscript/target/scala_2.8.1/doc/main/api/"
+        <move file="${repos}/${scala.short}/geoscript/target/scala-2.9.1/api/"
             todir="${basedir}/build/${scala.short}/"/>
     </target>
 
