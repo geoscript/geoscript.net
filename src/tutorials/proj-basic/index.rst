@@ -80,6 +80,43 @@ by specifying the Well Known Text (WKT) of the coordinate reference system direc
       js> p
       <Projection EPSG:4326>
 
+.. cssclass:: refs groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+
+    groovy:000> p = new Projection("EPSG:4326")
+    ===> EPSG:4326
+
+    groovy:000> p.id
+    ===> EPSG:4326
+
+    groovy:000> p.wkt
+    ===> GEOGCS["WGS 84", 
+      DATUM["World Geodetic System 1984", 
+        SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]], 
+        AUTHORITY["EPSG","6326"]], 
+      PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]], 
+      UNIT["degree", 0.017453292519943295], 
+      AXIS["Geodetic longitude", EAST], 
+      AXIS["Geodetic latitude", NORTH], 
+      AUTHORITY["EPSG","4326"]]
+
+    groovy:000> p = new Projection('GEOGCS["GCS_WGS_1984",DATUM["WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]')
+    groovy:000> p.wkt
+    ===> GEOGCS["GCS_WGS_1984", 
+      DATUM["WGS_1984", 
+        SPHEROID["WGS_1984", 6378137.0, 298.257223563]], 
+      PRIMEM["Greenwich", 0.0], 
+      UNIT["degree", 0.017453292519943295], 
+      AXIS["Longitude", EAST], 
+      AXIS["Latitude", NORTH]]
+
+    groovy:000> p.id
+    ===> EPSG:432
+    
+
 .. cssclass:: refs py
 
 .. seealso::
@@ -91,6 +128,14 @@ by specifying the Well Known Text (WKT) of the coordinate reference system direc
 .. seealso::
 
    `proj API reference <../../js/api/proj.html>`__
+
+.. cssclass:: refs groovy
+
+.. seealso::
+
+   `proj API reference <../../groovy/api/geoscript/proj/Projection.html>`__
+
+
 
 
 Determining EPSG Codes
@@ -127,6 +172,38 @@ with it. This can happen for a few different reasons.
 
     js> p.id === undefined
     true
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.proj.Projection
+
+    groovy:000> wkt = 'PROJCS["NAD_1983_HARN_StatePlane_Colorado_Central_FIPS_0502_Feet", GEOGCS["GCS_North_American_1983_HARN", DATUM["Unknown", SPHEROID["GRS_1980", 6378137.0, 298.257222101]], PRIMEM["Greenwich", 0.0], UNIT["degree", 0.017453292519943295], AXIS["Longitude", EAST], AXIS["Latitude", NORTH]], PROJECTION["Lambert_Conformal_Conic_2SP"], PARAMETER["central_meridian", -105.5], PARAMETER["latitude_of_origin", 37.833333333333336], PARAMETER["standard_parallel_1", 39.75], PARAMETER["false_easting", 3000000.000316083], PARAMETER["false_northing", 999999.999996], PARAMETER["scale_factor", 1.0], PARAMETER["standard_parallel_2", 38.45], UNIT["foot_survey_us", 0.3048006096012192], AXIS["X", EAST], AXIS["Y", NORTH]]'
+
+    groovy:000> p = new Projection(wkt)
+    ===> PROJCS["NAD_1983_HARN_StatePlane_Colorado_Central_FIPS_0502_Feet", 
+      GEOGCS["GCS_North_American_1983_HARN", 
+        DATUM["Unknown", 
+          SPHEROID["GRS_1980", 6378137.0, 298.257222101]], 
+        PRIMEM["Greenwich", 0.0], 
+        UNIT["degree", 0.017453292519943295], 
+        AXIS["Longitude", EAST], 
+        AXIS["Latitude", NORTH]], 
+      PROJECTION["Lambert_Conformal_Conic_2SP"], 
+      PARAMETER["central_meridian", -105.5], 
+      PARAMETER["latitude_of_origin", 37.833333333333336], 
+      PARAMETER["standard_parallel_1", 39.75], 
+      PARAMETER["false_easting", 3000000.000316083], 
+      PARAMETER["false_northing", 999999.999996], 
+      PARAMETER["scale_factor", 1.0], 
+      PARAMETER["standard_parallel_2", 38.45], 
+      UNIT["foot_survey_us", 0.3048006096012192], 
+      AXIS["X", EAST], 
+      AXIS["Y", NORTH]]
+
+    groovy:000> p.id
+    ===> null
 
 
 In this case some useful online resources are:

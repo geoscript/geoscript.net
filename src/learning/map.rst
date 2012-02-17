@@ -13,14 +13,14 @@ A :class:`Map` can draw one or more :class:`Layers` using :class:`Styles`.
 
 .. code-block:: groovy
 
-    groovy:000> import geoscript.map.Map
-    ===> [import geoscript.map.Map]
+    groovy:000> import geoscript.render.Map
+    ===> [import geoscript.render.Map]
 
     groovy:000> map = new Map(width:400, height:400) 
     ===> geoscript.map.Map@f58046e
 
     groovy:000> import geoscript.layer.Shapefile
-    ===> [import geoscript.map.Map, import geoscript.layer.Shapefile]
+    ===> [import geoscript.render.Map, import geoscript.layer.Shapefile]
 
     groovy:000> shp = new Shapefile("states.shp")
     ===> geoscript.layer.Shapefile@a5c18ff
@@ -52,7 +52,7 @@ A :class:`Map` can draw one or more :class:`Layers` using :class:`Styles`.
 
 .. image:: states1.png
 
-Layers have a default Style but we can customize that Style with Rules and Symbolizers.
+Layers have a default Style but we can customize that Style Symbolizers like Stroke and Fill.
 
 .. cssclass:: code groovy
 
@@ -61,9 +61,9 @@ Layers have a default Style but we can customize that Style with Rules and Symbo
     groovy:000> import geoscript.style.*
     ===> [import geoscript.map.Map, import geoscript.layer.Shapefile, import geoscript.style.*]
 
-    groovy:000> shp.style = new Style(new PolygonSymbolizer(strokeColor: "#666666", fillColor: "#999999", strokeWidth: 0.1))
-    ===> geoscript.style.Style@17609872
-    
+    groovy:000> shp.style = new Fill("#999999") + new Stroke("#666666", 0.1)    
+    ===> Composite (Fill(color = #999999, opacity = 1.0), Stroke(color = #666666, width = 0.1))
+
     groovy:000> map.render("states2.png")
     ===> null
 

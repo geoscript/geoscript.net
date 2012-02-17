@@ -49,7 +49,22 @@ the `Douglas-Peucker <http://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_alg
 
     js> poly.simplify(0.1) 
     <Polygon [[[1, 0], [0.7071067811865476, -0.7071067811865475], [6.1232...>
+   
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    groovy:000> import geoscript.render.Plot
+
+    groovy:000> poly = new Point(0,0).buffer(1)
     
+    groovy:000> Plot.plot(poly)
+    
+    groovy:000> Plot.plot(poly.simplify(0.05))
+    groovy:000> Plot.plot(poly.simplify(0.1)) 
+    
+
 .. image:: simplify1.png
 
 .. image:: simplify2.png
@@ -61,6 +76,14 @@ the `Douglas-Peucker <http://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_alg
 .. seealso::
 
    `simplify API reference <../../py/api/geom/index.html#geoscript.geom.geom.simplify>`__
+
+.. cssclass:: refs groovy
+    
+.. seealso::
+
+    `simplify API reference <../../groovy/api//geoscript/geom/Geometry.html#simplify(double)>`__
+
+    `simplify preserving topology API reference <../../groovy/api//geoscript/geom/Geometry.html#simplifyPreservingTopology(double)>`__
 
 Transformations
 ---------------
@@ -112,6 +135,26 @@ Transformation properties include displacement, scaling, shearing, and rotation.
     js> poly = poly.union(poly.transform({rotation: 90 * (Math.PI / 180)}))
     <Polygon [[[-2, -2], [-5, -2], [-5, 2], [-2, 2], [-2, 5], [2, 5], [2,...>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    groovy:000> import static geoscript.render.Plot.plot
+
+    // displacement
+    groovy:000> poly = new Point(0,0).buffer(1)
+    groovy:000> plot([poly, poly.translate(0.75,0)])
+    
+    // scale + shear
+    groovy:000> poly = new Polygon([[[0,0],[1,0],[1,1],[0,1],[0,0]]])
+    groovy:000> plot([poly, poly.scale(2,2).shear(1,0)])
+    
+    // rotation
+    groovy:000> poly = new Polygon([[[-5,-2],[5,-2],[5,2],[-5,2],[-5,-2]]]) 
+    groovy:000> poly = poly.union(poly.rotate(Math.toRadians(90)))
+    groovy:000> plot([poly, poly.rotate(Math.toRadians(45))])
+
 .. image:: transform1.png
 
 .. image:: transform2.png
@@ -125,6 +168,11 @@ Transformation properties include displacement, scaling, shearing, and rotation.
 
    `transform API reference <../../py/api/geom/index.html#geoscript.geom.geom.transform>`__
 
+.. cssclass:: refs groovy
+    
+.. seealso::
+
+    `transform API reference <../../groovy/api/geoscript/geom/Geometry.html>`__
 
 Delaunay Triangulation and Voronoi Diagrams
 -------------------------------------------
@@ -152,6 +200,19 @@ on the input points.
     >>> vd = voronoi(poly)
     >>> plot([poly, vd])
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+    
+    groovy:000> import geoscript.geom.*
+    groovy:000> import static geoscript.render.Plot.plot
+        
+    groovy:000> poly = new Polygon([[[35,10], [10,20], [15,40], [45,45], [35,10]], [[20,30], [35,35], [30,20], [20,30]]])
+    groovy:000> dt = poly.delaunayTriangleDiagram
+    groovy:000> plot([poly, dt])
+
+    groovy:000> vd = poly.voronoiDiagram
+    groovy:000> plot([poly, vd])
 
 .. image:: voronoi1.png
 
@@ -164,3 +225,13 @@ on the input points.
    `delaunay API reference <../../py/api/geom/index.html#geoscript.geom.geom.delaunay>`__
 
    `voronoi API reference <../../py/api/geom/index.html#geoscript.geom.geom.voronoi>`__
+
+.. cssclass:: refs groovy
+    
+.. seealso::
+
+   `delaunay API reference <../../groovy/api/geoscript/geom/Geometry.html#getDelaunayTriangleDiagram(boolean)>`__
+
+   `voronoi API reference <../../groovy/api/geoscript/geom/Geometry.html#getVoronoiDiagram()>`__
+   
+    

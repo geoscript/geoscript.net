@@ -78,6 +78,25 @@ and reading data, in addition to methods that allow for modification of the unde
     js> layer.bounds
     <Bounds [0, 0, 4, 4]>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.* 
+    groovy:000> import geoscript.layer.*
+
+    groovy:000> l = new Layer("pts")
+    groovy:000> l.add([new Point(0,0)])
+    groovy:000> l.add([new Point(1,1)])
+    groovy:000> l.add([new Point(2,2)])
+    groovy:000> l.add([new Point(3,3)])
+    groovy:000> l.add([new Point(4,4)])
+
+    groovy:000> l.count                
+    ===> 5
+
+    groovy:000> l.bounds
+    ===> (0.0,0.0,4.0,4.0)
 
 The contents of a layer are *Feature* objects. A feature is a set of attributes and an associated geometry. Through a layer object one can get at the underlying features.
 
@@ -106,6 +125,16 @@ The contents of a layer are *Feature* objects. A feature is a set of attributes 
     <Feature geom: <Point>>
     <Feature geom: <Point>>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> l.features.each{f -> println f}
+    features.fid-3a165b59_1356e0aabcd_-8000 geom: POINT (0 0)
+    features.fid-3a165b59_1356e0aabcd_-7fff geom: POINT (1 1)
+    features.fid-3a165b59_1356e0aabcd_-7ffe geom: POINT (2 2)
+    features.fid-3a165b59_1356e0aabcd_-7ffd geom: POINT (3 3)
+    features.fid-3a165b59_1356e0aabcd_-7ffc geom: POINT (4 4)
 
 Filters can be used to constrain the result set of a feature query. A 
 filter is specified as `Contextual Query Language <http://docs.geotools.org/latest/userguide/library/cql/index.html>`_ (CQL), a concise format for specifying predicates when working with geospatial data. 
@@ -128,6 +157,14 @@ filter is specified as `Contextual Query Language <http://docs.geotools.org/late
     <Point [2, 2]>
     <Point [3, 3]>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> l.getFeatures("INTERSECTS(geom, POLYGON ((1.5 1.5, 1.5 3.5, 3.5 3.5, 3.5 1.5, 1.5 1.5)))").each{f -> println f}
+    features.fid-3a165b59_1356e0aabcd_-7ffe geom: POINT (2 2)
+    features.fid-3a165b59_1356e0aabcd_-7ffd geom: POINT (3 3)
+    
 .. cssclass:: refs py
 
 .. seealso::
@@ -138,8 +175,13 @@ filter is specified as `Contextual Query Language <http://docs.geotools.org/late
 
 .. seealso::
 
-   `proj API reference <../../js/api/layer.html>`__
+   `layer API reference <../../js/api/layer.html>`__
 
+.. cssclass:: refs groovy
+
+.. seealso::
+
+   `layer API reference <../../groovy/api/geoscript/layer/Layer.html>`__
 
 Workspace Objects
 -----------------
@@ -217,6 +259,30 @@ A *Workspace* is a container for a collection of layers that allows one to look 
     js> ws
     <Memory ["cities", "states", "roads"]>
 
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.workspace.Memory
+    groovy:000> import geoscript.feature.Schema   
+    groovy:000> import geoscript.layer.Layer                                        
+
+    groovy:000> ws = new Memory()
+
+    groovy:000> ws.create("roads", [["geom","LineString"],["name","string"]])
+    groovy:000> ws.create("cities", [["geom","Point"],["name","string"],["pop","float"]])
+
+    groovy:000> l = new Layer("states", new Schema("states", [["geom","MultiPolygon"],["name","string"]]))
+    groovy:000> ws.add(l)
+
+    groovy:000> ws.layers
+    ===> [cities, states, roads]
+
+    groovy:000> l = ws["roads"]
+    groovy:000> l.schema
+    ===> roads geom: LineString, name: String
+
 .. cssclass:: refs py
 
 .. seealso::
@@ -227,7 +293,13 @@ A *Workspace* is a container for a collection of layers that allows one to look 
 
 .. seealso::
 
-   `proj API reference <../../js/api/workspace.html>`__
+   `layer API reference <../../js/api/workspace.html>`__
+
+.. cssclass:: refs groovy
+
+.. seealso::
+
+    `layer API reference <../../groovy/api/geoscript/workspace/Workspace.html>`__
 
 Exploring and Analyzing Data
 ----------------------------
@@ -257,6 +329,16 @@ Now that the layer and workspace concepts are familiar it is time to start worki
     js> dir.names
     census_boundaries,neighborhoods,city_boundary,election_precincts
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.workspace.Directory
+
+    groovy:000> denver_shps = new Directory("denver_shapefiles")
+    groovy:000> denver_shps.layers
+    ===> [census_boundaries, neighborhoods, city_boundary, election_precincts]
+    
 .. note::
 
     In the above code sample the :class:`workspace.Directory` class is a specific type of 
@@ -294,6 +376,25 @@ Iterate through the layers of the workspace to gather some information.
     <Layer name: city_boundary, count: 12>
     <Layer name: election_precincts, count: 429>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> denver_shps.layers.each{name ->
+        layer = denver_shps.get(name)
+        println "Layer: ${layer.name}"
+        println "Schema: ${layer.schema}"
+        println "Projection: ${layer.proj}"
+        println "Spatial extent: ${layer.bounds}"
+        println "Feature count: ${layer.count}"
+    }
+    ===> Layer: census_boundaries
+    ===> Schema: census_boundaries the_geom: MultiPolygon ... SHAPE_LEN: Double
+    ===> Projection: PROJCS["NAD_1983_HARN_StatePlane_Colorado_Central_FIPS_0502_Feet", ... ]
+    ===> Spatial extent: (3109862.1451475574,1648944.3354152828,3252651.3392448365,1758893.819345483,null)
+    ===> Feature count: 485
+    ... 
+
 .. cssclass:: refs py
 
 .. note::
@@ -316,6 +417,13 @@ Visualize the *city_boundary* layer.
     js> var viewer = require("geoscript/viewer");
     js> var city = dir.get("city_boundary");
     js> viewer.draw(city);
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import static geoscript.render.Draw.draw
+    groovy:000> draw(denver_shps['city_boundary'])
 
 Format Translation
 ------------------
@@ -359,6 +467,20 @@ Java database.
     js> db.names
     census_boundaries,city_boundary,election_precincts,neighborhoods
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.workspace.*
+
+    groovy:000> db = new PostGIS("denver")
+
+    groovy:000> denver_shps.layers.each{n ->
+    groovy:000>     db.add(denver_shps[n])
+    groovy:000> }
+
+    groovy:000> db.layers
+    ===> ["census_boundaries", "city_boundary", "election_precincts", "neighborhoods"]
 
 .. cssclass:: refs py
 
@@ -375,6 +497,14 @@ Java database.
    `postgis API reference <../../js/api/workspace/postgis.html>`__
 
    `h2 API reference <../../js/api/workspace/h2.html>`__
+
+.. cssclass:: refs groovy
+
+.. seealso::
+
+   `postgis API reference <../../groovy/api/geoscript/workspace/PostGIS.html>`__
+
+   `h2 API reference <../../groovy/api/geoscript/workspace/H2.html>`__
 
 Data Transformation
 -------------------
@@ -412,6 +542,23 @@ Create a new workspace for the Colorado shapefiles and analyze the data.
 
     js> hwy.bounds
     <Bounds [-109.160738, 36.892251, -101.942736, 41.1053726] EPSG:4326>
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.workspace.*
+
+    groovy:000> groovy:000> co_shps = new Directory("colorado_shapefiles")
+    groovy:000> co_shps.layers
+    ===> ["colorado_water", "colorado_highway", "colorado_poi", "colorado_natural"]
+
+    groovy:000> hwy = co_shps["colorado_highway"]
+    groovy:000> hwy.proj
+    ===> EPSG:4326
+
+    groovy:000> hwy.bounds
+    ===> (-109.160738,36.892251,-101.942736,41.1053726,EPSG:4326)
 
 Analyzing the highway layer illustrates two things:
 
@@ -481,4 +628,30 @@ the data will be first be added to PostGIS as in the last section.
       >     })                                                       
       > });
     
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000>  import geoscript.workspace.*
+    groovy:000>  import geoscript.proj.Projection
+
+    groovy:000> bndry = null
+    groovy:000> db['city_boundary'].features.each{f ->
+    groovy:000>     if (bndry == null) {
+    groovy:000>         bndry = f.geom
+    groovy:000>     } else {
+    groovy:000>         bndry = bndry.union(f.geom)
+    groovy:000>     }
+    groovy:000> }
+    groovy:000> bndry = bndry.simplify(100)
+
+    groovy:000> co_shps.layers.each{nm ->
+    groovy:000>     // Load into database
+    groovy:000>     l = db.add(co_shps[nm])
+    groovy:000>     // reproject + rename
+    groovy:000>     l.reproject(new Projection("EPSG:2877"), l.name.substring(9), 10000)
+    groovy:000>     // clip
+    groovy:000>     l.delete("NOT INTERSECTS(the_geom, ${bndry.wkt})")
+    groovy:000> }
+
 

@@ -93,6 +93,36 @@ constructors.
     js> geom.MultiPolygon([[[[30,20], [10,40], [45,40], [30,20]]], [[[15,5], [40,10], [10,20], [5,10], [15,5]]]])
     <MultiPolygon [[[[30, 20], [10, 40], [45, 40], [30, 20]]], [[[15, 5], [40,...>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+    
+    groovy:000> new Point(30,10)
+    ===> POINT (30 10)
+    
+    groovy:000> new LineString([30,10], [10,30], [20,40], [40,40])
+    ===> LINESTRING (30 10, 10 30, 20 40, 40 40)
+
+    groovy:000> new Polygon([30,10], [10,20], [20,40], [40,40], [30,10])
+    ===> POLYGON ((30 10, 10 20, 20 40, 40 40, 30 10))
+    
+    groovy:000> new Polygon([[[35,10],[10,20],[15,40],[45,45],[35,10]], [[20,30],[35,35],[30,20],[20,30]]])
+    ===> POLYGON ((35 10, 10 20, 15 40, 45 45, 35 10), (20 30, 35 35, 30 20, 20 30))
+    
+    groovy:000> new MultiPoint([10,40],[40,30],[20,20],[30,10])
+    ===> MULTIPOINT ((10 40), (40 30), (20 20), (30 10))
+    
+    groovy:000> new MultiPoint(new Point(10,40), new Point(40,30), new Point(20,20), new Point(30,10))
+    ===> MULTIPOINT ((10 40), (40 30), (20 20), (30 10))
+    
+    groovy:000> new MultiLineString([[10,10],[20,20],[10,40]], [[40,40],[30,30],[40,20],[30,10]])
+    ===> MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))
+    
+    groovy:000> new MultiPolygon([[[30,20], [10,40], [45,40], [30,20]]], [[[15,5], [40,10], [10,20], [5,10], [15,5]]]) 
+    ===> MULTIPOLYGON (((30 20, 10 40, 45 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))
 
 .. cssclass:: refs py
 
@@ -105,6 +135,11 @@ constructors.
 .. seealso::
 
    `geom API reference <../../js/api/geom.html>`__
+
+.. cssclass:: refs groovy
+
+.. seealso::
+    `geom API reference <../../groovy/api/geoscript/geom/Geometry.html>`_
 
 Operations
 ----------
@@ -162,6 +197,34 @@ Geometry objects offer a number of methods for calculating various properties in
     js> poly.valid
     false
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+    
+    // area
+    groovy:000> poly = new Polygon([30,10], [10,20], [20,40], [40,40], [30,10])
+    ===> POLYGON ((30 10, 10 20, 20 40, 40 40, 30 10))
+    groovy:000> poly.area
+    ===> 550.0
+    
+    // length
+    groovy:000> line = new LineString([30,10],[10,20],[20,40],[40,40],[30,10])
+    ===> LINESTRING (30 10, 10 20, 20 40, 40 40, 30 10)
+    groovy:000> line.length
+    ===> 96.34413615167959
+    
+    // validity
+    groovy:000> poly.valid
+    ===> true
+    
+    // self intersecting polygon
+    groovy:000> poly = new Polygon([1,1],[2,1],[1,0],[2,0],[1,1])
+    ===> POLYGON ((1 1, 2 1, 1 0, 2 0, 1 1))
+    groovy:000> poly.valid
+    ===> false
 
 Other operations such as *intersection*, *union*, *difference*, and *distance* calculate relationships between two geometry objects.
 
@@ -236,6 +299,46 @@ Other operations such as *intersection*, *union*, *difference*, and *distance* c
     js> poly1.symDifference(poly2)
     <MultiPolygon [[[[2, 1], [2, 0], [0, 0], [0, 2], [1, 2], [1, 1], [2, 1]]],...>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+
+    // distance
+    groovy:000> point = new Point(10,30)
+    ===> POINT (10 30)
+    groovy:000> point.distance(new Point(40,30))
+    ===> 30.0
+    
+    groovy:000> line = new LineString([30,10], [10,30], [20,40], [40,40])
+    ===> LINESTRING (30 10, 10 30, 20 40, 40 40)
+    groovy:000> line.distance(point)
+    ===> 0.0
+    
+    // intersection
+    groovy:000> line.intersects(point)
+    ===> true
+    groovy:000> line.intersection(point)
+    ===> POINT (10 30)
+    
+    // union
+    groovy:000> poly1 = new Polygon([0,0], [2,0], [2,2], [0,2], [0,0])
+    ===> POLYGON ((0 0, 2 0, 2 2, 0 2, 0 0))
+    groovy:000> poly2 = new Polygon([1,1], [3,1], [3,3], [1,3], [1,1])
+    ===> POLYGON ((1 1, 3 1, 3 3, 1 3, 1 1))
+    groovy:000> poly1.union(poly2)
+    ===> POLYGON ((2 1, 2 0, 0 0, 0 2, 1 2, 1 3, 3 3, 3 1, 2 1))
+    
+    // difference
+    groovy:000> poly1.difference(poly2)
+    ===> POLYGON ((2 1, 2 0, 0 0, 0 2, 1 2, 1 1, 2 1))
+    
+    // symmetric difference
+    groovy:000> poly1.symDifference(poly2)
+    ===> MULTIPOLYGON (((2 1, 2 0, 0 0, 0 2, 1 2, 1 1, 2 1)), ((2 1, 2 2, 1 2, 1 3, 3 3, 3 1, 2 1)))
+
 Operations such as *buffer* compute a new geometry object from an existing one.
 
 .. cssclass:: code py
@@ -267,6 +370,24 @@ Operations such as *buffer* compute a new geometry object from an existing one.
     js> // single sided buffer
     js> line.buffer(1, {single: true})
     <Polygon [[[10, 20], [30, 10], [29.552786404500043, 9.105572809000083...>
+
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+    
+    // buffer
+    groovy:000> line = new LineString([30,10] , [10,20])
+    ===> LINESTRING (30 10, 10 20)
+    groovy:000> line.buffer(1)
+    ===> POLYGON ((9.552786404500042 19.105572809000083, ... , 9.552786404500042 19.105572809000083))
+    
+    // single sided buffer
+    groovy:000> line.singleSidedBuffer(1)  
+    ===> POLYGON ((10 20, 30 10, 29.552786404500043 9.105572809000083, 9.552786404500042 19.105572809000083, 10 20))
+
 
 .. seealso::
 
@@ -313,6 +434,29 @@ Geometries can be serialized in a number of formats.  The I/O module supports re
     js> point.json
     {"type":"Point","coordinates":[30,10]}
     
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    ===> [import geoscript.geom.*]
+
+    groovy:000> point = new Point(30,10)
+    ===> POINT (30 10)
+
+    // gml
+    groovy:000> point.gml2
+    ===> <gml:Point><gml:coordinates>30.0,10.0</gml:coordinates></gml:Point>
+    groovy:000> point.gml3
+    ===> <gml:Point><gml:pos>30.0 10.0</gml:pos></gml:Point>
+
+    // kml
+    groovy:000> point.kml
+    ===> <Point><coordinates>30.0,10.0</coordinates></Point>
+    
+    // geojson
+    groovy:000> point.geoJSON
+    ===> { "type": "Point", "coordinates": [30.0, 10.0] }
 
 It is also possible to deserialize from these formats.
 
@@ -349,6 +493,22 @@ It is also possible to deserialize from these formats.
     js> geom.create(JSON.parse('{"type":"Point","coordinates":[30,10]}'))
     <Point [30, 10]>
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+    
+    // gml
+    groovy:000> Geometry.fromGML2('<gml:LineString xmlns:gml="http://www.opengis.net/gml"><gml:coordinates>30.0,10.0 10.0,20.0</gml:coordinates></gml:LineString>')
+    ===> LINESTRING (30 10, 10 20)
+
+    // kml
+    groovy:000> Geometry.fromKml('<kml:Polygon xmlns:kml="http://earth.google.com/kml/2.1"><kml:outerBoundaryIs><kml:LinearRing><kml:coordinates>0.0,0.0 2.0,0.0 2.0,2.0 0.0,2.0 0.0,0.0</kml:coordinates></kml:LinearRing></kml:outerBoundaryIs></kml:Polygon>')
+    ===> POLYGON ((0 0, 2 0, 2 2, 0 2, 0 0))
+
+    // json
+    groovy:000> Geometry.fromGeoJSON('{"type":"Point","coordinates":[30,10]}')
+    ===> POINT (30 10)
+
 .. cssclass:: refs py
 
 .. seealso::
@@ -360,6 +520,12 @@ It is also possible to deserialize from these formats.
 .. seealso::
 
    `geom.io API reference <../../js/api/geom.html>`__
+
+.. cssclass:: refs groovy
+
+.. seealso::
+
+   `geom.io API reference <../../groovy/api/geoscript/geom/io/package-summary.html>`__
 
 Visualization
 --------------
@@ -406,6 +572,28 @@ Styling is covered in a different tutorial.
     js> var line2 = LineString([[40,40], [30,30], [40,20], [30,10]]) 
     js> viewer.draw([line1, line2])
 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    groovy:000> import geoscript.style.*
+    groovy:000> import static geoscript.render.Draw.draw
+
+    groovy:000> poly = new Polygon([[[35,10], [10,20], [15,40], [45,45], [35,10]], [[20,30], [35,35], [30,20], [20,30]]])
+    ===> POLYGON ((35 10, 10 20, 15 40, 45 45, 35 10), (20 30, 35 35, 30 20, 20 30))
+    groovy:000> draw(poly)
+
+    groovy:000> line1 = new LineString([10,10], [20,20], [10,40])
+    ===> LINESTRING (10 10, 20 20, 10 40)
+    groovy:000> line2 = new LineString([40,40], [30,30], [40,20], [30,10])
+    ===> LINESTRING (40 40, 30 30, 40 20, 30 10)
+    groovy:000> draw([line1, line2])
+
+    groovy:000> poly = Geometry.fromWKT('MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)),((20 35, 45 20, 30 5, 10 10, 10 30, 20 35),(30 20, 20 25, 20 15, 30 20)))')
+    ===> MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 45 20, 30 5, 10 10, 10 30, 20 35), (30 20, 20 25, 20 15, 30 20)))
+    groovy:000> draw(poly, new Stroke("black") + new Fill("white"))
+
 .. image:: draw1.png
 
 .. image:: draw2.png
@@ -431,7 +619,24 @@ objects.
     >>> line = LineString((10,10), (20,20), (10,40))
     >>> mpoint = MultiPoint((10,40), (40,30), (20,20), (30,10))
     >>> plot([line,mpoint,poly])
-    
+ 
+.. cssclass:: code groovy
+
+.. code-block:: groovy
+
+    groovy:000> import geoscript.geom.*
+    groovy:000> import static geoscript.render.Plot.plot
+
+    groovy:000> poly = new Polygon([[[35,10], [10,20], [15,40], [45,45], [35,10]], [[20,30], [35,35], [30,20], [20,30]]])
+    ===> POLYGON ((35 10, 10 20, 15 40, 45 45, 35 10), (20 30, 35 35, 30 20, 20 30))
+    groovy:000> plot(poly)
+
+    groovy:000> line = new LineString([10,10], [20,20], [10,40])
+    ===> LINESTRING (10 10, 20 20, 10 40)
+    groovy:000> mpoint = new MultiPoint([10,40], [40,30], [20,20], [30,10])
+    ===> MULTIPOINT ((10 40), (40 30), (20 20), (30 10))
+    groovy:000> plot([line, mpoint, poly])
+
 
 .. image:: plot1.png
 
@@ -443,3 +648,8 @@ objects.
 
    `render API reference <../../py/api/render/index.html>`__
 
+.. cssclass:: refs groovy
+
+.. seealso::
+
+   `render API reference <../../groovy/api/geoscript/render/package-summary.html>`__
