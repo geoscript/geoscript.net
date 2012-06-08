@@ -153,7 +153,7 @@
     
     <target name="scala-doc" depends="init-scala">
         <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
-            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${scala.repo}' -D html_theme_options.impl_long='${scala.long}' -D html_theme_options.impl_short='${scala.short}' -D version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-common ${repos}/${scala.short}/docs ${basedir}/build/${scala.short}"/>
+            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${scala.repo}' -D html_theme_options.impl_long='${scala.long}' -D html_theme_options.impl_short='${scala.short}' -D version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-common ${repos}/${scala.short}/geoscript/src/main/sphinx ${basedir}/build/${scala.short}"/>
         </exec>
         <exec executable="sbt" dir="${repos}/${scala.short}/">
             <arg value="update"/>
