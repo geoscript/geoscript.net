@@ -88,7 +88,7 @@
     <target name="js-doc" depends="init-js">
         <exec executable="python">
             <arg value="jsdoc.py"/>
-            <arg value="${repos}/${js.short}/lib/geoscript"/>
+            <arg value="${repos}/${js.short}/src/main/resources/org/geoscript/js/lib/geoscript"/>
             <arg value="${repos}/${js.short}/doc/api/module.jst"/>
             <arg value="${repos}/${js.short}/doc/api"/>
         </exec>
