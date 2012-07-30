@@ -98,6 +98,8 @@ var site = {
             id: "scala", title: "Scala"
         }, {
             id: "groovy", title: "Groovy"
+        }, {
+            id: "ruby", title: "Ruby"
         }];
         
         var list = $("<ul></ul>");
