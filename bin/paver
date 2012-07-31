@@ -1,9 +1,0 @@
-#!/Users/scooter/code/sites/geoscript.org/bin/python2.5
-# EASY-INSTALL-ENTRY-SCRIPT: 'Paver==1.0.1','console_scripts','paver'
-__requires__ = 'Paver==1.0.1'
-import sys
-from pkg_resources import load_entry_point
-
-sys.exit(
-   load_entry_point('Paver==1.0.1', 'console_scripts', 'paver')()
-)

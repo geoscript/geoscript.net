@@ -1,3 +1,6 @@
 .repos
+bin
 build
+include
+lib
 *.pyc
