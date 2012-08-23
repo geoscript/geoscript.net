@@ -86,12 +86,6 @@
     </target>
     
     <target name="js-doc" depends="init-js">
-        <exec executable="python">
-            <arg value="jsdoc.py"/>
-            <arg value="${repos}/${js.short}/src/main/resources/org/geoscript/js/lib/geoscript"/>
-            <arg value="${repos}/${js.short}/doc/api/module.jst"/>
-            <arg value="${repos}/${js.short}/doc/api"/>
-        </exec>
         <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
             <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${basedir}/build/${js.short}"/>
         </exec>
