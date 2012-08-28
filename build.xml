@@ -1,6 +1,6 @@
 <project name="geoscript.org" default="info" basedir=".">
 
-    <property name="js.version" value="0.10"/>
+    <property name="js.version" value="0.16"/>
     <property name="js.short" value="js"/>
     <property name="js.long" value="JavaScript"/>
     <property name="js.repo" value="tschaub/geoscript-js"/>
@@ -87,7 +87,7 @@
     
     <target name="js-doc" depends="init-js">
         <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
-            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${basedir}/build/${js.short}"/>
+            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D primary_domain=js -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${basedir}/build/${js.short}"/>
         </exec>
     </target>
     
