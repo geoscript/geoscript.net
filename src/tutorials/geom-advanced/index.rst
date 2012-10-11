@@ -105,7 +105,7 @@ Transformation properties include displacement, scaling, shearing, and rotation.
 
     # scale + shear
     >>> poly = Polygon([(0,0),(1,0),(1,1),(0,1),(0,0)])
-    >>> plot([poly, transform(sx=2, sy=2, shx=1)])
+    >>> plot([poly, transform(poly, sx=2, sy=2, shx=1)])
 
     # rotation
     >>> poly = Polygon([(-5,-2),(5,-2),(5,2),(-5,2), (-5,-2)])
