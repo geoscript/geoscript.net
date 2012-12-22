@@ -28,7 +28,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'GeoScript'
-copyright = u'2009, The Authors'
+copyright = u'2009-2012, The Authors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
