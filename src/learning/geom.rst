@@ -84,9 +84,8 @@ Geometries can also be created from `well known text
 
 .. code-block:: javascript
 
-    >> var GEOM = require("geoscript/geom");
-
-    >> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
+    >> var parser = require("geoscript/io/wkt");
+    >> var poly = parser.read("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))"); 
     >> poly
     <Polygon [[[10, 10], [10, 20], [20, 20], [20, 15], [10, 10]]]>
 
@@ -128,9 +127,9 @@ Geometry objects provide properties for statistics such as area and length.
 
 .. code-block:: javascript
 
-    >> var GEOM = require("geoscript/geom");
+    >> var parser = require("geoscript/io/wkt");
+    >> var poly = parser.read("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))"); 
 
-    >> var poly = GEOM.fromWKT("POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))");
     >> poly.area
     75
     >> poly.length
