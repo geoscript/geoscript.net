@@ -35,8 +35,8 @@ and the spatial bounds of the data.
 
 .. code-block:: javascript
 
-    >> var LAYER = require("geoscript/layer");
-    >> var shp = new LAYER.Layer({workspace: "data/shp", name: "states"});
+    >> var Directory = require("geoscript/workspace").Directory;
+    >> var shp = new Directory("data/shp").get("states");
     >> shp
     <Layer name: states, count: 49>
     >> shp.count
@@ -278,7 +278,8 @@ Create a new layer and add it to an existing workspace as follows:
 
 .. code-block:: javascript
 
-    >> var cities = new LAYER.Layer({
+    >> var Layer = require("geoscript/layer").Layer;
+    >> var cities = new Layer({
       >     name: "cities",
       >     fields: [{
       >         name: "name", type: "String"
