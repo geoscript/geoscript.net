@@ -14,6 +14,7 @@
     <property name="scala.short" value="scala"/>
     <property name="scala.long" value="Scala"/>
     <property name="scala.repo" value="dwins/geoscript.scala"/>
+    <property name="scala.lib.version" value="2.10"/>
 
     <property name="groovy.version" value="0.97"/>
     <property name="groovy.short" value="groovy"/>
@@ -153,7 +154,7 @@
             <arg value="update"/>
             <arg value="doc"/>
         </exec>
-        <move file="${repos}/${scala.short}/geoscript/target/scala-2.9.1/api/"
+        <move file="${repos}/${scala.short}/geoscript/target/scala-${scala.lib.version}/api/"
             todir="${basedir}/build/${scala.short}/"/>
     </target>
 
