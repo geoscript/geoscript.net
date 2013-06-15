@@ -74,13 +74,13 @@ A style is built by composing different symbolizers together.
     groovy:000> import geoscript.feature.*
 
     groovy:000> style = new Stroke("black",2) + new Fill("#ff0000",0.75)
-    groovy:000> draw(new Point(0,0).buffer(1), style)
+    groovy:000> draw(new Point(0,0).buffer(1), style: style)
 
     groovy:000> mpoint = Geometry.fromWKT("MULTIPOINT ((10 40), (40 30), (20 20), (30 10))")
-    groovy:000> draw(mpoint, new Shape("red",20,"triangle"))
+    groovy:000> draw(mpoint, style: new Shape("red",20,"triangle"))
 
     groovy:000> feature = new Feature(["geom": new Point(0,0), "name": "Happy"],"happy1")
-    groovy:000> draw(feature, new Icon(url: "smileyface.png",  size: 12) + new Label("name").font(size:20).point(anchor:[-0.25,0.5]))
+    groovy:000> draw(feature, style: new Icon(url: "smileyface.png",  size: 12) + new Label("name").font(size:20).point(anchor:[-0.25,0.5]))
 
 .. image:: sym1.png
 

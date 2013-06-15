@@ -165,20 +165,17 @@ Visualizing
     groovy:000> import geoscript.viewer.Viewer
     ===> [import geoscript.geom.*, import geoscript.viewer.Viewer]
 
-    groovy:000> v = new Viewer()
-    ===> geoscript.viewer.Viewer@77f6d2e3
-
     groovy:000> poly = Geometry.fromWKT("POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))")
     ===> POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
 
-    groovy:000> v.draw(poly)
+    groovy:000> Viewer.draw(poly)
     ===> null
 
     groovy:000> line = new LineString([2,2],[8,8])
     ===> LINESTRING (2 2, 8 8)
 
-    groovy:000> v.draw(line)
+    groovy:000> Viewer.draw(line)
     ===> null
 
-    groovy:000> v.draw([poly, line, new Point(5,5).buffer(1)])
+    groovy:000> Viewer.draw([poly, line, new Point(5,5).buffer(1)])
     ===> null

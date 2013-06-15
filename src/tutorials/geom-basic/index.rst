@@ -592,7 +592,7 @@ Styling is covered in a different tutorial.
 
     groovy:000> poly = Geometry.fromWKT('MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)),((20 35, 45 20, 30 5, 10 10, 10 30, 20 35),(30 20, 20 25, 20 15, 30 20)))')
     ===> MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 45 20, 30 5, 10 10, 10 30, 20 35), (30 20, 20 25, 20 15, 30 20)))
-    groovy:000> draw(poly, new Stroke("black") + new Fill("white"))
+    groovy:000> draw(poly, style: new Stroke("black") + new Fill("white"))
 
 .. image:: draw1.png
 
