@@ -23,6 +23,9 @@ top right.
 
 :ref:`learning.map`
     Draw Layers using Maps and Styles
+
+:ref:`learning.raster`
+    Access Raster data. 
  
 .. toctree:: 
     :hidden:
@@ -31,3 +34,4 @@ top right.
     proj
     layer
     map
+    raster
