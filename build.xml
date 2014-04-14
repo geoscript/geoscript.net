@@ -3,7 +3,7 @@
     <property name="js.version" value="1.0.0"/>
     <property name="js.short" value="js"/>
     <property name="js.long" value="JavaScript"/>
-    <property name="js.repo" value="tschaub/geoscript-js"/>
+    <property name="js.repo" value="geoscript/geoscript-js"/>
 
     <property name="py.version" value="1.2.1"/>
     <property name="py.short" value="py"/>

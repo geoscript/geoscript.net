@@ -17,11 +17,11 @@ The GeoScript sources are stored at `github <http://github.com/>`__.
 
 JavaScript:
 
-   http://github.com/tschaub/geoscript-js
+   http://github.com/geoscript/geoscript-js
 
    ::
 
-     git clone git://github.com/tschaub/geoscript-js.git
+     git clone git://github.com/geoscript/geoscript-js.git
 
 Python:
 
@@ -55,7 +55,7 @@ Report any bugs or problems with GeoScript in the issue tracker.
 
 JavaScript:
 
-   http://github.com/tschaub/geoscript-js/issues
+   http://github.com/geoscript/geoscript-js/issues
 
 Python:
 

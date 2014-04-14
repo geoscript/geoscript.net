@@ -8,7 +8,7 @@ Getting the source
 
 Clone the repository from github::
 
-    ~$ git clone git://github.com/tschaub/geoscript.org.git
+    ~$ git clone git://github.com/geoscript/geoscript.org.git
 
 Building the site
 -----------------
