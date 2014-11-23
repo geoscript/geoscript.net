@@ -8,7 +8,7 @@
     <property name="py.version" value="1.2.1"/>
     <property name="py.short" value="py"/>
     <property name="py.long" value="Python"/>
-    <property name="py.repo" value="jdeolive/geoscript-py"/>
+    <property name="py.repo" value="geoscript/geoscript-py"/>
 
     <property name="scala.version" value="0.9"/>
     <property name="scala.short" value="scala"/>
