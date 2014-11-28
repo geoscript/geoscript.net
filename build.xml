@@ -211,7 +211,7 @@
         <delete dir="${repos}"/>
     </target>
 
-    <target name="bundle" depend="site">
+    <target name="bundle" depends="site">
         <zip destfile="${build.root}/geoscript.org.zip">
             <fileset dir="${build.dir}" includes="**/*"/>
         </zip>
