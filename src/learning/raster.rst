@@ -16,8 +16,8 @@ You can read and write Rasters in different formats including GeoTIFF, WorldImag
 .. code-block:: groovy
     
     groovy:000> import geoscript.layer.GeoTIFF
-    groovy:000> format = new GeoTIFF()
-    groovy:000> raster = format.read(new File("raster.tif"))
+    groovy:000> format = new GeoTIFF(new File("raster.tif"))
+    groovy:000> raster = format.read()
     groovy:000> raster.proj.id
     ===> EPSG:4326
     groovy:000> raster.bounds
@@ -29,7 +29,6 @@ You can get values from the Raster using geographic Points or pixel coordinates.
 
 .. code-block:: groovy
 
-    
     groovy:000> import geoscript.geom.Point
     groovy:000> raster.getValue(new Point(0,0))
     ===> 227.0
@@ -75,12 +74,12 @@ And you can even simple or complex raster algebra (which uses Jiffle).
     groovy:000> raster5.getValue(10,10)
     ===> 10.0
 
-    groovy:000> rimport geoscript.layer.MapAlgebra
-    groovy:000> ralgebra = new MapAlgebra()
-    groovy:000> routput = algebra.calculate("dest = src > 200;", [src: raster], size: [600,400])
-    groovy:000> routput.size
+    groovy:000> import geoscript.layer.MapAlgebra
+    groovy:000> algebra = new MapAlgebra()
+    groovy:000> output = algebra.calculate("dest = src > 200;", [src: raster], size: [600,400])
+    groovy:000> output.size
     ===> [600,400]
-    groovy:000> routput.bounds
+    groovy:000> output.bounds
     ===> (-180.0,-90.00000000000001,180.0,90.0,EPSG:4326)
     
 

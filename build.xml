@@ -16,7 +16,7 @@
     <property name="scala.repo" value="dwins/geoscript.scala"/>
     <property name="scala.lib.version" value="2.10"/>
 
-    <property name="groovy.version" value="1.5.0"/>
+    <property name="groovy.version" value="1.6.0"/>
     <property name="groovy.short" value="groovy"/>
     <property name="groovy.long" value="Groovy"/>
     <property name="groovy.repo" value="geoscript/geoscript-groovy"/>
