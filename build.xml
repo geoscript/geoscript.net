@@ -21,6 +21,11 @@
     <property name="groovy.long" value="Groovy"/>
     <property name="groovy.repo" value="geoscript/geoscript-groovy"/>
 
+    <property name="ruby.version" value="0.0.1.pre" />
+    <property name="ruby.short" value="ruby" />
+    <property name="ruby.long" value="Ruby" />
+    <property name="ruby.repo" value="scooterw/geoscript-ruby" />
+
     <property name="repos" value="${basedir}/.repos"/>
     <property name="t" value="&#x0009;"/>
     <property name="build.root" value="${basedir}/build"/>
@@ -43,6 +48,8 @@
         <echo message="${t}scala-pull:  Update scala repo."/>
         <echo message="${t}groovy-doc:  Build the groovy docs (groovy-pull first)."/>
         <echo message="${t}groovy-pull: Update groovy repo."/>
+        <echo message="${t}ruby-doc:    Build the ruby docs (ruby-pull first)." />
+        <echo message="${t}ruby-pull:   Update ruby repo." />
         <echo message="${t}init:        Check out local git repos."/>
         <echo message="${t}clean:       Delete doc builds."/>
         <echo message="${t}clean-full:  Delete doc builds and local git repos."/>
@@ -67,6 +74,9 @@
         </condition>
         <condition property="repo.groovy.exists">
             <available file="${repos}/${groovy.short}"/>
+        </condition>
+        <condition property="repo.ruby.exists">
+            <available file="${repos}/${ruby.short}" />
         </condition>
     </target>
     
@@ -195,13 +205,27 @@
         </copy>
     </target>
 
+    <target name="init-ruby" depends="init">
+        <antcall target="ruby-clone" />
+    </target>
+
+    <target name="ruby-pull" if="repo.ruby.exists" depends="init-ruby">
+        <exec executable="git" dir="${repos}/${ruby.short}">
+            <arg value="pull" />
+        </exec>
+    </target>
+
+    <target name="ruby-doc" depends="init-ruby">
+        <exec></exec>
+    </target>
+
     <target name="site-doc" depends="init">
         <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
             <arg line="-E -b html . ${build.dir}"/>
         </exec>
     </target>  
     
-    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, scala-pull, scala-doc, groovy-pull, groovy-doc, site-doc"/>
+    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, scala-pull, scala-doc, groovy-pull, groovy-doc, ruby-pull, ruby-doc, site-doc"/>
     
     <target name="clean">
         <delete dir="${build.root}"/>

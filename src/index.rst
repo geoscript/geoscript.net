@@ -2,7 +2,7 @@
 
     GeoScript adds spatial capabilities to dynamic scripting languages 
 
-GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, and `Groovy <groovy>`_.
+GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, `Groovy <groovy>`_, and `Ruby <ruby>`_.
 
 .. cssclass:: tab-js ui-tabs-hide
 
@@ -65,6 +65,29 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
     groovy:000> poly = p2.buffer(100)
     groovy:000> poly.area
     ===> 31214.451522477902
+
+.. cssclass:: tab-ruby ui-tabs-hide
+
+.. code-block:: ruby
+
+    irb(main):001:0> require 'geoscript'
+    => true
+    irb(main):002:0> include GeoScript::Geom
+    => Object
+    irb(main):003:0> p = Point.create -111.0, 45.7
+    => #<GeoScript::Geom::Point:0x76c5495 @bounds=#<GeoScript::Geom::Bounds:0x7317851>>
+    irb(main):004:0> p.to_wkt
+    => "POINT (-111.0 45.7)"
+    irb(main):005:0> p2 = GeoScript::Projection.reproject p, 'epsg:4326', 'epsg:26912'
+    => #<Java::ComVividsolutionsJtsGeom::Point:0x5ad7eb94>
+    irb(main):006:0> p2.x
+    => 500000.0
+    irb(main):007:0> p2.y
+    => 5060716.313515949
+    irb(main):008:0> poly = p2.buffer 100
+    => #<Java::ComVividsolutionsJtsGeom::Polygon:0xb034979>
+    irb(main):009:0> poly.get_area
+    => 31214.451522458345
 
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.  See the :ref:`learning center <learning>` for an
 overview of the library.
