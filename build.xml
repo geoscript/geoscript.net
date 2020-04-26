@@ -24,7 +24,7 @@
     <property name="repos" value="${basedir}/.repos"/>
     <property name="t" value="&#x0009;"/>
     <property name="build.root" value="${basedir}/build"/>
-    <property name="build.dir" value="${build.root}/site"/>
+    <property name="build.dir" value="${build.root}/html"/>
 
     <condition property="mvn.offline" value="-o" else="">
        <istrue value="${maven.offline}"/>
@@ -89,8 +89,8 @@
     </target>
     
     <target name="js-doc" depends="init-js">
-        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
-            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D primary_domain=js -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${build.dir}/${js.short}"/>
+        <exec executable="sphinx-build" dir="${basedir}/source" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/source -D html_theme_options.impl_repo='${js.repo}' -D html_theme_options.impl_long='${js.long}' -D primary_domain=js -D html_theme_options.impl_short='${js.short}' -D version='${js.version}' -D release='${js.version}' -D html_title='GeoScript JS' -D html_short_title='GeoScript JS' -D html_theme=geoscript-common ${repos}/${js.short}/doc ${build.dir}/${js.short}"/>
         </exec>
     </target>
     
@@ -124,7 +124,7 @@
         </path>
         <property name="py.classpath" refid="py.jarpath"/>
         <echo message="${py.classpath}"/>
-        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+        <exec executable="sphinx-build" dir="${basedir}/source" failonerror="true">
             <env key="CLASSPATH" path="${py.classpath}"/>
             <arg line="-E -b html ${repos}/${py.short}/doc ${build.dir}/${py.short}"/>
         </exec>
@@ -149,8 +149,8 @@
     </target>
     
     <target name="scala-doc" depends="init-scala">
-        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
-            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${scala.repo}' -D html_theme_options.impl_long='${scala.long}' -D html_theme_options.impl_short='${scala.short}' -D version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-common ${repos}/${scala.short}/geoscript/src/main/sphinx ${build.dir}/${scala.short}"/>
+        <exec executable="sphinx-build" dir="${basedir}/source" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/source -D html_theme_options.impl_repo='${scala.repo}' -D html_theme_options.impl_long='${scala.long}' -D html_theme_options.impl_short='${scala.short}' -D version='${scala.version}' -D release='${scala.version}' -D html_title='GeoScript Scala' -D html_short_title='GeoScript Scala' -D html_theme=geoscript-common ${repos}/${scala.short}/geoscript/src/main/sphinx ${build.dir}/${scala.short}"/>
         </exec>
         <exec executable="sbt" dir="${repos}/${scala.short}/">
             <arg value="update"/>
@@ -179,8 +179,8 @@
     </target>
 
     <target name="groovy-doc" depends="init-groovy">
-        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
-            <arg line="-E -b html -c ${basedir}/src -D html_theme_options.impl_repo='${groovy.repo}' -D html_theme_options.impl_long='${groovy.long}' -D html_theme_options.impl_short='${groovy.short}' -D version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-common ${repos}/${groovy.short}/doc ${build.dir}/${groovy.short}"/>
+        <exec executable="sphinx-build" dir="${basedir}/source" failonerror="true">
+            <arg line="-E -b html -c ${basedir}/source -D html_theme_options.impl_repo='${groovy.repo}' -D html_theme_options.impl_long='${groovy.long}' -D html_theme_options.impl_short='${groovy.short}' -D version='${groovy.version}' -D release='${groovy.version}' -D html_title='GeoScript Groovy' -D html_short_title='GeoScript Groovy' -D html_theme=geoscript-common ${repos}/${groovy.short}/doc ${build.dir}/${groovy.short}"/>
         </exec>
         <exec executable="mvn" dir="${repos}/${groovy.short}/">
             <arg line="${mvn.offline}"/>
@@ -196,12 +196,13 @@
     </target>
 
     <target name="site-doc" depends="init">
-        <exec executable="sphinx-build" dir="${basedir}/src" failonerror="true">
+        <exec executable="sphinx-build" dir="${basedir}/source" failonerror="true">
             <arg line="-E -b html . ${build.dir}"/>
         </exec>
     </target>  
-    
-    <target name="site" depends="js-pull, js-doc, py-pull, py-doc, scala-pull, scala-doc, groovy-pull, groovy-doc, site-doc"/>
+
+    <!-- scala-pull, scala-doc, -->
+    <target name="site" depends="js-pull, js-doc, py-pull, py-doc,  groovy-pull, groovy-doc, site-doc"/>
     
     <target name="clean">
         <delete dir="${build.root}"/>
