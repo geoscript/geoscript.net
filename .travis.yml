@@ -15,7 +15,7 @@ script:
   - sdk install ant
   - sdk install maven
   - ant site
-  - touch src/website/build/html/.nojekyll
+  - touch build/html/.nojekyll
 deploy:
   provider: pages
   skip_cleanup: true
