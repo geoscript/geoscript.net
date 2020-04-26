@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeoScript &#8212; GeoScript</title>
+    <link rel="stylesheet" href="../../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Projection Basics" href="../proj-basic/index.html" />
+    <link rel="prev" title="Geometry Basics" href="../geom-basic/index.html" />
+    <script src="../../_static/site.js"></script>
+    <script src="../../_static/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    
+    <script>$(site.prepPage);</script>
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../learning/index.html">Learning</a></li>
+                <li class="first"><a href="../index.html">Tutorials</a></li>
+                <li class="first"><a href="../../examples/index.html">Examples</a></li>
+                <li><a href="../../js/index.html">JavaScript</a></li>
+                <li><a href="../../py/index.html">Python</a></li>
+                <li><a href="../../scala/index.html">Scala</a></li>
+                <li><a href="../../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+  
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Geometry Advanced</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#simplification">Simplification</a></li>
+<li><a class="reference internal" href="#transformations">Transformations</a></li>
+<li><a class="reference internal" href="#delaunay-triangulation-and-voronoi-diagrams">Delaunay Triangulation and Voronoi Diagrams</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../geom-basic/index.html"
+                        title="previous chapter">Geometry Basics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../proj-basic/index.html"
+                        title="next chapter">Projection Basics</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="geometry-advanced">
+<span id="tutorials-geom-advanced"></span><h1>Geometry Advanced<a class="headerlink" href="#geometry-advanced" title="Permalink to this headline">¶</a></h1>
+<p>The tutorial introduces some more advanced concepts of the geometry module such as:</p>
+<ul class="simple">
+<li><p>Simplification</p></li>
+<li><p>Affine transformation</p></li>
+<li><p>Voronoi diagrams and Delaunay triangulation</p></li>
+</ul>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>It is recommended that the <a class="reference internal" href="../geom-basic/index.html#tutorials-geom-basic"><span class="std std-ref">Geometry Basics</span></a> tutorial be completed before proceeding.</p>
+</div>
+<div class="section" id="simplification">
+<h2>Simplification<a class="headerlink" href="#simplification" title="Permalink to this headline">¶</a></h2>
+<p>The <em>simplify</em> function is used to reduce the number of coordinates composing a geometry, using
+the <a class="reference external" href="http://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm">Douglas-Peucker</a> algorithm.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.geom</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.render</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">poly</span><span class="p">);</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">simplify</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">));</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">simplify</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">js</span><span class="o">&gt;</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/viewer&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">()</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">geom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">)</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">geom</span><span class="p">.</span><span class="nx">Point</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]).</span><span class="nx">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9807852804032304</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.19509032201612825</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.923</span><span class="p">...</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">simplify</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9238795325112867</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3826834323650898</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7071</span><span class="p">...</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">simplify</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7071067811865476</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7071067811865475</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.1232</span><span class="p">...</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.render.Plot</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">).</span><span class="na">buffer</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">Plot</span><span class="o">.</span><span class="na">plot</span><span class="o">(</span><span class="n">poly</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">Plot</span><span class="o">.</span><span class="na">plot</span><span class="o">(</span><span class="n">poly</span><span class="o">.</span><span class="na">simplify</span><span class="o">(</span><span class="mf">0.05</span><span class="o">))</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">Plot</span><span class="o">.</span><span class="na">plot</span><span class="o">(</span><span class="n">poly</span><span class="o">.</span><span class="na">simplify</span><span class="o">(</span><span class="mf">0.1</span><span class="o">))</span>
+</pre></div>
+</div>
+<img alt="../../_images/simplify1.png" src="../../_images/simplify1.png" />
+<img alt="../../_images/simplify2.png" src="../../_images/simplify2.png" />
+<img alt="../../_images/simplify3.png" src="../../_images/simplify3.png" />
+<div class="refs py admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../py/api/geom/index.html#geoscript.geom.geom.simplify">simplify API reference</a></p>
+</div>
+<div class="refs groovy admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../groovy/api//geoscript/geom/Geometry.html#simplify(double)">simplify API reference</a></p>
+<p><a class="reference external" href="../../groovy/api//geoscript/geom/Geometry.html#simplifyPreservingTopology(double)">simplify preserving topology API reference</a></p>
+</div>
+</div>
+<div class="section" id="transformations">
+<h2>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h2>
+<p>The <em>transform</em> function is used to apply an affine (linear) transformation to a geometry object.
+Transformation properties include displacement, scaling, shearing, and rotation.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.geom</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.render</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="go"># displacement</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">([</span><span class="n">poly</span><span class="p">,</span> <span class="n">transform</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)])</span>
+
+<span class="go"># scale + shear</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">([</span><span class="n">poly</span><span class="p">,</span> <span class="n">transform</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">sx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shx</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
+
+<span class="go"># rotation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">transform</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">90</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">([</span><span class="n">poly</span><span class="p">,</span> <span class="n">transform</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">45</span><span class="p">))])</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">js</span><span class="o">&gt;</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/viewer&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">()</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">geom</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">)</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">geom</span><span class="p">.</span><span class="nx">Point</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]).</span><span class="nx">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span><span class="nx">dx</span><span class="o">:</span> <span class="mf">0.75</span><span class="p">})</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mf">1.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.7307852804032304</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.19509032201612825</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">...</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">geom</span><span class="p">.</span><span class="nx">Polygon</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]])</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span><span class="nx">sx</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">sy</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">shx</span><span class="o">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">geom</span><span class="p">.</span><span class="nx">Polygon</span><span class="p">([[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]]])</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]]]</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">union</span><span class="p">(</span><span class="nx">poly</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span><span class="nx">rotation</span><span class="o">:</span> <span class="mi">90</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)}))</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,...</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">static</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">render</span><span class="o">.</span><span class="na">Plot</span><span class="o">.</span><span class="na">plot</span>
+
+<span class="c1">// displacement</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">).</span><span class="na">buffer</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">plot</span><span class="o">([</span><span class="n">poly</span><span class="o">,</span> <span class="n">poly</span><span class="o">.</span><span class="na">translate</span><span class="o">(</span><span class="mf">0.75</span><span class="o">,</span><span class="mi">0</span><span class="o">)])</span>
+
+<span class="c1">// scale + shear</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Polygon</span><span class="o">([[[</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">],[</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">],[</span><span class="mi">1</span><span class="o">,</span><span class="mi">1</span><span class="o">],[</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">],[</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">]]])</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">plot</span><span class="o">([</span><span class="n">poly</span><span class="o">,</span> <span class="n">poly</span><span class="o">.</span><span class="na">scale</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">2</span><span class="o">).</span><span class="na">shear</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">)])</span>
+
+<span class="c1">// rotation</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Polygon</span><span class="o">([[[-</span><span class="mi">5</span><span class="o">,-</span><span class="mi">2</span><span class="o">],[</span><span class="mi">5</span><span class="o">,-</span><span class="mi">2</span><span class="o">],[</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">],[-</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">],[-</span><span class="mi">5</span><span class="o">,-</span><span class="mi">2</span><span class="o">]]])</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">poly</span><span class="o">.</span><span class="na">rotate</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">toRadians</span><span class="o">(</span><span class="mi">90</span><span class="o">)))</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">plot</span><span class="o">([</span><span class="n">poly</span><span class="o">,</span> <span class="n">poly</span><span class="o">.</span><span class="na">rotate</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">toRadians</span><span class="o">(</span><span class="mi">45</span><span class="o">))])</span>
+</pre></div>
+</div>
+<img alt="../../_images/transform1.png" src="../../_images/transform1.png" />
+<img alt="../../_images/transform2.png" src="../../_images/transform2.png" />
+<img alt="../../_images/transform3.png" src="../../_images/transform3.png" />
+<div class="refs py admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../py/api/geom/index.html#geoscript.geom.geom.transform">transform API reference</a></p>
+</div>
+<div class="refs groovy admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../groovy/api/geoscript/geom/Geometry.html">transform API reference</a></p>
+</div>
+</div>
+<div class="section" id="delaunay-triangulation-and-voronoi-diagrams">
+<h2>Delaunay Triangulation and Voronoi Diagrams<a class="headerlink" href="#delaunay-triangulation-and-voronoi-diagrams" title="Permalink to this headline">¶</a></h2>
+<p>For a set of input points (sites) in a given space, a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> computes a tessellation (set of
+polygons) of that space such that for each point p, the containing polygon consists of all points
+closer to p than any other point.</p>
+<p>In order to compute a Voronoi diagram, a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay triangulation</a> is first computed
+on the input points.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.geom</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript.render</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">35</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">10</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">delaunay</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">([</span><span class="n">poly</span><span class="p">,</span> <span class="n">dt</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vd</span> <span class="o">=</span> <span class="n">voronoi</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">([</span><span class="n">poly</span><span class="p">,</span> <span class="n">vd</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">static</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">render</span><span class="o">.</span><span class="na">Plot</span><span class="o">.</span><span class="na">plot</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Polygon</span><span class="o">([[[</span><span class="mi">35</span><span class="o">,</span><span class="mi">10</span><span class="o">],</span> <span class="o">[</span><span class="mi">10</span><span class="o">,</span><span class="mi">20</span><span class="o">],</span> <span class="o">[</span><span class="mi">15</span><span class="o">,</span><span class="mi">40</span><span class="o">],</span> <span class="o">[</span><span class="mi">45</span><span class="o">,</span><span class="mi">45</span><span class="o">],</span> <span class="o">[</span><span class="mi">35</span><span class="o">,</span><span class="mi">10</span><span class="o">]],</span> <span class="o">[[</span><span class="mi">20</span><span class="o">,</span><span class="mi">30</span><span class="o">],</span> <span class="o">[</span><span class="mi">35</span><span class="o">,</span><span class="mi">35</span><span class="o">],</span> <span class="o">[</span><span class="mi">30</span><span class="o">,</span><span class="mi">20</span><span class="o">],</span> <span class="o">[</span><span class="mi">20</span><span class="o">,</span><span class="mi">30</span><span class="o">]]])</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="na">delaunayTriangleDiagram</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">plot</span><span class="o">([</span><span class="n">poly</span><span class="o">,</span> <span class="n">dt</span><span class="o">])</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">vd</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="na">voronoiDiagram</span>
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">plot</span><span class="o">([</span><span class="n">poly</span><span class="o">,</span> <span class="n">vd</span><span class="o">])</span>
+</pre></div>
+</div>
+<img alt="../../_images/voronoi1.png" src="../../_images/voronoi1.png" />
+<img alt="../../_images/voronoi2.png" src="../../_images/voronoi2.png" />
+<div class="refs py admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../py/api/geom/index.html#geoscript.geom.geom.delaunay">delaunay API reference</a></p>
+<p><a class="reference external" href="../../py/api/geom/index.html#geoscript.geom.geom.voronoi">voronoi API reference</a></p>
+</div>
+<div class="refs groovy admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="../../groovy/api/geoscript/geom/Geometry.html#getDelaunayTriangleDiagram(boolean)">delaunay API reference</a></p>
+<p><a class="reference external" href="../../groovy/api/geoscript/geom/Geometry.html#getVoronoiDiagram()">voronoi API reference</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="../proj-basic/index.html" title="Projection Basics"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="../geom-basic/index.html" title="Geometry Basics"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">GeoScript</a> &#187;</li>
+            <li><a href="../index.html" accesskey="U">GeoScript Tutorials</a> &#187;</li>
+        <li><a href="#">GeoScript</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

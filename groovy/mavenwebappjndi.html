@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create GeoScript Web App with JNDI and Maven &#8212; GeoScript Groovy</title>
+    <link rel="stylesheet" href="_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gradle Quickstart" href="gradle.html" />
+    <link rel="prev" title="Maven Quickstart" href="mavenapp.html" />
+    <script src="_static/site.js"></script>
+    <script src="_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('groovy')</script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo" class="logo-groovy"><a href="..">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="index.html">Groovy</a></li>
+                <li><a href="quickstart.html">Quick Start</a></li>
+                <li><a href="api/index.html">API</a></li>
+                <li><a href="../js/index.html">JavaScript</a></li>
+                <li><a href="../py/index.html">Python</a></li>
+                <li><a href="../scala/index.html">Scala</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mavenapp.html"
+                        title="previous chapter">Maven Quickstart</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gradle.html"
+                        title="next chapter">Gradle Quickstart</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="create-geoscript-web-app-with-jndi-and-maven">
+<span id="mavenwebappjndi"></span><h1>Create GeoScript Web App with JNDI and Maven<a class="headerlink" href="#create-geoscript-web-app-with-jndi-and-maven" title="Permalink to this headline">¶</a></h1>
+<p>Create a web app Project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mvn</span> <span class="n">archetype</span><span class="p">:</span><span class="n">generate</span> <span class="o">-</span><span class="n">B</span> <span class="o">-</span><span class="n">DgroupId</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">geo</span> <span class="o">-</span><span class="n">DartifactId</span><span class="o">=</span><span class="n">geo</span><span class="o">-</span><span class="n">web</span> <span class="o">-</span><span class="n">DarchetypeArtifactId</span><span class="o">=</span><span class="n">maven</span><span class="o">-</span><span class="n">archetype</span><span class="o">-</span><span class="n">webapp</span>
+</pre></div>
+</div>
+<p>Move into the new directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">geo</span><span class="o">-</span><span class="n">web</span>
+</pre></div>
+</div>
+<p>Add Tomcat Plugin to the <strong>pom.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+    <span class="nt">&lt;plugin&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.apache.tomcat.maven<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>2.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+</pre></div>
+</div>
+<p>Add geoscript as a dependency in the <strong>pom.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repositories&gt;</span>
+    <span class="nt">&lt;repository&gt;</span>
+        <span class="nt">&lt;id&gt;</span>boundless<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Boundless Maven Repository<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;url&gt;</span>https://repo.boundlessgeo.com/main<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;snapshots&gt;</span>
+            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+        <span class="nt">&lt;/snapshots&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/repositories&gt;</span>
+
+<span class="nt">&lt;depenencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.geoscript<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>geoscript-groovy<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.14.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;depenencies&gt;</span>
+</pre></div>
+</div>
+<p>Set up groovlets by adding a servlet to the <strong>src/main/webapp/WEB-INF/web.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>Groovy<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>groovy.servlet.GroovyServlet<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>Groovy<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.groovy<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</pre></div>
+</div>
+<p>Now register a JNDI datasource to a PostGIS database.</p>
+<p>First, create the <strong>src/main/webapp/META-INF</strong> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">webapp</span><span class="o">/</span><span class="n">META</span><span class="o">-</span><span class="n">INF</span>
+</pre></div>
+</div>
+<p>Next, create a <strong>src/main/webapp/META-INF/context.xml</strong> file with a connection to our database:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Context&gt;</span>
+  <span class="nt">&lt;Resource</span> <span class="na">name=</span><span class="s">&quot;jdbc/geoscript&quot;</span>
+         <span class="na">auth=</span><span class="s">&quot;Container&quot;</span>
+         <span class="na">type=</span><span class="s">&quot;javax.sql.DataSource&quot;</span>
+         <span class="na">username=</span><span class="s">&quot;your_user_name_here&quot;</span>
+         <span class="na">password=</span><span class="s">&quot;super_secret_password_here&quot;</span>
+         <span class="na">driverClassName=</span><span class="s">&quot;org.postgresql.Driver&quot;</span>
+         <span class="na">url=</span><span class="s">&quot;jdbc:postgresql://localhost:5432/states&quot;</span>
+         <span class="na">maxActive=</span><span class="s">&quot;2&quot;</span>
+         <span class="na">maxIdle=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Context&gt;</span>
+</pre></div>
+</div>
+<p>Then, tell our web app about this datasource by registering it with our <strong>src/main/webapp/WEB-INF/web.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource-ref&gt;</span>
+    <span class="nt">&lt;res-ref-name&gt;</span>jdbc/datasourcename<span class="nt">&lt;/res-ref-name&gt;</span>
+    <span class="nt">&lt;res-type&gt;</span>javax.sql.DataSource<span class="nt">&lt;/res-type&gt;</span>
+    <span class="nt">&lt;res-auth&gt;</span>Container<span class="nt">&lt;/res-auth&gt;</span>
+<span class="nt">&lt;/resource-ref&gt;</span>
+</pre></div>
+</div>
+<p>Finally, we need to add the Postgres dependency to the tomcat maven plugin in the <strong>pom.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.tomcat.maven<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>postgresql<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>postgressql<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>8.4-701.jdbc2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+</div>
+<p>Now that we have our JNDI datasource set up, let’s write a Groovlet called <strong>src/main/webapp/layers.groovy</strong>:</p>
+<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geoscript.workspace.PostGIS</span>
+
+<span class="n">PostGIS</span> <span class="n">postgis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PostGIS</span><span class="o">(</span><span class="s2">&quot;java:comp/env/jdbc/geoscript&quot;</span><span class="o">,</span> <span class="nl">schema:</span> <span class="s2">&quot;public&quot;</span><span class="o">)</span>
+
+<span class="n">html</span><span class="o">.</span><span class="na">html</span> <span class="o">{</span>
+    <span class="n">head</span> <span class="o">{</span>
+        <span class="n">title</span><span class="o">(</span><span class="s2">&quot;Layers&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="n">body</span> <span class="o">{</span>
+        <span class="n">h1</span><span class="o">(</span><span class="s2">&quot;Layers&quot;</span><span class="o">)</span>
+        <span class="n">ul</span> <span class="o">{</span>
+            <span class="n">postgis</span><span class="o">.</span><span class="na">names</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">name</span> <span class="o">-&gt;</span>
+                <span class="n">li</span><span class="o">(</span><span class="s2">&quot;${name}&quot;</span><span class="o">)</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Let’s run the app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mvn</span> <span class="n">clean</span> <span class="n">install</span> <span class="n">tomcat7</span><span class="p">:</span><span class="n">run</span>
+</pre></div>
+</div>
+<p>And open the following url in our web browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">geo</span><span class="o">-</span><span class="n">web</span><span class="o">/</span><span class="n">layers</span><span class="o">.</span><span class="n">groovy</span>
+</pre></div>
+</div>
+<p>In the previous example we used PostGIS, but we can also use GeoDB, a spatially enabled H2 database.</p>
+<p>First, use git to clone the geodb project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jdeolive</span><span class="o">/</span><span class="n">geodb</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Then, move into the directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">geodb</span>
+</pre></div>
+</div>
+<p>And build the project with maven:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mvn</span> <span class="n">clean</span> <span class="n">install</span> <span class="n">assembly</span><span class="p">:</span><span class="n">assembly</span>
+</pre></div>
+</div>
+<p>Unzip the compiled and assembled zip file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">target</span><span class="o">/</span><span class="n">geodb</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p>And then run geodb to start a spatially enabled H2 server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geodb</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">geodb</span> <span class="o">-</span><span class="n">w</span>
+</pre></div>
+</div>
+<p>Add A resource to the <strong>src/main/webapp/META-INF/context.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Resource</span> <span class="na">name=</span><span class="s">&quot;jdbc/h2&quot;</span>
+  <span class="na">auth=</span><span class="s">&quot;Container&quot;</span>
+  <span class="na">type=</span><span class="s">&quot;javax.sql.DataSource&quot;</span>
+  <span class="na">driverClassName=</span><span class="s">&quot;org.h2.Driver&quot;</span>
+  <span class="na">url=</span><span class="s">&quot;jdbc:h2:tcp://localhost/test&quot;</span>
+  <span class="na">username=</span><span class="s">&quot;sa&quot;</span>
+  <span class="na">password=</span><span class="s">&quot;&quot;</span>
+  <span class="na">maxActive=</span><span class="s">&quot;2&quot;</span>
+  <span class="na">maxIdle=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>and a resource-ref to <strong>src/main/webapp/WEB-INF/web.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource-ref&gt;</span>
+    <span class="nt">&lt;res-ref-name&gt;</span>jdbc/h2<span class="nt">&lt;/res-ref-name&gt;</span>
+    <span class="nt">&lt;res-type&gt;</span>javax.sql.DataSource<span class="nt">&lt;/res-type&gt;</span>
+    <span class="nt">&lt;res-auth&gt;</span>Container<span class="nt">&lt;/res-auth&gt;</span>
+<span class="nt">&lt;/resource-ref&gt;</span>
+</pre></div>
+</div>
+<p>Add an H2 dependency to the tomcat plugin in the <strong>pom.xml</strong> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.tomcat.maven<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>com.h2database<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>h2<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>1.1.119<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+</div>
+<p>Add a new groovylet <strong>src/main/webapp/h2.groovy</strong>:</p>
+<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geoscript.workspace.H2</span>
+
+<span class="n">H2</span> <span class="n">h2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">H2</span><span class="o">(</span><span class="s2">&quot;java:comp/env/jdbc/h2&quot;</span><span class="o">)</span>
+
+<span class="n">html</span><span class="o">.</span><span class="na">html</span> <span class="o">{</span>
+    <span class="n">head</span> <span class="o">{</span>
+        <span class="n">title</span><span class="o">(</span><span class="s2">&quot;H2 Layers&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="n">body</span> <span class="o">{</span>
+        <span class="n">h1</span><span class="o">(</span><span class="s2">&quot;H2 Layers&quot;</span><span class="o">)</span>
+        <span class="n">ul</span> <span class="o">{</span>
+            <span class="n">h2</span><span class="o">.</span><span class="na">names</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">name</span> <span class="o">-&gt;</span>
+                <span class="n">li</span><span class="o">(</span><span class="s2">&quot;${name}&quot;</span><span class="o">)</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">table</span> <span class="o">(</span><span class="nl">border:</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">th</span><span class="o">(</span><span class="s2">&quot;geometry&quot;</span><span class="o">)</span>
+            <span class="n">h2</span><span class="o">[</span><span class="s2">&quot;SPATIAL&quot;</span><span class="o">].</span><span class="na">eachFeature</span> <span class="o">{</span> <span class="n">f</span> <span class="o">-&gt;</span>
+                <span class="n">tr</span> <span class="o">{</span>
+                    <span class="n">td</span><span class="o">(</span><span class="s2">&quot;${f.geom}&quot;</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Let’s run the app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mvn</span> <span class="n">clean</span> <span class="n">install</span> <span class="n">tomcat7</span><span class="p">:</span><span class="n">run</span>
+</pre></div>
+</div>
+<p>And open the following url in our web browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">geo</span><span class="o">-</span><span class="n">web</span><span class="o">/</span><span class="n">h2</span><span class="o">.</span><span class="n">groovy</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="gradle.html" title="Gradle Quickstart"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="mavenapp.html" title="Maven Quickstart"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="index.html">GeoScript Groovy</a> &#187;</li>
+        <li><a href="#">Create GeoScript Web App with JNDI and Maven</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

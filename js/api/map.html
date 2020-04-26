@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The map module &#8212; GeoScript JS</title>
+    <link rel="stylesheet" href="../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The process module" href="process.html" />
+    <link rel="prev" title="style.Symbolizer()" href="style/symbolizer.html" />
+    <script src="../_static/site.js"></script>
+    <script src="../_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('js')</script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo" class="logo-js"><a href="../..">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../index.html">JavaScript</a></li>
+                <li><a href="../quickstart.html">Quick Start</a></li>
+                <li><a href="index.html">API</a></li>
+                <li><a href="../../py/index.html">Python</a></li>
+                <li><a href="../../scala/index.html">Scala</a></li>
+                <li><a href="../../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The map module</a><ul>
+<li><a class="reference internal" href="#map-map"><code class="xref js js-class docutils literal notranslate"><span class="pre">map.Map()</span></code></a><ul>
+<li><a class="reference internal" href="#config-properties">Config Properties</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="style/symbolizer.html"
+                        title="previous chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">style.Symbolizer()</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="process.html"
+                        title="next chapter">The process module</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-map-module">
+<h1>The map module<a class="headerlink" href="#the-map-module" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#"><span class="doc">map</span></a> module provides map rendering functionality.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Map</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/map&quot;</span><span class="p">).</span><span class="nx">Map</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="map-map">
+<h2><a class="reference internal" href="#map.Map" title="map.Map"><code class="xref js js-class docutils literal notranslate"><span class="pre">map.Map()</span></code></a><a class="headerlink" href="#map-map" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="map.Map">
+<em class="property">class </em><code class="descclassname">map.</code><code class="descname">Map</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#map.Map" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – <code class="docutils literal notranslate"><span class="pre">Object</span></code> Configuration object.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a rule for rendering features.</p>
+</dd></dl>
+
+<div class="section" id="config-properties">
+<h3>Config Properties<a class="headerlink" href="#config-properties" title="Permalink to this headline">¶</a></h3>
+<dl class="describe">
+<dt>
+<code class="descname">layers</code></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Array</span></code>
+List of <a class="reference internal" href="layer.html#layer.Layer" title="layer.Layer"><code class="xref js js-class docutils literal notranslate"><span class="pre">layer.Layer()</span></code></a> objects making up this map.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">projection</code></dt>
+<dd><p><a class="reference internal" href="proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a>
+Optional projection for the map.  If set, calls to <code class="xref js js-func docutils literal notranslate"><span class="pre">render()</span></code> will
+result in a map image in this projection.  If not set, the projection
+of the first layer will be used.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="Map.projection">
+<code class="descclassname">Map.</code><code class="descname">projection</code><a class="headerlink" href="#Map.projection" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a>
+The projection for rendering layers.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="Map.add">
+<code class="descclassname">Map.</code><code class="descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Map.add" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> – <a class="reference internal" href="layer.html#layer.Layer" title="layer.Layer"><code class="xref js js-class docutils literal notranslate"><span class="pre">layer.Layer()</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>Add a layer to the map.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Map.render">
+<code class="descclassname">Map.</code><code class="descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Map.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the map’s collection of layers as an image.</p>
+<p>TODO: document render options</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="process.html" title="The process module"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="style/symbolizer.html" title="style.Symbolizer()"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GeoScript JS</a> &#187;</li>
+            <li><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li><a href="#">The map module</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

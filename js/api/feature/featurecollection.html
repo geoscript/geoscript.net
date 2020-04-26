@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>feature.FeatureCollection() &#8212; GeoScript JS</title>
+    <link rel="stylesheet" href="../../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="feature.Field()" href="field.html" />
+    <link rel="prev" title="feature.Feature()" href="feature.html" />
+    <script src="../../_static/site.js"></script>
+    <script src="../../_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('js')</script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo" class="logo-js"><a href="../../..">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">JavaScript</a></li>
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../index.html">API</a></li>
+                <li><a href="../../../py/index.html">Python</a></li>
+                <li><a href="../../../scala/index.html">Scala</a></li>
+                <li><a href="../../../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.FeatureCollection()</span></code></a><ul>
+<li><a class="reference internal" href="#example-use">Example Use</a></li>
+<li><a class="reference internal" href="#config-properties">Config Properties</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="feature.html"
+                        title="previous chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Feature()</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="field.html"
+                        title="next chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Field()</span></code></a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="feature-featurecollection">
+<h1><a class="reference internal" href="#feature.FeatureCollection" title="feature.FeatureCollection"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.FeatureCollection()</span></code></a><a class="headerlink" href="#feature-featurecollection" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="feature.FeatureCollection">
+<em class="property">class </em><code class="descclassname">feature.</code><code class="descname">FeatureCollection</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#feature.FeatureCollection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>Object</em>) – Configuration object.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new feature collection.  A feature collection provides an iterator
+for feature objects.  All features in the collection must share the same
+schema.</p>
+</dd></dl>
+
+<div class="section" id="example-use">
+<h2>Example Use<a class="headerlink" href="#example-use" title="Permalink to this headline">¶</a></h2>
+<p>The most common way to create a feature collection is to provide a generator
+function for creating new features (note the <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword below):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="p">{</span><span class="nx">Feature</span><span class="p">,</span> <span class="nx">FeatureCollection</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/feature&quot;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Point</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">).</span><span class="nx">Point</span><span class="p">;</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span>
+<span class="p">..</span>         <span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">..</span>           <span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="nx">i</span><span class="p">,</span> <span class="o">-</span><span class="nx">i</span><span class="p">]),</span>
+<span class="p">..</span>           <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature &quot;</span> <span class="o">+</span> <span class="nx">i</span>
+<span class="p">..</span>         <span class="p">}</span>
+<span class="p">..</span>       <span class="p">});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">feature</span> <span class="k">in</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>   <span class="nx">print</span><span class="p">(</span><span class="nx">feature</span><span class="p">);</span>
+<span class="p">..</span> <span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">loc</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Point</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature 0&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">loc</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Point</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature 1&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">loc</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Point</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature 2&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">loc</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Point</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature 3&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">loc</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Point</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;My Feature 4&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="config-properties">
+<h2>Config Properties<a class="headerlink" href="#config-properties" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<code class="descname">features</code></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code> | <code class="xref js js-class docutils literal notranslate"><span class="pre">Array()</span></code>
+Most commonly, a feature generator function is provided.  This function
+should yield new <a class="reference internal" href="feature.html#feature.Feature" title="feature.Feature"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Feature()</span></code></a> instances.  Alternatively, an
+array of features may be provided.</p>
+<p>Using a generator function:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="c1">// generate a million features</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">1</span><span class="nx">e6</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span>
+<span class="p">..</span>         <span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">..</span>           <span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()])</span>
+<span class="p">..</span>         <span class="p">}</span>
+<span class="p">..</span>       <span class="p">});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Using an array of features:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="c1">// provide a collection of two features</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="p">[</span>
+<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])}}),</span>
+<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])}})</span>
+<span class="p">..</span>   <span class="p">]</span>
+<span class="p">..</span> <span class="p">});</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">size</code></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code>
+An optional function to return the size of the collection.  By default
+the size property will be calculated on demand, by iterating through all
+features in the collection.  Because this can be very expensive, it is a
+good idea to provide a size function at construction for large collections
+of known size.  Note that this configuration option doesn’t apply when an
+array of features is provided for the <code class="docutils literal notranslate"><span class="pre">features</span></code> config property.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">knownSize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">knownSize</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">},</span>
+<span class="p">..</span>   <span class="nx">size</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">return</span> <span class="nx">knownSize</span><span class="p">;</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">size</span>
+<span class="mi">10</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">bounds</code></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code>
+An optional function to return the bounds of the collection.  By default
+the bounds of a collection will be calculated on demand by iterating through
+all features.  If the bounds is known ahead of time, a function should be
+provided that returns it.  Note that this configuration option doesn’t apply
+when an array of features is provided for the <code class="docutils literal notranslate"><span class="pre">features</span></code> config property.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Bounds</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">).</span><span class="nx">Bounds</span><span class="p">;</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">])}});</span>
+<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">45</span><span class="p">])}});</span>
+<span class="p">..</span>   <span class="p">},</span>
+<span class="p">..</span>   <span class="nx">bounds</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="c1">// making the bounds a bit bigger than feature bounds for demonstration</span>
+<span class="p">..</span>     <span class="k">return</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mi">155</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">55</span><span class="p">]);</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">bounds</span>
+<span class="o">&lt;</span><span class="nx">Bounds</span> <span class="p">[</span><span class="o">-</span><span class="mf">155.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">155.0</span><span class="p">,</span> <span class="mf">55.0</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">close</code></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code>
+An optional function that will be called when the iterator is closed.  If
+you need to do any cleanup when the iterator is closed, perform that cleanup
+in a close function.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">called</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">index</span><span class="o">:</span> <span class="nx">i</span><span class="p">}});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">},</span>
+<span class="p">..</span>   <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="nx">called</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">feature</span> <span class="k">in</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>   <span class="c1">// do something with each feature</span>
+<span class="p">..</span> <span class="p">}</span>
+
+<span class="o">&gt;&gt;</span> <span class="c1">// confirm that close method was called</span>
+<span class="o">&gt;&gt;</span> <span class="nx">called</span>
+<span class="kc">true</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="FeatureCollection.bounds">
+<code class="descclassname">FeatureCollection.</code><code class="descname">bounds</code><a class="headerlink" href="#FeatureCollection.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="../geom/bounds.html#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a>
+The bounds of all features in the collection.  Note that by default, this
+will be calculated on demand by iterating through all features.  To avoid
+this, supply a <code class="docutils literal notranslate"><span class="pre">bounds</span></code> function at construction.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FeatureCollection.size">
+<code class="descclassname">FeatureCollection.</code><code class="descname">size</code><a class="headerlink" href="#FeatureCollection.size" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">Number()</span></code>
+The number of features in the collection.  Note that this will be calculated
+on demand by iterating through all features.  To avoid this, supply a
+<code class="docutils literal notranslate"><span class="pre">size</span></code> function at construction.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FeatureCollection.schema">
+<code class="descclassname">FeatureCollection.</code><code class="descname">schema</code><a class="headerlink" href="#FeatureCollection.schema" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="schema.html#feature.Schema" title="feature.Schema"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Schema()</span></code></a>
+The common schema for all features in the collection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FeatureCollection.json">
+<code class="descclassname">FeatureCollection.</code><code class="descname">json</code><a class="headerlink" href="#FeatureCollection.json" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref js js-class docutils literal notranslate"><span class="pre">String()</span></code>
+The JSON representation of the feature collection (see <a class="reference external" href="http://geojson.org">http://geojson.org</a>).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="FeatureCollection.forEach">
+<code class="descclassname">FeatureCollection.</code><code class="descname">forEach</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FeatureCollection.forEach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call a function with each feature in this collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> – <code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code> A function to be called with each feature.
+The callback will receive two arguments: the <a class="reference internal" href="feature.html#feature.Feature" title="feature.Feature"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Feature()</span></code></a>
+and the current index.  If the function returns <code class="docutils literal notranslate"><span class="pre">false</span></code>, iteration
+will stop.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">}});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">print</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mi">0</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mi">1</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="FeatureCollection.map">
+<code class="descclassname">FeatureCollection.</code><code class="descname">map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FeatureCollection.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new feature collection with the results of calling the provided
+function on each feature in this collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> – <code class="xref js js-class docutils literal notranslate"><span class="pre">Function()</span></code> A function to be called with each feature.  The
+function must return a new <a class="reference internal" href="feature.html#feature.Feature" title="feature.Feature"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.Feature()</span></code></a> instance.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#feature.FeatureCollection" title="feature.FeatureCollection"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.FeatureCollection()</span></code></a> A new feature collection.</p>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">..</span>         <span class="nx">index</span><span class="o">:</span> <span class="nx">i</span>
+<span class="p">..</span>       <span class="p">}});</span>
+<span class="p">..</span>     <span class="p">}</span>
+<span class="p">..</span>   <span class="p">}</span>
+<span class="p">..</span> <span class="p">});</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">function</span> <span class="nx">transform</span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>   <span class="k">return</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_&quot;</span> <span class="o">+</span> <span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="p">..</span>   <span class="p">}});</span>
+<span class="p">..</span> <span class="p">}</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">mapped</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">transform</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">mapped</span> <span class="k">instanceof</span> <span class="nx">FeatureCollection</span>
+<span class="kc">true</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">mapped</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">print</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mi">0</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mi">1</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="field.html" title="feature.Field()"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="feature.html" title="feature.Feature()"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">GeoScript JS</a> &#187;</li>
+            <li><a href="../index.html" >API Reference</a> &#187;</li>
+            <li><a href="../feature.html" accesskey="U">The feature module</a> &#187;</li>
+        <li><a href="#"><code class="xref js js-class docutils literal notranslate"><span class="pre">feature.FeatureCollection()</span></code></a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

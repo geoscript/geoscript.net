@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeoScript &#8212; GeoScript</title>
+    <link rel="stylesheet" href="../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Projections" href="proj.html" />
+    <link rel="prev" title="Learning GeoScript" href="index.html" />
+    <script src="../_static/site.js"></script>
+    <script src="../_static/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    
+    <script>$(site.prepPage);</script>
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../index.html">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="index.html">Learning</a></li>
+                <li class="first"><a href="../tutorials/index.html">Tutorials</a></li>
+                <li class="first"><a href="../examples/index.html">Examples</a></li>
+                <li><a href="../js/index.html">JavaScript</a></li>
+                <li><a href="../py/index.html">Python</a></li>
+                <li><a href="../scala/index.html">Scala</a></li>
+                <li><a href="../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Learning GeoScript</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proj.html"
+                        title="next chapter">Projections</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="geometries">
+<span id="learning-geom"></span><h1>Geometries<a class="headerlink" href="#geometries" title="Permalink to this headline">¶</a></h1>
+<p class="show-chooser rubric">code chooser</p>
+<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom</span></code> module provides classes for representing two dimensional spatial
+objects, or geometries. Geometry objects are created by specifying sets of
+coordinates.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscrpt</span> <span class="kn">import</span> <span class="n">geom</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point</span>
+<span class="go">POINT (10 10)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">LineString</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span>
+<span class="go">LINESTRING (10 10, 20 20, 30 40)</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">GEOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">);</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">Point</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">point</span>
+<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span><span class="o">&gt;</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">LineString</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">line</span>
+<span class="o">&lt;</span><span class="nx">LineString</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">point</span> <span class="k">=</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+<span class="n">point</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Point</span> <span class="o">=</span> <span class="nc">POINT</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">)</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">line</span> <span class="k">=</span> <span class="nc">LineString</span><span class="o">((</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span> <span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span> <span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">))</span>
+<span class="n">line</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.LineString</span> <span class="o">=</span> <span class="nc">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.geom.*</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">POINT</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">([</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">],[</span><span class="mi">20</span><span class="o">,</span><span class="mi">20</span><span class="o">],[</span><span class="mi">30</span><span class="o">,</span><span class="mi">40</span><span class="o">])</span>
+<span class="o">===&gt;</span> <span class="n">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Geometries can also be created from <a class="reference external" href="http://en.wikipedia.org/wiki/Well-known_text">well known text</a> representation.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript</span> <span class="kn">import</span> <span class="n">geom</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">fromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span>
+<span class="go">POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">parser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/io/wkt&quot;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">parser</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="s2">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">poly</span> <span class="k">=</span> <span class="nc">Geometry</span><span class="o">.</span><span class="n">fromWKT</span><span class="o">(</span><span class="s">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="o">)</span>
+<span class="n">poly</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Geometry</span> <span class="o">=</span> <span class="nc">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.geom.*</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">fromWKT</span><span class="o">(</span><span class="s2">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>Geometry objects provide properties for statistics such as area and length.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript</span> <span class="kn">import</span> <span class="n">geom</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">fromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span><span class="o">.</span><span class="n">area</span>
+<span class="go">75.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span><span class="o">.</span><span class="n">length</span>
+<span class="go">36.180339887498945</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">parser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/io/wkt&quot;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">parser</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="s2">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="p">);</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">area</span>
+<span class="mi">75</span>
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">length</span>
+<span class="mf">36.180339887498945</span>
+</pre></div>
+</div>
+<div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">poly</span> <span class="k">=</span> <span class="nc">Geometry</span><span class="o">.</span><span class="n">fromWKT</span><span class="o">(</span><span class="s">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="o">)</span>
+<span class="n">poly</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Geometry</span> <span class="o">=</span> <span class="nc">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="n">area</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">75</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="n">length</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">36.180339887498945</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.geom.*</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">fromWKT</span><span class="o">(</span><span class="s2">&quot;POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))&quot;</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="na">area</span>
+<span class="o">===&gt;</span> <span class="mf">75.0</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="na">length</span>
+<span class="o">===&gt;</span> <span class="mf">36.180339887498945</span>
+</pre></div>
+</div>
+<p>There are also methods for calculating properties which are themselves
+geometries such as buffer and centroid.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript</span> <span class="kn">import</span> <span class="n">geom</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">LineString</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span><span class="o">.</span><span class="n">area</span>
+<span class="go">1041.9912814842407</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">centroid</span>
+<span class="go">POINT (21.12574113277207 24.188611699158105)</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">GEOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">);</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">LineString</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">area</span>
+<span class="mf">1041.9912814842407</span>
+
+<span class="o">&gt;&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">centroid</span>
+<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mf">21.12574113277207</span><span class="p">,</span> <span class="mf">24.188611699158105</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.GeoScript._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.GeoScript._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">line</span> <span class="k">=</span> <span class="nc">LineString</span><span class="o">((</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span> <span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span> <span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">))</span>
+<span class="n">line</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.LineString</span> <span class="o">=</span> <span class="nc">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">poly</span> <span class="k">=</span> <span class="n">line</span><span class="o">.</span><span class="n">buffer</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+<span class="n">poly</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Geometry</span> <span class="o">=</span> <span class="nc">POLYGON</span> <span class="o">((</span><span class="mf">11.781455848733053</span> <span class="mf">25.923591472464004</span><span class="o">,</span> <span class="mf">21.05572809000084</span> <span class="mf">44.47213595499958</span><span class="o">,</span> <span class="mf">22.100060210309515</span> <span class="mf">46.13114600374718</span><span class="o">,</span> <span class="mf">23.447982586398712</span> <span class="mf">47.55453954995706</span><span class="o">,</span> <span class="mf">25.04769531727891</span> <span class="mf">48.68761637789669</span><span class="o">,</span> <span class="mf">26.837722339831622</span> <span class="mf">49.48683298050514</span><span class="o">,</span> <span class="mf">28.74927391943886</span> <span class="mf">49.921475911950004</span><span class="o">,</span> <span class="mf">30.708890200906794</span> <span class="mf">49.97484208812642</span><span class="o">,</span> <span class="mf">32.64126422950409</span> <span class="mf">49.6448806768120</span><span class="o">...</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="n">area</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">1041.9912814842407</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">line</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">res1</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Point</span> <span class="o">=</span> <span class="nc">POINT</span> <span class="o">(</span><span class="mf">21.12574113277207</span> <span class="mf">24.188611699158105</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.geom.*</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">([</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">],[</span><span class="mi">20</span><span class="o">,</span><span class="mi">20</span><span class="o">],[</span><span class="mi">30</span><span class="o">,</span><span class="mi">40</span><span class="o">])</span>
+<span class="o">===&gt;</span> <span class="n">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="na">buffer</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">POLYGON</span> <span class="o">((</span><span class="mf">11.781455848733053</span> <span class="mf">25.923591472464004</span><span class="o">,</span> <span class="mf">21.05572809000084</span> <span class="mf">44.47213595499958</span><span class="o">,</span> <span class="mf">22.100060210309515</span> <span class="mf">46.13114600374718</span><span class="o">,</span> <span class="mf">23.447982586398712</span> <span class="mf">47.55453954995706</span><span class="o">,</span> <span class="mf">25.04769531727891</span> <span class="mf">48.68761637789669</span><span class="o">,</span> <span class="mf">26.837722339831622</span> <span class="mf">49.48683298050514</span><span class="o">,</span> <span class="mf">28.74927391943886</span> <span class="mf">49.921475911950004</span><span class="o">,</span> <span class="mf">30.708890200906794</span> <span class="mf">49.97484208812642</span><span class="o">,</span> <span class="mf">32.64126422950409</span> <span class="mf">49.644880676812036</span><span class="o">,</span> <span class="mf">34.47213595499958</span> <span class="mf">48.94427190999916</span><span class="o">,</span> <span class="mf">36.131146003747176</span> <span class="mf">47.89993978969049</span><span class="o">,</span> <span class="mf">37.55453954995706</span> <span class="mf">46.55201741360129</span><span class="o">,</span> <span class="mf">38.68761637789669</span> <span class="mf">44.95230468272109</span><span class="o">,</span> <span class="mf">39.48683298050514</span> <span class="mf">43.16227766016838</span><span class="o">,</span> <span class="mf">39.921475911950004</span> <span class="mf">41.25072608056114</span><span class="o">,</span> <span class="mf">39.97484208812642</span> <span class="mf">39.2911097990932</span><span class="o">,</span> <span class="mf">39.644880676812036</span> <span class="mf">37.35873577049591</span><span class="o">,</span> <span class="mf">38.94427190999916</span> <span class="mf">35.52786404500042</span><span class="o">,</span> <span class="mf">28.94427190999916</span> <span class="mf">15.52786404500042</span><span class="o">,</span> <span class="mf">28.112421851755606</span> <span class="mf">14.15289715336235</span><span class="o">,</span> <span class="mf">27.071067811865476</span> <span class="mf">12.928932188134524</span><span class="o">,</span> <span class="mf">17.071067811865476</span> <span class="mf">2.9289321881345254</span><span class="o">,</span> <span class="mf">15.555702330196024</span> <span class="mf">1.6853038769745474</span><span class="o">,</span> <span class="mf">13.826834323650898</span> <span class="mf">0.7612046748871322</span><span class="o">,</span> <span class="mf">11.950903220161283</span> <span class="mf">0.1921471959676957</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">0</span><span class="o">,</span> <span class="mf">8.049096779838719</span> <span class="mf">0.1921471959676957</span><span class="o">,</span> <span class="mf">6.173165676349103</span> <span class="mf">0.7612046748871322</span><span class="o">,</span> <span class="mf">4.44429766980398</span> <span class="mf">1.6853038769745474</span><span class="o">,</span> <span class="mf">2.9289321881345254</span> <span class="mf">2.9289321881345245</span><span class="o">,</span> <span class="mf">1.6853038769745474</span> <span class="mf">4.444297669803978</span><span class="o">,</span> <span class="mf">0.7612046748871322</span> <span class="mf">6.173165676349101</span><span class="o">,</span> <span class="mf">0.1921471959676957</span> <span class="mf">8.049096779838713</span><span class="o">,</span> <span class="mi">0</span> <span class="mf">9.999999999999998</span><span class="o">,</span> <span class="mf">0.1921471959676957</span> <span class="mf">11.950903220161283</span><span class="o">,</span> <span class="mf">0.761204674887134</span> <span class="mf">13.8268343236509</span><span class="o">,</span> <span class="mf">1.685303876974551</span> <span class="mf">15.555702330196027</span><span class="o">,</span> <span class="mf">2.9289321881345254</span> <span class="mf">17.071067811865476</span><span class="o">,</span> <span class="mf">11.781455848733053</span> <span class="mf">25.923591472464004</span><span class="o">))</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="na">area</span>
+<span class="o">===&gt;</span> <span class="mf">1041.9912814842407</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">line</span><span class="o">.</span><span class="na">centroid</span>
+<span class="o">===&gt;</span> <span class="n">POINT</span> <span class="o">(</span><span class="mf">21.12574113277207</span> <span class="mf">24.188611699158105</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code> class also contains operations and predicates for
+determining spatial relationships such as intersection and containment.</p>
+<div class="code py highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geoscript</span> <span class="kn">import</span> <span class="n">geom</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">LineString</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="go">LINESTRING (10 10, 20 20)</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">GEOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">);</span>
+
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">LineString</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">Polygon</span><span class="p">([[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]]);</span>
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">intersects</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="kc">true</span>
+<span class="o">&gt;&gt;</span> <span class="nx">poly</span><span class="p">.</span><span class="nx">intersection</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">LineString</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+<span class="k">import</span> <span class="nn">org.geoscript.geometry._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">line</span> <span class="k">=</span> <span class="nc">LineString</span><span class="o">((</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span> <span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span> <span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">))</span>
+<span class="n">line</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.LineString</span> <span class="o">=</span> <span class="nc">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">poly</span> <span class="k">=</span> <span class="nc">Polygon</span><span class="o">(</span><span class="nc">LineString</span><span class="o">((</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span> <span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span> <span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span> <span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">15</span><span class="o">),</span> <span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)),</span> <span class="nc">Nil</span><span class="o">)</span>
+<span class="n">poly</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Polygon</span> <span class="o">=</span> <span class="nc">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="n">intersects</span><span class="o">(</span><span class="n">line</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="n">intersection</span><span class="o">(</span><span class="n">line</span><span class="o">)</span>
+<span class="n">res1</span><span class="k">:</span> <span class="kt">org.geoscript.geometry.Geometry</span> <span class="o">=</span> <span class="nc">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.geom.*</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">([</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">],</span> <span class="o">[</span><span class="mi">20</span><span class="o">,</span><span class="mi">20</span><span class="o">],</span> <span class="o">[</span><span class="mi">30</span><span class="o">,</span><span class="mi">40</span><span class="o">])</span>
+<span class="o">===&gt;</span> <span class="n">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span> <span class="mi">40</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Polygon</span><span class="o">([</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">],[</span><span class="mi">10</span><span class="o">,</span><span class="mi">20</span><span class="o">],[</span><span class="mi">20</span><span class="o">,</span><span class="mi">20</span><span class="o">],[</span><span class="mi">20</span><span class="o">,</span><span class="mi">15</span><span class="o">],[</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">])</span>
+<span class="o">===&gt;</span> <span class="n">POLYGON</span> <span class="o">((</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="o">))</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="na">intersects</span><span class="o">(</span><span class="n">line</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="kc">true</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">poly</span><span class="o">.</span><span class="na">intersection</span><span class="o">(</span><span class="n">line</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">LINESTRING</span> <span class="o">(</span><span class="mi">10</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">20</span> <span class="mi">20</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="refs py admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The geoscript geometry module is based on the <a class="reference external" href="http://tsusiatsoftware.net/jts/main.html">JTS</a> library. Classes in the
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">geom</span></code> module are extensions of their counterparts from JTS which
+means any JTS geometry methods can be called on a geoscript geometry instance.
+See the JTS <a class="reference external" href="http://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html">javadocs</a>
+for more information.</p>
+</div>
+<div class="refs js admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For full details on the available geometry types and their properties and
+methods, see the <a class="reference external" href="../js/api/geom.html">JavaScript API reference</a> for the
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">geom</span></code> module.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="proj.html" title="Projections"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="index.html" title="Learning GeoScript"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GeoScript</a> &#187;</li>
+            <li><a href="index.html" accesskey="U">Learning GeoScript</a> &#187;</li>
+        <li><a href="#">GeoScript</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

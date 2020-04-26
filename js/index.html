@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeoScript JS &#8212; GeoScript JS</title>
+    <link rel="stylesheet" href="_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quickstart.html" />
+    <script src="_static/site.js"></script>
+    <script src="_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('js')</script>
+    
+    <script src="_static/jugl.js"></script>
+    <script>
+        $(function() {
+            site.prepCommits('js', 'geoscript/geoscript-js')
+        });
+    </script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo" class="logo-js"><a href="..">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="#">JavaScript</a></li>
+                <li><a href="quickstart.html">Quick Start</a></li>
+                <li><a href="api/index.html">API</a></li>
+                <li><a href="../py/index.html">Python</a></li>
+                <li><a href="../scala/index.html">Scala</a></li>
+                <li><a href="../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            
+   <div class="download">
+     <h1>Download</h1>
+     <p>
+        <a href="download.html">Version 1.0.0</a>
+     </p>
+   </div>
+
+            <h2>Activity</h2>
+            <h4>geoscript.js commits</h4>
+            <div id="jscommits" class="commits"></div>
+            <a href="http://github.com/geoscript/geoscript-js/commits/master/">see all ...</a>
+            <div id="gitcommits">
+                <ul>
+                    <li jugl:repeat="commit commits.slice(0, 3)">
+                        <a jugl:attributes="href 'http://github.com' + commit.url"
+                            jugl:content="commit.message">
+                            commit message here
+                        </a><br />
+                        <span class="mini">
+                            [by
+                            <a jugl:attributes="href 'http://github.com/' + commit.author.login"
+                                jugl:content="commit.author.name">
+                                commit author here
+                            </a>
+                            on
+                            <span jugl:replace="commit.authored_date.substring(0, 10)">
+                                commit date here
+                            </span>]
+                        </span>
+                    </li>
+                </ul>
+           </div>
+       </div>
+  </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="geoscript-js">
+<h1>GeoScript JS<a class="headerlink" href="#geoscript-js" title="Permalink to this headline">¶</a></h1>
+<p>GeoScript JS is a JavaScript implementation of GeoScript packaged as a set of <a class="reference external" href="http://commonjs.org/">CommonJS</a> modules for Rhino.</p>
+<blockquote>
+<div><dl class="simple">
+<dt><a class="reference internal" href="quickstart.html#quickstart"><span class="std std-ref">Quickstart</span></a></dt><dd><p>Get up and running with GeoScript</p>
+</dd>
+<dt><a class="reference external" href="../learning">Learning</a></dt><dd><p>A tour of the GeoScript library</p>
+</dd>
+<dt><a class="reference external" href="../examples">Examples</a></dt><dd><p>A library of examples and howto’s</p>
+</dd>
+<dt><a class="reference internal" href="api/index.html#api"><span class="std std-ref">API</span></a></dt><dd><p>The GeoScript JS API reference</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

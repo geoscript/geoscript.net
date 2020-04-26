@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeoScript &#8212; GeoScript</title>
+    <link rel="stylesheet" href="../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Rasters" href="raster.html" />
+    <link rel="prev" title="Layers and Workspaces" href="layer.html" />
+    <script src="../_static/site.js"></script>
+    <script src="../_static/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    
+    <script>$(site.prepPage);</script>
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../index.html">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="index.html">Learning</a></li>
+                <li class="first"><a href="../tutorials/index.html">Tutorials</a></li>
+                <li class="first"><a href="../examples/index.html">Examples</a></li>
+                <li><a href="../js/index.html">JavaScript</a></li>
+                <li><a href="../py/index.html">Python</a></li>
+                <li><a href="../scala/index.html">Scala</a></li>
+                <li><a href="../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  
+    
+            <div id="code-chooser">
+                <h3>Language for Examples</h3>
+                <div class="fg-buttonset fg-buttonset-single">
+                    <button id="chooser-js" class="fg-button ui-state-default ui-priority-primary ui-corner-left">JavaScript</button>
+                    <button id="chooser-py" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Python</button>
+                    <button id="chooser-scala" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Scala</button>
+                    <button id="chooser-groovy" class="fg-button ui-state-default ui-priority-primary ui-corner-right">Groovy</button>
+                </div>
+            </div>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="layer.html"
+                        title="previous chapter">Layers and Workspaces</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="raster.html"
+                        title="next chapter">Rasters</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="map-and-styles">
+<span id="learning-map"></span><h1>Map and Styles<a class="headerlink" href="#map-and-styles" title="Permalink to this headline">¶</a></h1>
+<p class="show-chooser rubric">code chooser</p>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">Map</span></code> can draw one or more <code class="xref py py-class docutils literal notranslate"><span class="pre">Layers</span></code> using <code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code>.</p>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.render.Map</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.render.Map</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span><span class="nl">width:</span><span class="mi">400</span><span class="o">,</span> <span class="nl">height:</span><span class="mi">400</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">map</span><span class="o">.</span><span class="na">Map</span><span class="nd">@f58046e</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.layer.Shapefile</span>
+<span class="o">===&gt;</span> <span class="o">[</span><span class="kn">import</span> <span class="nn">geoscript.render.Map</span><span class="o">,</span> <span class="kn">import</span> <span class="nn">geoscript.layer.Shapefile</span><span class="o">]</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">shp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Shapefile</span><span class="o">(</span><span class="s2">&quot;states.shp&quot;</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">layer</span><span class="o">.</span><span class="na">Shapefile</span><span class="nd">@a5c18ff</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">.</span><span class="na">bounds</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="na">bounds</span>
+<span class="o">===&gt;</span> <span class="o">(-</span><span class="mf">124.73142200000001</span><span class="o">,</span><span class="mf">24.955967</span><span class="o">,-</span><span class="mf">66.969849</span><span class="o">,</span><span class="mf">49.371735</span><span class="o">,</span><span class="nl">EPSG:</span><span class="mi">4326</span><span class="o">)</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">.</span><span class="na">addLayer</span><span class="o">(</span><span class="n">shp</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="kc">null</span>
+
+<span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="s2">&quot;states1.png&quot;</span><span class="o">)</span>
+<span class="o">===&gt;</span> <span class="kc">null</span>
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Map</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/map&quot;</span><span class="p">).</span><span class="nx">Map</span><span class="p">;</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Layer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/layer&quot;</span><span class="p">).</span><span class="nx">Layer</span><span class="p">;</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Layer</span><span class="p">({</span>
+  <span class="o">&gt;</span>     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;states&quot;</span><span class="p">,</span>
+  <span class="o">&gt;</span>     <span class="nx">workspace</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="o">&gt;</span> <span class="p">});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">layer</span><span class="p">);</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">map</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;states1.png&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/states1.png" src="../_images/states1.png" />
+<p>Layers have a default Style but we can customize that Style Symbolizers like Stroke and Fill.</p>
+<div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span>groovy:000&gt; import geoscript.style.*
+===&gt; [import geoscript.map.Map, import geoscript.layer.Shapefile, import geoscript.style.*]
+
+groovy:000&gt; shp.style = new Fill(&quot;#999999&quot;) + new Stroke(&quot;#666666&quot;, 0.1)
+===&gt; Composite (Fill(color = #999999, opacity = 1.0), Stroke(color = #666666, width = 0.1))
+
+groovy:000&gt; map.render(&quot;states2.png&quot;)
+===&gt; null
+</pre></div>
+</div>
+<div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="p">{</span><span class="nx">Stroke</span><span class="p">,</span> <span class="nx">Fill</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/style&quot;</span><span class="p">)</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="nx">Stroke</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nx">brush</span><span class="o">:</span> <span class="s2">&quot;#666666&quot;</span><span class="p">}).</span><span class="nx">and</span><span class="p">(</span><span class="nx">Fill</span><span class="p">(</span><span class="s2">&quot;#999999&quot;</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="nx">Style</span> <span class="nx">parts</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Stroke</span> <span class="nx">width</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nx">opacity</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">brush</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Color</span> <span class="nx">value</span><span class="o">:</span> <span class="p">...</span><span class="o">&gt;</span>
+
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">map</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;states2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/states2.png" src="../_images/states2.png" />
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="raster.html" title="Rasters"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="layer.html" title="Layers and Workspaces"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GeoScript</a> &#187;</li>
+            <li><a href="index.html" accesskey="U">Learning GeoScript</a> &#187;</li>
+        <li><a href="#">GeoScript</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>

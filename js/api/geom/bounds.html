@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>geom.Bounds() &#8212; GeoScript JS</title>
+    <link rel="stylesheet" href="../../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="geom.CircularString()" href="circularstring.html" />
+    <link rel="prev" title="geom.MultiPolygon()" href="multipolygon.html" />
+    <script src="../../_static/site.js"></script>
+    <script src="../../_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('js')</script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo" class="logo-js"><a href="../../..">GeoScript</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">JavaScript</a></li>
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../index.html">API</a></li>
+                <li><a href="../../../py/index.html">Python</a></li>
+                <li><a href="../../../scala/index.html">Scala</a></li>
+                <li><a href="../../../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a><ul>
+<li><a class="reference internal" href="#example-use">Example Use</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="multipolygon.html"
+                        title="previous chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.MultiPolygon()</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="circularstring.html"
+                        title="next chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.CircularString()</span></code></a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="geom-bounds">
+<h1><a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a><a class="headerlink" href="#geom-bounds" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="geom.Bounds">
+<em class="property">class </em><code class="descclassname">geom.</code><code class="descname">Bounds</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#geom.Bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new bounds given minX, minY, maxX, maxY, and an optional
+projection.</p>
+</dd></dl>
+
+<div class="section" id="example-use">
+<h2>Example Use<a class="headerlink" href="#example-use" title="Permalink to this headline">¶</a></h2>
+<p>Sample code to create a new bounds:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Bounds</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">).</span><span class="nx">Bounds</span><span class="p">;</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mi">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mi">90</span>
+<span class="p">..</span> <span class="p">});</span>
+<span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">width</span>
+<span class="mi">360</span>
+<span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">height</span>
+<span class="mi">180</span>
+</pre></div>
+</div>
+<p>Sample code to create a new bounds with a projection:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">({</span>
+<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mi">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span> <span class="nx">projection</span><span class="o">:</span> <span class="s2">&quot;epsg:4326&quot;</span>
+<span class="p">..</span> <span class="p">});</span>
+<span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">projection</span>
+<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Sample code to create a new bounds from an array of [minX, minY, maxX, maxY] values:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="Bounds.area">
+<code class="descclassname">Bounds.</code><code class="descname">area</code><a class="headerlink" href="#Bounds.area" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The are of this bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.empty">
+<code class="descclassname">Bounds.</code><code class="descname">empty</code><a class="headerlink" href="#Bounds.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code>
+Empty bounds have zero width and height.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.height">
+<code class="descclassname">Bounds.</code><code class="descname">height</code><a class="headerlink" href="#Bounds.height" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The difference between the maximum and minimum x values.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.maxX">
+<code class="descclassname">Bounds.</code><code class="descname">maxX</code><a class="headerlink" href="#Bounds.maxX" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The maximum value in the first (x) dimension for this bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.maxY">
+<code class="descclassname">Bounds.</code><code class="descname">maxY</code><a class="headerlink" href="#Bounds.maxY" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The maximum value in the second (y) dimension for this bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.minX">
+<code class="descclassname">Bounds.</code><code class="descname">minX</code><a class="headerlink" href="#Bounds.minX" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The minimum value in the first (x) dimension for this bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.minY">
+<code class="descclassname">Bounds.</code><code class="descname">minY</code><a class="headerlink" href="#Bounds.minY" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+The minimum value in the second (y) dimension for this bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Bounds.projection">
+<code class="descclassname">Bounds.</code><code class="descname">projection</code><a class="headerlink" href="#Bounds.projection" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="../proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a>
+The coordinate reference system for the bounds (if specified).  Setting
+this value will not transform coordinates of the bounds.  To transform
+a bounds from one projection to another, use the <a class="reference internal" href="#Bounds.transform" title="Bounds.transform"><code class="xref js js-func docutils literal notranslate"><span class="pre">transform()</span></code></a>
+method.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="Bounds.clone">
+<code class="descclassname">Bounds.</code><code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.clone" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></p>
+</dd>
+</dl>
+<p>Generate a copy of this bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.contains">
+<code class="descclassname">Bounds.</code><code class="descname">contains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.contains" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> – <a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a> or <a class="reference internal" href="geometry.html#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></p>
+</dd>
+</dl>
+<p>Determine if the given point or geometry lies in the interior or on the
+boundary of this bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.equals">
+<code class="descclassname">Bounds.</code><code class="descname">equals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.equals" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> – <a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></p>
+</dd>
+</dl>
+<p>Determine if two bounds are equivalent.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.include">
+<code class="descclassname">Bounds.</code><code class="descname">include</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.include" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> – <a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a> or <a class="reference internal" href="geometry.html#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a> This bounds.</p>
+</dd>
+</dl>
+<p>Extends this bounds as necessary to include the given bounds or geometry.
+Modifies this bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.intersection">
+<code class="descclassname">Bounds.</code><code class="descname">intersection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> – <a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></p>
+</dd>
+</dl>
+<p>Generate a bounds that is the intersection of this bounds with the given
+bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.intersects">
+<code class="descclassname">Bounds.</code><code class="descname">intersects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> – <a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a> or <a class="reference internal" href="geometry.html#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></p>
+</dd>
+</dl>
+<p>Determine if the interiors or edges of two bounds intersect.  If a
+geometry is given, intersection will be determined as if this bounds
+were a polygon.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.toArray">
+<code class="descclassname">Bounds.</code><code class="descname">toArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.toArray" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Array</span></code></p>
+</dd>
+</dl>
+<p>Return an array containing [minX, minY, maxX, maxY] values for this
+bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.toPolygon">
+<code class="descclassname">Bounds.</code><code class="descname">toPolygon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.toPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="polygon.html#geom.Polygon" title="geom.Polygon"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Polygon()</span></code></a></p>
+</dd>
+</dl>
+<p>Generate a polygon with the corner coordinates of this bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bounds.transform">
+<code class="descclassname">Bounds.</code><code class="descname">transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Bounds.transform" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>projection</strong> – <a class="reference internal" href="../proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></p>
+</dd>
+</dl>
+<p>Generate the bounds of the geometry that results from transforming this
+bounds to another projection.  This bounds must have a <a class="reference internal" href="#Bounds.projection" title="Bounds.projection"><code class="xref js js-attr docutils literal notranslate"><span class="pre">projection</span></code></a>
+set before calling this method.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="circularstring.html" title="geom.CircularString()"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="multipolygon.html" title="geom.MultiPolygon()"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">GeoScript JS</a> &#187;</li>
+            <li><a href="../index.html" >API Reference</a> &#187;</li>
+            <li><a href="../geom.html" accesskey="U">The geom module</a> &#187;</li>
+        <li><a href="#"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, Jared Erickson.
+</div>
+
+  </body>
+</html>
