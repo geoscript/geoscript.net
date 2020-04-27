@@ -69,7 +69,7 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.  See the :ref:`learning center <learning>` for an
 overview of the library.
 
-GeoScript is open source and licenced under the `MIT License <http://en.wikipedia.org/wiki/MIT_License>`_.
+GeoScript is open source and licenced under the `MIT License <https://en.wikipedia.org/wiki/MIT_License>`_.
 
 
 .. toctree::

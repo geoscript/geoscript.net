@@ -208,7 +208,7 @@ with it. This can happen for a few different reasons.
 
 In this case some useful online resources are:
 
-  http://spatialreference.org/
+  https://spatialreference.org/
 
     Catalogue of many spatial reference systems.
 

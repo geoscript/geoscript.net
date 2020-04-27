@@ -68,7 +68,7 @@ coordinates.
     ===> LINESTRING (10 10, 20 20, 30 40)
   
 Geometries can also be created from `well known text
-<http://en.wikipedia.org/wiki/Well-known_text>`_ representation.
+<https://en.wikipedia.org/wiki/Well-known_text>`_ representation.
 
 .. cssclass:: code py
 
@@ -314,11 +314,11 @@ determining spatial relationships such as intersection and containment.
 .. seealso::
 
     The geoscript geometry module is based on the `JTS
-    <http://tsusiatsoftware.net/jts/main.html>`_ library. Classes in the
+    <https://tsusiatsoftware.net/jts/main.html>`_ library. Classes in the
     :mod:`geom` module are extensions of their counterparts from JTS which
     means any JTS geometry methods can be called on a geoscript geometry instance.
     See the JTS `javadocs
-    <http://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`_
+    <https://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`_
     for more information.
 
 .. cssclass:: refs js

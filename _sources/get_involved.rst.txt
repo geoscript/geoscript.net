@@ -8,16 +8,16 @@ Discussion Group
 
 The GeoScript Google Group is the best place to ask questions and report issues.
 
-  http://groups.google.com/group/geoscript
+  https://groups.google.com/group/geoscript
 
 Source Code
 -----------
 
-The GeoScript sources are stored at `github <http://github.com/>`__.
+The GeoScript sources are stored at `github <https://github.com/>`__.
 
 JavaScript:
 
-   http://github.com/geoscript/geoscript-js
+   https://github.com/geoscript/geoscript-js
 
    ::
 
@@ -25,7 +25,7 @@ JavaScript:
 
 Python:
 
-   http://github.com/jdeolive/geoscript-py
+   https://github.com/jdeolive/geoscript-py
 
    ::
 
@@ -33,7 +33,7 @@ Python:
 
 Scala:
 
-   http://github.com/dwins/geoscript.scala
+   https://github.com/dwins/geoscript.scala
 
    ::
 
@@ -41,7 +41,7 @@ Scala:
 
 Groovy:
     
-    http://github.com/jericks/geoscript-groovy
+    https://github.com/jericks/geoscript-groovy
 
     ::
 
@@ -55,16 +55,16 @@ Report any bugs or problems with GeoScript in the issue tracker.
 
 JavaScript:
 
-   http://github.com/geoscript/geoscript-js/issues
+   https://github.com/geoscript/geoscript-js/issues
 
 Python:
 
-   http://github.com/jdeolive/geoscript-py/issues
+   https://github.com/jdeolive/geoscript-py/issues
 
 Scala:
 
-   http://github.com/dwins/geoscript.scala/issues
+   https://github.com/dwins/geoscript.scala/issues
 
 Groovy:
 
-   http://github.com/jericks/geoscript-groovy/issues
+   https://github.com/jericks/geoscript-groovy/issues

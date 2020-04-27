@@ -28,7 +28,7 @@ and the spatial bounds of the data.
 .. note::
 
     In the above code sample the :class:`layer.Shapefile` class is a layer
-    subclass specific to the `Shapefile <http://en.wikipedia.org/wiki/Shapefile>`_
+    subclass specific to the `Shapefile <https://en.wikipedia.org/wiki/Shapefile>`_
     format.
 
 .. cssclass:: code js
