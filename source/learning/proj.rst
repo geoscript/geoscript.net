@@ -12,7 +12,7 @@ systems and transforming data between spatial projections.
 
 The :class:`Projection` class is used to represent a spatial reference
 system. A common way to identify a spatial reference system is with an `EPSG
-<http://en.wikipedia.org/wiki/European_Petroleum_Survey_Group>`_ code.
+<https://en.wikipedia.org/wiki/European_Petroleum_Survey_Group>`_ code.
 
 GeoScript projections can be created with an EPSG code.
 
@@ -105,7 +105,7 @@ The EPSG code can also be accessed for any projection.
     ===> EPSG:4326
 
 Often a spatial reference system is defined by `well-known text
-<http://en.wikipedia.org/wiki/Well-known_text#Spatial_reference_systems>`_
+<https://en.wikipedia.org/wiki/Well-known_text#Spatial_reference_systems>`_
 rather than an EPSG code. A :class:`Projection` object can be created directly
 from well known text.
 

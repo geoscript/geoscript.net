@@ -18,7 +18,7 @@ Simplification
 --------------
 
 The *simplify* function is used to reduce the number of coordinates composing a geometry, using
-the `Douglas-Peucker <http://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm>`_ algorithm.
+the `Douglas-Peucker <https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm>`_ algorithm.
 
 .. cssclass:: code py
 
@@ -178,12 +178,12 @@ Delaunay Triangulation and Voronoi Diagrams
 -------------------------------------------
 
 For a set of input points (sites) in a given space, a 
-`Voronoi diagram <http://en.wikipedia.org/wiki/Voronoi_diagram>`_ computes a tessellation (set of
+`Voronoi diagram <https://en.wikipedia.org/wiki/Voronoi_diagram>`_ computes a tessellation (set of
 polygons) of that space such that for each point p, the containing polygon consists of all points
 closer to p than any other point.
 
 In order to compute a Voronoi diagram, a 
-`Delaunay triangulation <http://en.wikipedia.org/wiki/Delaunay_triangulation>`_ is first computed
+`Delaunay triangulation <https://en.wikipedia.org/wiki/Delaunay_triangulation>`_ is first computed
 on the input points. 
 
 .. cssclass:: code py

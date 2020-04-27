@@ -25,9 +25,9 @@
 {%- macro index_sidebar() %}
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-          <a href="http://geoscriptblog.blogspot.com/feeds/posts/default" class="news">GeoScript News</a>
+          <a href="https://geoscriptblog.blogspot.com/feeds/posts/default" class="news">GeoScript News</a>
           <script src="http://landmark-project.com/feed2js/feed2js.php?src=http%3A%2F%2Fgeoscriptblog.blogspot.com%2Ffeeds%2Fposts%2Fdefault%3Falt%3Drss&num=3&desc=75"></script>
-          <a href="http://geoscriptblog.blogspot.com">Read more...</a>
+          <a href="https://geoscriptblog.blogspot.com">Read more...</a>
         </div>
     </div>
 {%- endmacro %}
@@ -46,8 +46,8 @@
 {% block extrahead %}
     <script src="{{ pathto('_static/site.js', 1) }}"></script>
     <script src="{{ pathto('_static/jquery.cookie.js', 1) }}"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
     {% if pagename == "index" %}
     <script src="{{ pathto('_static/jugl.js', 1) }}"></script>
     <script>$(site.prepIndex);</script>
@@ -117,7 +117,7 @@
 
 {% block footer %}
 <div class="footer">
-    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+    <a rel="license" href="https://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
     {%- if hasdoc('copyright') %}
       {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
     {%- else %}
