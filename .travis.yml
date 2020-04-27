@@ -16,6 +16,7 @@ script:
   - sdk install maven
   - ant site
   - touch build/html/.nojekyll
+  - echo "geoscript.net" > build/html/CNAME
 deploy:
   provider: pages
   skip_cleanup: true
