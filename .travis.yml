@@ -1,0 +1,27 @@
+dist: bionic
+language: generic
+jdk: openjdk8
+before_install:
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
+  - sudo apt-get update
+  - sudo apt-get install python3
+  - sudo apt-get install python3-pip
+script:
+  - pip3 install --upgrade -r requirements.txt
+  - curl -s get.sdkman.io | bash
+  - source "$HOME/.sdkman/bin/sdkman-init.sh"
+  - echo sdkman_auto_answer=true > ~/.sdkman/etc/config
+  - source "/home/travis/.sdkman/bin/sdkman-init.sh"
+  - sdk install ant
+  - sdk install maven
+  - ant site
+  - touch build/html/.nojekyll
+  - echo "geoscript.net" > build/html/CNAME
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GEOSCRIPT_GITHUB_OAUTH_TOKEN
+  keep-history: true
+  on:
+    branch: GSO-GITHUBPAGES
+  local_dir: build/html

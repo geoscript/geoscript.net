@@ -18,7 +18,7 @@ geometry module. It focuses mainly on basic topics such as:
 JTS
 ---
 
-The `JTS Topology Suite <http://tsusiatsoftware.net/jts/main.html>`_ is in some way at the core
+The `JTS Topology Suite <https://tsusiatsoftware.net/jts/main.html>`_ is in some way at the core
 of any Java application doing geospatial. It is the geometry engine upon which libraries such as
 GeoTools are built on. The GeoScript geometry module is for the most part a wrapper around JTS
 that adds some convenience functions making JTS more useful in a scripting environment. Which 
@@ -391,7 +391,7 @@ Operations such as *buffer* compute a new geometry object from an existing one.
 
 .. seealso::
 
-   `JTS Geometry JavaDoc <http://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`__
+   `JTS Geometry JavaDoc <https://tsusiatsoftware.net/jts/javadoc/com/vividsolutions/jts/geom/Geometry.html>`__
 
 I/O
 ---

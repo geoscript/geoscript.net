@@ -1,6 +1,6 @@
 .. cssclass:: tagline
 
-    GeoScript adds spatial capabilities to dynamic scripting languages 
+    GeoScript adds spatial capabilities to dynamic scripting languages
 
 GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `Scala <scala>`_, and `Groovy <groovy>`_.
 
@@ -45,10 +45,10 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
    scala> import org.geoscript.projection._
    scala> val p = Point(-110, 45.7) in Projection("EPSG:4326")
    p: org.geoscript.geometry.Point = POINT (-110 45.7)
-   
-   scala> val p2 = p in Projection("EPSG:26912")               
+
+   scala> val p2 = p in Projection("EPSG:26912")
    p2: org.geoscript.geometry.Point = POINT (-370416.94184711506 -7935053.5498699695)
-   
+
    scala> p2.buffer(100).area
    res0: Double = 31214.451522477902
 
@@ -69,11 +69,11 @@ GeoScript implementations are available in `JavaScript <js>`_, `Python <py>`_, `
 Find out more :ref:`about <about>` the GeoScript project and how to :ref:`get involved <get_involved>`.  See the :ref:`learning center <learning>` for an
 overview of the library.
 
-GeoScript is open source and licenced under the `MIT License <http://en.wikipedia.org/wiki/MIT_License>`_.  
+GeoScript is open source and licenced under the `MIT License <https://en.wikipedia.org/wiki/MIT_License>`_.
 
 
 .. toctree::
-   :hidden: 
+   :hidden:
 
    about
    learning/index
