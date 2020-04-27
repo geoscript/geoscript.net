@@ -23,5 +23,5 @@ deploy:
   github_token: $GEOSCRIPT_GITHUB_OAUTH_TOKEN
   keep-history: true
   on:
-    branch: GSO-GITHUBPAGES
+    branch: master
   local_dir: build/html
