@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'GeoScript'
-copyright = '2020, Jared Erickson'
-author = 'Jared Erickson'
+copyright = '2020, GeoScript'
+author = 'GeoScript Developers'
 
 # The full version, including alpha/beta/rc tags
 release = '2.0'
