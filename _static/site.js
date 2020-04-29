@@ -5,7 +5,7 @@ var site = {
         return function(data) {
             var commit, msg, words, commits = data.commits;
             for (var i=0, len=commits.length; i<len; ++i) {
-                commit = commits[i];
+                commit = commits[i].commit;
                 msg = commit.message;
                 words = msg.split(/\s+/);
                 if (words.length > 10) {
@@ -25,7 +25,11 @@ var site = {
     prepCommits: function(key, repo) {
         var head = document.getElementsByTagName("head")[0];
         var script = document.createElement("script");
-        script.src = "http://github.com/api/v2/json/commits/list/" + repo + "/master/?callback=site.showCommits('" + key + "commits')";
+        var functionName = "show_" + key + "_commits";
+        this[functionName] = function() {
+            return site.showCommits(key + "commits");
+        };
+        script.src = "https://api.github.com/repos/" + repo + "/commits/?callback=site." + functionName;
         head.appendChild(script);
     },  
     
@@ -34,7 +38,11 @@ var site = {
         if ($(".downloads-link").length > 0) {
             var head = document.getElementsByTagName("head")[0];
             var script = document.createElement("script");
-            script.src = "http://github.com/api/v2/json/repos/show/" + repo + "/tags/?callback=site.showDownloads('" + key + "', '" + repo + "')";
+            var functionName = "show_" + key + "_releases";
+            this[functionName] = function() {
+                return site.showDownloads(key, repo);
+            };
+            script.src = "https://api.github.com/repos/" + repo + "/releases/?callback=site." + functionName;
             head.appendChild(script);        
         }
     },
