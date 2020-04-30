@@ -26,7 +26,20 @@
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
           <a href="https://geoscriptblog.blogspot.com/feeds/posts/default" class="news">GeoScript News</a>
-          <script src="http://landmark-project.com/feed2js/feed2js.php?src=http%3A%2F%2Fgeoscriptblog.blogspot.com%2Ffeeds%2Fposts%2Fdefault%3Falt%3Drss&num=3&desc=75"></script>
+            <script>
+              function showBlog(posts) {
+                $(document).ready(function () {
+                    var ul = $("<ul>");
+                    $(posts.items).each(function(index, item) {
+                        var link = $('<a>').text(item.title).attr('href', item.title);
+                        ul.append($("<li>").append(link));
+                    });
+                    $("#blog-posts").append(ul);
+                });
+            }
+          </script>
+          <script src="https://www.googleapis.com/blogger/v3/blogs/8042770441502149016/posts?key=AIzaSyBR-1WaoSZFXqk3jEzgp7o2An0GYgjN1vE&callback=showBlog"></script>
+          <div id="blog-posts"></div>
           <a href="https://geoscriptblog.blogspot.com">Read more...</a>
         </div>
     </div>
