@@ -3,7 +3,7 @@ var site = {
     showCommits: function(id) {
         var template = new jugl.Template("gitcommits");
         return function(data) {
-            var commit, msg, words, commits = data.commits;
+            var commit, msg, words, commitsToReturn = [], commits = data.data;
             for (var i=0, len=commits.length; i<len; ++i) {
                 commit = commits[i].commit;
                 msg = commit.message;
@@ -12,12 +12,20 @@ var site = {
                     words = words.splice(0, 10);
                     words.push("...");
                 }
-                commit.message = words.join(" ");
+                commitsToReturn.push({
+                    url: commit.url,
+                    message : words.join(" "),
+                    author: {
+                        login: commit.author.login,
+                        name: commit.author.name
+                    },
+                    authored_date: commit.author.date
+                });
             }
             template.process({
                 clone: true,
                 parent: id,
-                context: {commits: commits}
+                context: {commits: commitsToReturn}
             });
         };
     },
@@ -26,10 +34,8 @@ var site = {
         var head = document.getElementsByTagName("head")[0];
         var script = document.createElement("script");
         var functionName = "show_" + key + "_commits";
-        this[functionName] = function() {
-            return site.showCommits(key + "commits");
-        };
-        script.src = "https://api.github.com/repos/" + repo + "/commits/?callback=site." + functionName;
+        this[functionName] = site.showCommits(key + "commits");
+        script.src = "https://api.github.com/repos/" + repo + "/commits?callback=site." + functionName;
         head.appendChild(script);
     },  
     
