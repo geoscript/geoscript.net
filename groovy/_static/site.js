@@ -45,9 +45,7 @@ var site = {
             var head = document.getElementsByTagName("head")[0];
             var script = document.createElement("script");
             var functionName = "show_" + key + "_releases";
-            this[functionName] = function() {
-                return site.showDownloads(key, repo);
-            };
+            this[functionName] = site.showDownloads(key, repo);
             script.src = "https://api.github.com/repos/" + repo + "/releases/?callback=site." + functionName;
             head.appendChild(script);        
         }
