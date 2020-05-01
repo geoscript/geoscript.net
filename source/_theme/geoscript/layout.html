@@ -26,8 +26,7 @@
     <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
           <a href="https://geoscriptblog.blogspot.com/feeds/posts/default" class="news">GeoScript News</a>
-            <script>
-
+          <script>
               $('document').ready(function() {
                 $.ajax( {
                     url: "https://www.googleapis.com/blogger/v3/blogs/8042770441502149016/posts?key=AIzaSyBR-1WaoSZFXqk3jEzgp7o2An0GYgjN1vE",
@@ -35,7 +34,7 @@
                     success: function(posts) {
                         var ul = $("<ul>");
                         $(posts.items).each(function(index, item) {
-                            var link = $('<a>').text(item.title).attr('href', item.title);
+                            var link = $('<a>').text(item.title).attr('href', item.url);
                             ul.append($("<li>").append(link));
                         });
                         $("#blog-posts").append(ul);
