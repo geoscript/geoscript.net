@@ -98,10 +98,10 @@
 <p>This section describes how to set up a GeoScript development environment.</p>
 <div class="section" id="install-jython">
 <h2>Install Jython<a class="headerlink" href="#install-jython" title="Permalink to this headline">¶</a></h2>
-<p>Jython version 2.5.1 or greater is required for GeoScript.</p>
+<p>Jython version 2.7.2 or greater is required for GeoScript.</p>
 <ul>
 <li><p>Install <a class="reference external" href="http://www.jython.org/downloads.html">Jython</a></p>
-<p>For the remainder of the document the Jython installation root will be referred to as <code class="docutils literal notranslate"><span class="pre">JYTHON_HOME</span></code>.</p>
+<p>For the remainder of the document the Jython installation root will be referred to as <code class="docutils literal notranslate"><span class="pre">JYTHON_HOME_DIR</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -110,7 +110,7 @@
 <ol class="arabic">
 <li><p>Downlaod <a class="reference external" href="http://peak.telecommunity.com/dist/ez_setup.py">ez_setup.py</a></p></li>
 <li><p>Execute <code class="file docutils literal notranslate"><span class="pre">ez_setup.py</span></code> with the <strong class="command">jython</strong> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME&gt;/bin/jython ez_setup.py
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME_DIR&gt;/bin/jython ez_setup.py
 </pre></div>
 </div>
 </li>
@@ -129,12 +129,12 @@
 </div></blockquote>
 <ol class="arabic">
 <li><p>Using <code class="file docutils literal notranslate"><span class="pre">easy_install</span></code> installed in the previous section easy install the virtualenv library:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME&gt;/bin/easy_install virtualenv
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME_DIR&gt;/bin/easy_install virtualenv
 </pre></div>
 </div>
 </li>
 <li><p>Create a new virtualenv named <code class="docutils literal notranslate"><span class="pre">geoscript</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME&gt;/bin/virtualenv geoscript
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &lt;JYTHON_HOME_DIR&gt;/bin/virtualenv geoscript
 </pre></div>
 </div>
 </li>
@@ -203,7 +203,7 @@
 </div>
 </li>
 <li><p>Easy install py-dom-xpath:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(geoscript)$ easy_install py-dom-xpath
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(geoscript)$ easy_install py-dom-xpath-redux
 </pre></div>
 </div>
 </li>

@@ -68,3 +68,16 @@ Scala:
 Groovy:
 
    https://github.com/jericks/geoscript-groovy/issues
+
+Presentations
+-------------
+
+`GeoScript: The GeoSpatial Swiss Army Knife (FOSS4G 2014) <http://geoscript.github.io/foss4g2014-talk/#/>`_
+
+`Using GeoScript Groovy (CUGOS 2014) <http://www.slideshare.net/JaredErickson/using-geoscript-groovy>`_
+
+`Rendering Maps in GeoScript (CUGOS 2012) <http://www.slideshare.net/JaredErickson/geo-scriptstylerendering>`_
+
+`Scripting GeoServer (CUGOS 2012) <http://www.slideshare.net/JaredErickson/scripting-geoserver>`_
+
+`GeoScript: Spatial Capabilities for Scripting Languages (FOSS4G 2011) <http://www.slideshare.net/jdeolive/geoscript-spatial-capabilities-for-scripting-languages>`_
