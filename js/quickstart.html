@@ -91,7 +91,7 @@
 <div class="section" id="running-geoscript-js">
 <h2>Running GeoScript JS<a class="headerlink" href="#running-geoscript-js" title="Permalink to this headline">¶</a></h2>
 <p>After extracting the release archive, you can open the GeoScript shell and import any of the GeoScript modules by running <cite>bin/geoscript</cite>.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>~/geoscript-js$ ./bin/geoscript
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>~/geoscript-js$ ./bin/geoscript-js
 
 &gt;&gt; var geom = require(&quot;geoscript/geom&quot;);
 &gt;&gt; var p1 = new geom.Point([0, 0]);
@@ -102,6 +102,10 @@
 &gt;&gt; poly.contains(p1);
 true
 &gt;&gt; quit()
+</pre></div>
+</div>
+<p>You can also use the uber jar that contains all dependencies and is runnable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">geoscript</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">jar</span>
 </pre></div>
 </div>
 </div>
