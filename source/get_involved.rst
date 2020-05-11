@@ -81,3 +81,40 @@ Presentations
 `Scripting GeoServer (CUGOS 2012) <http://www.slideshare.net/JaredErickson/scripting-geoserver>`_
 
 `GeoScript: Spatial Capabilities for Scripting Languages (FOSS4G 2011) <http://www.slideshare.net/jdeolive/geoscript-spatial-capabilities-for-scripting-languages>`_
+
+Logos
+-----
+
+.. |icon_circle| image:: _static/logos/icon_circle.png
+   :width: 52px
+
+.. |icon_square| image:: _static/logos/icon_square.png
+   :width: 52px
+
+.. |logo_geoscript| image:: _static/logos/logo_geoscript.png
+   :width: 500px
+
+.. |logo_groovy| image:: _static/logos/logo_groovy.png
+   :width: 500px
+
+.. |logo_python| image:: _static/logos/logo_python.png
+   :width: 500px
+
+.. |logo_javascript| image:: _static/logos/logo_javascript.png
+   :width: 500px
+
++-------------------+-----------------------+-------------------------------------------+
+| Image             | Type                  | SVG                                       |
++===================+=======================+===========================================+
+| |icon_circle|     | Circle                | `SVG <_static/logos/icon_circle.svg>`_    |
++-------------------+-----------------------+-------------------------------------------+
+| |icon_square|     | Square                | `SVG <_static/logos/icon_square.svg>`_    |
++-------------------+-----------------------+-------------------------------------------+
+| |logo_geoscript|  | Square                | `SVG <_static/logos/logo_geoscript.svg>`_ |
++-------------------+-----------------------+-------------------------------------------+
+| |logo_groovy|     | Square                | `SVG <_static/logos/logo_groovy .svg>`_   |
++-------------------+-----------------------+-------------------------------------------+
+| |logo_python|     | Square                | `SVG <_static/logos/logo_python.svg>`_    |
++-------------------+-----------------------+-------------------------------------------+
+| |logo_javascript| | Square                | `SVG <_static/logos/logo_javacript.svg>`_ |
++-------------------+-----------------------+-------------------------------------------+
