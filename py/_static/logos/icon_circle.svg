@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="10.086 4.482 512 512"
+   width="512"
+   height="512"
+   version="1.1"
+   id="svg1474"
+   sodipodi:docname="icon_circle.svg"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   inkscape:export-filename="/Users/jericks/Documents/Icons/icon_circle.png"
+   inkscape:export-xdpi="266.76001"
+   inkscape:export-ydpi="266.76001">
+  <metadata
+     id="metadata1480">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1478" />
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1792"
+     inkscape:window-height="1012"
+     id="namedview1476"
+     showgrid="false"
+     inkscape:zoom="1.2070312"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1474" />
+  <g
+     transform="matrix(14.090203, 0, 0, 14.153275, -142.624146, -707.91394)"
+     style="display: inline;"
+     id="g950-3"
+     inkscape:export-filename="/Users/jericks/earth_pen.png"
+     inkscape:export-xdpi="94.394699"
+     inkscape:export-ydpi="94.394699">
+    <circle
+       r="18.077129"
+       cy="68.432602"
+       cx="28.915178"
+       id="path1002-9-0-89-2"
+       style="fill: rgb(30, 144, 255); fill-opacity: 1; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke: rgb(20, 85, 20); stroke-width: 0.615211px;" />
+    <g
+       style="fill:#228b22;fill-opacity:1;stroke:#145514;stroke-opacity:1"
+       id="g1278-5">
+      <path
+         id="rect10-8-0"
+         style="fill: rgb(34, 139, 34); fill-opacity: 1; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke-width: 0.615211px;"
+         d="m 29.063198,50.334406 a 18.077129,18.077129 0 0 0 -10.85323,3.672943 c 0.92489,1.544532 2.584303,2.631883 3.575787,4.190616 1.147007,1.209126 2.197558,3.504351 2.859627,4.293614 1.746688,1.448284 1.113852,3.552132 1.330487,5.500067 0.342195,2.020325 -0.420667,2.969903 -0.338214,5.10543 -0.516642,2.945911 -0.410506,6.054911 0.88827,8.796401 0.68137,1.697015 1.608913,2.676899 2.164837,4.589594 a 18.077129,18.077129 0 0 0 0.441882,0.0055 18.077129,18.077129 0 0 0 3.983112,-0.444386 c 0.112903,-1.721977 0.723835,-3.352898 1.098278,-5.029473 0.383603,-2.684085 2.724556,-4.289817 4.823806,-5.642964 2.139174,-0.993802 1.893178,-3.606524 1.752503,-5.566342 -1.584986,-1.059237 -2.482138,-2.682989 -4.399954,-3.19684 -1.712707,-0.984507 -3.579789,-1.536363 -5.097249,-2.84694 -1.895209,-1.416829 0.783923,-2.491543 1.182247,-3.666768 0.05347,-2.902632 -4.178729,1.879119 -4.598943,-1.338666 -1.877074,-2.050787 1.64314,-3.576127 2.569659,-1.341838 1.803601,1.662341 3.341532,-1.119351 1.534817,-2.376846 -0.266056,-1.459735 0.379309,-3.023179 1.391251,-4.198963 a 18.077129,18.077129 0 0 0 -4.239527,-0.504148 18.077129,18.077129 0 0 0 -0.06945,0 z" />
+      <path
+         id="path845-0-6"
+         style="fill: rgb(34, 139, 34); fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke-width: 0.615211px;"
+         d="m 14.722825,57.388989 a 18.077129,18.077129 0 0 0 -3.343578,7.428522 c 0.523862,-0.279103 1.250822,-1.444016 2.027782,-1.539492 1.692472,-1.446727 1.365528,-3.818794 1.315796,-5.88903 z" />
+      <path
+         id="path847-9-2"
+         style="fill: rgb(34, 139, 34); fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke-width: 0.615211px;"
+         d="m 16.881986,71.34307 c -0.542268,0.01212 -1.081754,0.242965 -1.499427,0.764571 -0.834752,1.343817 -2.375532,0.978736 -3.865088,0.809978 a 18.077129,18.077129 0 0 0 5.160184,8.740143 c 0.0471,-0.0156 0.09627,-0.03045 0.142064,-0.04641 1.203905,-2.343195 1.976646,-4.939735 2.357481,-7.546546 0.328315,-1.464797 -0.914574,-2.682039 -2.186706,-2.721237 -0.03614,-0.0011 -0.07236,-0.0013 -0.108508,-5.13e-4 z" />
+      <path
+         id="path849-5-7"
+         style="fill: rgb(34, 139, 34); fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke-width: 0.615211px;"
+         d="m 46.668522,68.661397 c -0.366411,0.0063 -0.742277,0.06302 -1.131998,0.196652 -1.262086,1.292603 -1.826812,3.436423 -0.466923,4.877393 0.130735,0.633742 0.424144,1.125486 0.789111,1.554516 a 18.077129,18.077129 0 0 0 1.31663,-6.606024 c -0.167194,-0.01653 -0.335874,-0.02547 -0.50682,-0.02254 z" />
+      <path
+         id="path837-7-8"
+         style="fill: rgb(34, 139, 34); fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke-width: 0.615211px;"
+         d="m 42.91211,56.823407 c -0.06116,2.249293 0.262268,4.543579 1.508107,6.485662 0.759781,0.382664 1.680751,1.397554 2.453971,1.73631 A 18.077129,18.077129 0 0 0 42.91211,56.823407 Z" />
+    </g>
+    <circle
+       style="fill: none; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke: rgb(20, 85, 20); stroke-width: 0.615211px;"
+       id="path1002-9-0-0"
+       cx="29.086863"
+       cy="68.417816"
+       r="18.077129" />
+  </g>
+  <g
+     transform="matrix(-1.8415152,-2.237677,2.2979078,-1.793247,43.325257,1524.2461)"
+     id="g856"
+     inkscape:export-filename="/Users/jericks/earth_pen.png"
+     inkscape:export-xdpi="94.394699"
+     inkscape:export-ydpi="94.394699">
+    <path
+       id="path842"
+       style="vector-effect:non-scaling-stroke;fill:#a0a0a0;stroke:#464646;stroke-width:2.31332;stroke-opacity:1"
+       d="m 296.41011,230.41195 14.98005,19.69231 -5.53774,32.00219 -18.4018,0.0859 -5.83614,-31.94911 z" />
+    <rect
+       id="rect844"
+       style="fill:#7e3f3f;stroke:#5c2e2e;stroke-opacity:1"
+       height="148.50999"
+       width="18.245001"
+       y="281.79523"
+       x="287.79041" />
+    <rect
+       id="rect846"
+       style="fill:#a0a0a0;stroke:#464646;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       height="20.792999"
+       width="21.083"
+       y="410.73322"
+       x="286.1824" />
+    <circle
+       cx="296.36301"
+       cy="256.845"
+       r="3.9619999"
+       id="circle850" />
+    <rect
+       x="295.05701"
+       y="233.368"
+       width="2.9170001"
+       height="21.004999"
+       id="rect852" />
+    <path
+       d="m 24.083,8.206 1.769,2.627 H 22.57 Z"
+       transform="rotate(-120.55798,223.8165,43.488679)"
+       id="path854" />
+  </g>
+</svg>

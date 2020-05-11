@@ -278,12 +278,21 @@ div.footer a img {
     vertical-align: middle;
 }
 
+#logo-img {
+    margin-left: 0.5em;
+    margin-top: 1.0em;
+}
+
 #logo {
-   margin: 0.5em;
+    position: absolute;
+    top: 28px;
+    left: 66px;
 }
 
 #logo a {
    color: white;
+   font-size: 36px;
+   font-weight: bold;
 }
 
 a.news {
