@@ -278,22 +278,21 @@ div.footer a img {
     vertical-align: middle;
 }
 
-#logo-img {
-    margin-left: 0.5em;
-    margin-top: 1.0em;
-}
-
 #logo {
-    position: absolute;
-    top: 28px;
-    left: 66px;
+        margin: 0.8em;
 }
 
 #logo a {
    color: white;
-   font-size: 36px;
-   font-weight: bold;
 }
+
+#logo span {
+    font-size: 34px;
+    vertical-align: bottom;
+    font-weight: bold;
+    margin-left: 5px
+}
+
 
 a.news {
     background: transparent url(img/feed.png) no-repeat 160px 0;
