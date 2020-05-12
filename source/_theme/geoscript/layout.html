@@ -75,8 +75,10 @@
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <img id="logo-img" src="{{ pathto('_static/img/icon.png', 1)}}" width="52" height="52"/>
-            <span id="logo"><a href="{{ pathto('index') }}">GeoScript</a></span>
+            <div id="logo">
+                <img id="logo-img" src="{{ pathto('_static/img/icon.png', 1)}}" width="52" height="52"/>
+                <span><a href="{{ pathto('index') }}">GeoScript</a></span>
+            </div>
             <ul id="top-nav">
                 <li class="first"><a href="{{ pathto('learning/index') }}">Learning</a></li>
                 <li class="first"><a href="{{ pathto('tutorials/index') }}">Tutorials</a></li>

@@ -89,7 +89,10 @@
 {% block header %}
     <div class="header">
         <div class="wrap">
-            <h1 id="logo" class="logo-{{ theme_impl_short }}"><a href="{{ pathto('index')|replace('index.html', '')|replace('#', '') }}..">GeoScript</a></h1>
+            <div id="logo" class="logo-{{ theme_impl_short }}">
+                <img id="logo-img" src="{{ pathto('_static/img/icon.png', 1)}}" width="52" height="52"/>
+                <span><a href="{{ pathto('index')|replace('index.html', '')|replace('#', '') }}..">GeoScript</a></span>
+            </div>
             <ul id="top-nav">
                 {%- if theme_impl_long %}
                 <li class="first"><a href="{{ pathto('index') }}">{{ theme_impl_long }}</a></li>
