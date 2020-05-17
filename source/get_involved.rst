@@ -25,11 +25,11 @@ JavaScript:
 
 Python:
 
-   https://github.com/jdeolive/geoscript-py
+   https://github.com/geoscript/geoscript-py
 
    ::
 
-     git clone git://github.com/jdeolive/geoscript-py.git
+     git clone git://github.com/geoscript/geoscript-py.git
 
 Scala:
 
@@ -41,11 +41,11 @@ Scala:
 
 Groovy:
     
-    https://github.com/jericks/geoscript-groovy
+    https://github.com/geoscript/geoscript-groovy
 
     ::
 
-     git clone git://github.com/jericks/geoscript-groovy.git
+     git clone git://github.com/geoscript/geoscript-groovy.git
 
 
 Bug Tracker
@@ -59,7 +59,7 @@ JavaScript:
 
 Python:
 
-   https://github.com/jdeolive/geoscript-py/issues
+   https://github.com/geoscript/geoscript-py/issues
 
 Scala:
 
@@ -67,7 +67,28 @@ Scala:
 
 Groovy:
 
-   https://github.com/jericks/geoscript-groovy/issues
+   https://github.com/geoscript/geoscript-groovy/issues
+
+Continuous Integration
+----------------------
+
+JavaScript:
+
+    https://travis-ci.org/github/geoscript/geoscript-js
+
+    https://build.geoserver.org/view/geoscript/job/geoscript-js/
+
+Python:
+
+    https://travis-ci.org/github/geoscript/geoscript-py
+
+    https://build.geoserver.org/view/geoscript/job/geoscript-py/
+
+Groovy:
+
+    https://travis-ci.org/github/geoscript/geoscript-groovy
+
+    https://build.geoserver.org/job/geoscript-groovy/
 
 Presentations
 -------------
@@ -110,11 +131,11 @@ Logos
 +-------------------+-----------------------+-------------------------------------------+
 | |icon_square|     | Square                | `SVG <_static/logos/icon_square.svg>`_    |
 +-------------------+-----------------------+-------------------------------------------+
-| |logo_geoscript|  | Square                | `SVG <_static/logos/logo_geoscript.svg>`_ |
+| |logo_geoscript|  | GeoScript             | `SVG <_static/logos/logo_geoscript.svg>`_ |
 +-------------------+-----------------------+-------------------------------------------+
-| |logo_groovy|     | Square                | `SVG <_static/logos/logo_groovy .svg>`_   |
+| |logo_groovy|     | Groovy                | `SVG <_static/logos/logo_groovy .svg>`_   |
 +-------------------+-----------------------+-------------------------------------------+
-| |logo_python|     | Square                | `SVG <_static/logos/logo_python.svg>`_    |
+| |logo_python|     | Python                | `SVG <_static/logos/logo_python.svg>`_    |
 +-------------------+-----------------------+-------------------------------------------+
-| |logo_javascript| | Square                | `SVG <_static/logos/logo_javacript.svg>`_ |
+| |logo_javascript| | JavaScript            | `SVG <_static/logos/logo_javacript.svg>`_ |
 +-------------------+-----------------------+-------------------------------------------+
