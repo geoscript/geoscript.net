@@ -72,7 +72,7 @@
             <div id="gitcommits">
                 <ul>
                     <li jugl:repeat="commit commits.slice(0, 3)">
-                        <a jugl:attributes="href 'https://github.com' + commit.url"
+                        <a jugl:attributes="href commit.url"
                             jugl:content="commit.message">
                             commit message here
                         </a><br />

@@ -13,7 +13,7 @@ var site = {
                     words.push("...");
                 }
                 commitsToReturn.push({
-                    url: commit.url,
+                    url: commits[i].html_url,
                     message : words.join(" "),
                     author: {
                         login: commit.author.login,

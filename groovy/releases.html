@@ -54,6 +54,7 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">GeoScript Groovy Releases</a><ul>
+<li><a class="reference internal" href="#in-progress">1.15.0 (In progress)</a></li>
 <li><a class="reference internal" href="#id1">1.14.0</a></li>
 <li><a class="reference internal" href="#id2">1.13.0</a></li>
 <li><a class="reference internal" href="#id3">1.12.0</a></li>
@@ -102,6 +103,61 @@
             
   <div class="section" id="geoscript-groovy-releases">
 <span id="releases"></span><h1>GeoScript Groovy Releases<a class="headerlink" href="#geoscript-groovy-releases" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="in-progress">
+<h2>1.15.0 (In progress)<a class="headerlink" href="#in-progress" title="Permalink to this headline">¶</a></h2>
+<p>The 1.15 release of GeoScript is build on Groovy 3.0.3, GeoTools 23.0, and the Java Topology Suite 1.16.1 and requires Java 8.</p>
+<p>Add geoscript.carto package for building maps with cartographic elements like north arrows, text, and neatlines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;map.png&quot;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">withOutputStream</span> <span class="p">{</span> <span class="n">OutputStream</span> <span class="n">outputStream</span> <span class="o">-&gt;</span>
+    <span class="n">PageSize</span> <span class="n">pageSize</span> <span class="o">=</span> <span class="n">PageSize</span><span class="o">.</span><span class="n">LETTER_LANDSCAPE</span>
+
+    <span class="n">CartoFactories</span><span class="o">.</span><span class="n">findByName</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">pageSize</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">new</span> <span class="n">RectangleItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">fillColor</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">new</span> <span class="n">MapItem</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">map</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">northArrow</span><span class="p">(</span><span class="n">new</span> <span class="n">NorthArrowItem</span><span class="p">(</span><span class="n">pageSize</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">60</span><span class="p">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">font</span><span class="p">(</span><span class="n">new</span> <span class="n">Font</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="n">Font</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">true</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">outputStream</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/carto.png" src="_images/carto.png" />
+<p>Raster.getBufferedImage():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;alki.tif&quot;</span><span class="p">)</span>
+<span class="n">GeoTIFF</span> <span class="n">geoTIFF</span> <span class="o">=</span> <span class="n">new</span> <span class="n">GeoTIFF</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">Raster</span> <span class="n">raster</span> <span class="o">=</span> <span class="n">geoTIFF</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">BufferedImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">bufferedImage</span>
+</pre></div>
+</div>
+<p>Add Schema alias for GeometryCollection.</p>
+<p>Add static Layer methods to create Layer from a Geometry or a List of Geometries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="o">.</span><span class="n">fromGeometry</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="n">new</span> <span class="n">Bounds</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="o">.</span><span class="n">fromGeometries</span><span class="p">(</span><span class="s2">&quot;testPits&quot;</span><span class="p">,</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">createRandomPoints</span><span class="p">(</span><span class="n">new</span> <span class="n">Bounds</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">geometries</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Update GeoDB dependency to for Java 8 compatability.</p>
+<p>Add Viewer.drawBase64String method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">geom</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">fromWKT</span><span class="p">(</span><span class="s2">&quot;POINT (-111 45.7)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">String</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Viewer</span><span class="o">.</span><span class="n">drawToBase64EncodedString</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add Flatgeobuf Workspace:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="n">new</span> <span class="n">FlatGeobuf</span><span class="p">(</span><span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;flatgeobuf/files&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Create oval Vector grids:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Bounds</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">double</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">Graticule</span><span class="o">.</span><span class="n">createOvals</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/layer_graticule_oval.png" src="_images/layer_graticule_oval.png" />
+</div>
 <div class="section" id="id1">
 <h2>1.14.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The 1.14 release of GeoScript is build on Groovy 2.5.8, GeoTools 22.0, and the Java Topology Suite 1.16.1 and requires Java 8.</p>
