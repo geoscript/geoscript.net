@@ -128,9 +128,9 @@ process outputs), title, and description.</p>
 </div>
 <p>Now that this process is created and well described, it can be run with the
 following:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">outputs</span> <span class="o">=</span> <span class="nx">add</span><span class="p">.</span><span class="nx">run</span><span class="p">({</span><span class="nx">a</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mi">3</span><span class="p">});</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">outputs</span> <span class="o">=</span> <span class="nx">add</span><span class="p">.</span><span class="nx">run</span><span class="p">({</span><span class="nx">a</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mf">3</span><span class="p">});</span>
 <span class="o">&gt;&gt;</span> <span class="nx">outputs</span><span class="p">.</span><span class="nx">result</span>
-<span class="mi">5</span>
+<span class="mf">5</span>
 </pre></div>
 </div>
 <div class="section" id="process-process">
@@ -173,7 +173,7 @@ are objects with <code class="docutils literal notranslate"><span class="pre">ty
     <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
     <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;End Time&quot;</span><span class="p">,</span>
     <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;Optional end time&quot;</span><span class="p">,</span>
-    <span class="nx">minOccurs</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="nx">minOccurs</span><span class="o">:</span> <span class="mf">0</span>
   <span class="p">},</span>
   <span class="nx">geom</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
@@ -308,10 +308,10 @@ the same.)</p>
 <span class="o">&gt;&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">outputs</span><span class="p">);</span>
 <span class="nx">result</span>
 
-<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">45</span><span class="p">]);</span>
-<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">outputs</span> <span class="o">=</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">run</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">point</span><span class="p">,</span> <span class="nx">distance</span><span class="o">:</span> <span class="mi">10</span><span class="p">});</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">110</span><span class="p">,</span> <span class="mf">45</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">outputs</span> <span class="o">=</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">run</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">point</span><span class="p">,</span> <span class="nx">distance</span><span class="o">:</span> <span class="mf">10</span><span class="p">});</span>
 <span class="o">&gt;&gt;</span> <span class="nx">outputs</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
-<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">100.19214719596769</span><span class="p">,</span> <span class="mf">43.04909677983872</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.</span><span class="p">..</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">100</span><span class="p">,</span> <span class="mf">45</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">100.19214719596769</span><span class="p">,</span> <span class="mf">43.04909677983872</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.</span><span class="p">..</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </dd></dl>

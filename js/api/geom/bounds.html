@@ -100,24 +100,24 @@ projection.</p>
 <p>Sample code to create a new bounds:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Bounds</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">).</span><span class="nx">Bounds</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">({</span>
-<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mi">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mi">90</span>
+<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mf">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mf">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mf">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mf">90</span>
 <span class="p">..</span> <span class="p">});</span>
 <span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">width</span>
-<span class="mi">360</span>
+<span class="mf">360</span>
 <span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">height</span>
-<span class="mi">180</span>
+<span class="mf">180</span>
 </pre></div>
 </div>
 <p>Sample code to create a new bounds with a projection:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">({</span>
-<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mi">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span> <span class="nx">projection</span><span class="o">:</span> <span class="s2">&quot;epsg:4326&quot;</span>
+<span class="p">..</span>   <span class="nx">minX</span><span class="o">:</span> <span class="o">-</span><span class="mf">180</span><span class="p">,</span> <span class="nx">maxX</span><span class="o">:</span> <span class="mf">180</span><span class="p">,</span> <span class="nx">minY</span><span class="o">:</span> <span class="o">-</span><span class="mf">90</span><span class="p">,</span> <span class="nx">maxY</span><span class="o">:</span> <span class="mf">90</span><span class="p">,</span> <span class="nx">projection</span><span class="o">:</span> <span class="s2">&quot;epsg:4326&quot;</span>
 <span class="p">..</span> <span class="p">});</span>
 <span class="o">&gt;&gt;</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">projection</span>
-<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mf">4326</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Sample code to create a new bounds from an array of [minX, minY, maxX, maxY] values:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">]);</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mf">180</span><span class="p">,</span> <span class="o">-</span><span class="mf">90</span><span class="p">,</span> <span class="mf">180</span><span class="p">,</span> <span class="mf">90</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>

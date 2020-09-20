@@ -16,8 +16,10 @@ Modules
     feature
     filter
     proj
+    index/*
     layer
     workspace
+    raster
     style
     map
     process

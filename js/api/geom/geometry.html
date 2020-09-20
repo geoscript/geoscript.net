@@ -219,6 +219,22 @@ is <code class="xref js js-data docutils literal notranslate"><span class="pre">
 </dd></dl>
 
 <dl class="function">
+<dt id="Geometry.variableBuffer">
+<code class="descclassname">Geometry.</code><code class="descname">variableBuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometry.variableBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distances</strong> – <code class="docutils literal notranslate"><span class="pre">Array</span></code> An array of distances.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p>
+</dd>
+</dl>
+<p>Construct a geometry that buffers this geometry with an array of distances.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="Geometry.clone">
 <code class="descclassname">Geometry.</code><code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometry.clone" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -552,6 +568,22 @@ method.  Returns a new geometry.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="Geometry.getMaximumInscribedCircle">
+<code class="descclassname">Geometry.</code><code class="descname">getMaximumInscribedCircle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometry.getMaximumInscribedCircle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – :<cite>Object</cite> tolerance property defaults to 1.0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p>
+</dd>
+</dl>
+<p>Get the maximum inscribed circle for this Geometry.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="Geometry.within">
 <code class="descclassname">Geometry.</code><code class="descname">within</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometry.within" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -566,6 +598,22 @@ method.  Returns a new geometry.</p>
 </dl>
 <p>Tests if this geometry is within the other geometry.  This is the
 inverse of <a class="reference internal" href="#Geometry.contains" title="Geometry.contains"><code class="xref js js-func docutils literal notranslate"><span class="pre">contains()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Geometry.getLargestEmptyCircle">
+<code class="descclassname">Geometry.</code><code class="descname">getLargestEmptyCircle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometry.getLargestEmptyCircle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – :<cite>Object</cite> tolerance property defaults to 1.0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a></p>
+</dd>
+</dl>
+<p>Get the largest empty circle in this Geometry.</p>
 </dd></dl>
 
 </div>

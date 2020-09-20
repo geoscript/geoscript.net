@@ -113,7 +113,7 @@ function for creating new features (note the <code class="docutils literal notra
 
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span>
 <span class="p">..</span>         <span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
 <span class="p">..</span>           <span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="nx">i</span><span class="p">,</span> <span class="o">-</span><span class="nx">i</span><span class="p">]),</span>
@@ -148,7 +148,7 @@ array of features may be provided.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="c1">// generate a million features</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">1</span><span class="nx">e6</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">1e6</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span>
 <span class="p">..</span>         <span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
 <span class="p">..</span>           <span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()])</span>
@@ -163,8 +163,8 @@ array of features may be provided.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="c1">// provide a collection of two features</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="p">[</span>
-<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])}}),</span>
-<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])}})</span>
+<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">])}}),</span>
+<span class="p">..</span>     <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">loc</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">])}})</span>
 <span class="p">..</span>   <span class="p">]</span>
 <span class="p">..</span> <span class="p">});</span>
 </pre></div>
@@ -181,10 +181,10 @@ features in the collection.  Because this can be very expensive, it is a
 good idea to provide a size function at construction for large collections
 of known size.  Note that this configuration option doesn’t apply when an
 array of features is provided for the <code class="docutils literal notranslate"><span class="pre">features</span></code> config property.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">knownSize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">knownSize</span> <span class="o">=</span> <span class="mf">10</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">knownSize</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">knownSize</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}});</span>
 <span class="p">..</span>     <span class="p">}</span>
 <span class="p">..</span>   <span class="p">},</span>
@@ -194,7 +194,7 @@ array of features is provided for the <code class="docutils literal notranslate"
 <span class="p">..</span> <span class="p">});</span>
 
 <span class="o">&gt;&gt;</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">size</span>
-<span class="mi">10</span>
+<span class="mf">10</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -212,12 +212,12 @@ when an array of features is provided for the <code class="docutils literal notr
 
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">])}});</span>
-<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">45</span><span class="p">])}});</span>
+<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">150</span><span class="p">,</span> <span class="o">-</span><span class="mf">45</span><span class="p">])}});</span>
+<span class="p">..</span>     <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">150</span><span class="p">,</span> <span class="mf">45</span><span class="p">])}});</span>
 <span class="p">..</span>   <span class="p">},</span>
 <span class="p">..</span>   <span class="nx">bounds</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 <span class="p">..</span>     <span class="c1">// making the bounds a bit bigger than feature bounds for demonstration</span>
-<span class="p">..</span>     <span class="k">return</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mi">155</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">55</span><span class="p">]);</span>
+<span class="p">..</span>     <span class="k">return</span> <span class="nx">Bounds</span><span class="p">([</span><span class="o">-</span><span class="mf">155</span><span class="p">,</span> <span class="o">-</span><span class="mf">50</span><span class="p">,</span> <span class="mf">155</span><span class="p">,</span> <span class="mf">55</span><span class="p">]);</span>
 <span class="p">..</span>   <span class="p">}</span>
 <span class="p">..</span> <span class="p">});</span>
 
@@ -238,7 +238,7 @@ in a close function.</p>
 
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">index</span><span class="o">:</span> <span class="nx">i</span><span class="p">}});</span>
 <span class="p">..</span>     <span class="p">}</span>
 <span class="p">..</span>   <span class="p">},</span>
@@ -312,16 +312,16 @@ will stop.</p></li>
 </dl>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">}});</span>
 <span class="p">..</span>     <span class="p">}</span>
 <span class="p">..</span>   <span class="p">}</span>
 <span class="p">..</span> <span class="p">});</span>
 
 <span class="o">&gt;&gt;</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">print</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mi">0</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mi">1</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mi">2</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mf">0</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mf">1</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mf">2</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -344,7 +344,7 @@ function must return a new <a class="reference internal" href="feature.html#feat
 </dl>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nx">FeatureCollection</span><span class="p">({</span>
 <span class="p">..</span>   <span class="nx">features</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span>     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">3</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">..</span>       <span class="k">yield</span> <span class="nx">Feature</span><span class="p">({</span><span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
 <span class="p">..</span>         <span class="nx">index</span><span class="o">:</span> <span class="nx">i</span>
 <span class="p">..</span>       <span class="p">}});</span>
@@ -363,9 +363,9 @@ function must return a new <a class="reference internal" href="feature.html#feat
 <span class="kc">true</span>
 
 <span class="o">&gt;&gt;</span> <span class="nx">mapped</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">print</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mi">0</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mi">1</span>
-<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mi">2</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_0&quot;</span><span class="o">&gt;</span> <span class="mf">0</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_1&quot;</span><span class="o">&gt;</span> <span class="mf">1</span>
+<span class="o">&lt;</span><span class="nx">Feature</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;feature_2&quot;</span><span class="o">&gt;</span> <span class="mf">2</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -106,14 +106,14 @@ may be point coordinates or <a class="reference internal" href="point.html#geom.
 <h2>Example Use<a class="headerlink" href="#example-use" title="Permalink to this headline">¶</a></h2>
 <p>Sample code to new multi-point:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="p">{</span><span class="nx">Point</span><span class="p">,</span> <span class="nx">MultiPoint</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">);</span>
-<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">]);</span>
-<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">180</span><span class="p">,</span> <span class="mf">90</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">45</span><span class="p">,</span> <span class="mf">45</span><span class="p">]);</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">mp</span> <span class="o">=</span> <span class="nx">MultiPoint</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>Alternate method to create the same geometry as above:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">mp</span> <span class="o">=</span> <span class="nx">MultiPoint</span><span class="p">([</span>
-<span class="p">..</span>   <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="p">..</span>   <span class="p">[</span><span class="o">-</span><span class="mf">180</span><span class="p">,</span> <span class="mf">90</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">45</span><span class="p">,</span> <span class="mf">45</span><span class="p">]</span>
 <span class="p">..</span> <span class="p">]);</span>
 </pre></div>
 </div>

@@ -84,6 +84,7 @@
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#W"><strong>W</strong></a>
@@ -92,6 +93,20 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/raster.html#Band.description">Band.description (Band attribute)</a>
+</li>
+      <li><a href="api/raster.html#Band.isNoData">Band.isNoData() (Band method)</a>
+</li>
+      <li><a href="api/raster.html#Band.max">Band.max (Band attribute)</a>
+</li>
+      <li><a href="api/raster.html#Band.min">Band.min (Band attribute)</a>
+</li>
+      <li><a href="api/raster.html#Band.noData">Band.noData (Band attribute)</a>
+</li>
+      <li><a href="api/raster.html#Band.scale">Band.scale (Band attribute)</a>, <a href="api/raster.html#Band.scale">[1]</a>
+</li>
+      <li><a href="api/raster.html#Band.type">Band.type (Band attribute)</a>
+</li>
       <li><a href="api/geom/bounds.html#Bounds.area">Bounds.area (Bounds attribute)</a>
 </li>
       <li><a href="api/geom/bounds.html#Bounds.clone">Bounds.clone() (Bounds method)</a>
@@ -102,14 +117,14 @@
 </li>
       <li><a href="api/geom/bounds.html#Bounds.equals">Bounds.equals() (Bounds method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/geom/bounds.html#Bounds.height">Bounds.height (Bounds attribute)</a>
 </li>
       <li><a href="api/geom/bounds.html#Bounds.include">Bounds.include() (Bounds method)</a>
 </li>
       <li><a href="api/geom/bounds.html#Bounds.intersection">Bounds.intersection() (Bounds method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/geom/bounds.html#Bounds.intersects">Bounds.intersects() (Bounds method)</a>
 </li>
       <li><a href="api/geom/bounds.html#Bounds.maxX">Bounds.maxX (Bounds attribute)</a>
@@ -222,8 +237,6 @@
 </li>
       <li><a href="api/feature/featurecollection.html#FeatureCollection.size">FeatureCollection.size (FeatureCollection attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/feature/field.html#Field.description">Field.description (Field attribute)</a>
 </li>
       <li><a href="api/feature/field.html#Field.equals">Field.equals() (Field method)</a>
@@ -234,6 +247,8 @@
 </li>
       <li><a href="api/feature/field.html#Field.minOccurs">Field.minOccurs (Field attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/feature/field.html#Field.name">Field.name (Field attribute)</a>
 </li>
       <li><a href="api/feature/field.html#Field.projection">Field.projection (Field attribute)</a>
@@ -267,6 +282,24 @@
       <li><a href="api/filter/filter.html#Filter.not">Filter.not (Filter attribute)</a>
 </li>
       <li><a href="api/filter/filter.html#Filter.or">Filter.or() (Filter method)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#Flatgeobuf.add">Flatgeobuf.add() (Flatgeobuf method)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#Flatgeobuf.close">Flatgeobuf.close() (Flatgeobuf method)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#Flatgeobuf.get">Flatgeobuf.get() (Flatgeobuf method)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#Flatgeobuf.layers">Flatgeobuf.layers (Flatgeobuf attribute)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#Flatgeobuf.names">Flatgeobuf.names (Flatgeobuf attribute)</a>
+</li>
+      <li><a href="api/raster.html#Format.name">Format.name (Format attribute)</a>
+</li>
+      <li><a href="api/raster.html#Format.names">Format.names (Format attribute)</a>
+</li>
+      <li><a href="api/raster.html#Format.read">Format.read() (Format method)</a>
+</li>
+      <li><a href="api/raster.html#Format.write">Format.write() (Format method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -334,12 +367,12 @@
 </li>
       <li><a href="api/geom/geometry.html#Geometry.crosses">Geometry.crosses() (Geometry method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/geom/geometry.html#Geometry.densify">Geometry.densify() (Geometry method)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.difference">Geometry.difference() (Geometry method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/geom/geometry.html#Geometry.dimension">Geometry.dimension (Geometry attribute)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.disjoint">Geometry.disjoint() (Geometry method)</a>
@@ -355,6 +388,10 @@
       <li><a href="api/geom/geometry.html#Geometry.getBoundary">Geometry.getBoundary() (Geometry method)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.getEnvelope">Geometry.getEnvelope() (Geometry method)</a>
+</li>
+      <li><a href="api/geom/geometry.html#Geometry.getLargestEmptyCircle">Geometry.getLargestEmptyCircle() (Geometry method)</a>
+</li>
+      <li><a href="api/geom/geometry.html#Geometry.getMaximumInscribedCircle">Geometry.getMaximumInscribedCircle() (Geometry method)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.intersection">Geometry.intersection() (Geometry method)</a>
 </li>
@@ -381,6 +418,8 @@
       <li><a href="api/geom/geometry.html#Geometry.transform">Geometry.transform() (Geometry method)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.valid">Geometry.valid (Geometry attribute)</a>
+</li>
+      <li><a href="api/geom/geometry.html#Geometry.variableBuffer">Geometry.variableBuffer() (Geometry method)</a>
 </li>
       <li><a href="api/geom/geometry.html#Geometry.within">Geometry.within() (Geometry method)</a>
 </li>
@@ -430,15 +469,19 @@
 </li>
       <li><a href="api/style/icon.html#Icon.range">Icon.range() (Icon method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/style/icon.html#Icon.rotation">Icon.rotation (Icon attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/style/icon.html#Icon.size">Icon.size (Icon attribute)</a>
 </li>
       <li><a href="api/style/icon.html#Icon.url">Icon.url (Icon attribute)</a>
 </li>
       <li><a href="api/style/icon.html#Icon.where">Icon.where() (Icon method)</a>
+</li>
+      <li><a href="api/index/quadtree.html#index.Quadtree">index.Quadtree() (class)</a>
+</li>
+      <li><a href="api/index/strtree.html#index.STRtree">index.STRtree() (class)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -607,9 +650,69 @@
   </ul></td>
 </tr></table>
 
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/index/quadtree.html#Quadtree.insert">Quadtree.insert() (Quadtree method)</a>
+</li>
+      <li><a href="api/index/quadtree.html#Quadtree.query">Quadtree.query() (Quadtree method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/index/quadtree.html#Quadtree.queryAll">Quadtree.queryAll() (Quadtree method)</a>
+</li>
+      <li><a href="api/index/quadtree.html#Quadtree.remove">Quadtree.remove() (Quadtree method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/raster.html#raster.Band">raster.Band() (class)</a>
+</li>
+      <li><a href="api/raster.html#Raster.bands">Raster.bands (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.blockSize">Raster.blockSize (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.bounds">Raster.bounds (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.cols">Raster.cols (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.crop">Raster.crop() (Raster method)</a>, <a href="api/raster.html#Raster.crop">[1]</a>
+</li>
+      <li><a href="api/raster.html#Raster.extrema">Raster.extrema (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#raster.Format">raster.Format() (class)</a>
+</li>
+      <li><a href="api/raster.html#Raster.getMaximumValue">Raster.getMaximumValue() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.getMinimumValue">Raster.getMinimumValue() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.getPixel">Raster.getPixel() (Raster method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/raster.html#Raster.getPoint">Raster.getPoint() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.getValue">Raster.getValue() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.name">Raster.name (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.pixelSize">Raster.pixelSize (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.proj">Raster.proj (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#raster.Raster">raster.Raster() (class)</a>
+</li>
+      <li><a href="api/raster.html#Raster.reclassify">Raster.reclassify() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.reproject">Raster.reproject() (Raster method)</a>
+</li>
+      <li><a href="api/raster.html#Raster.rows">Raster.rows (Raster attribute)</a>
+</li>
+      <li><a href="api/raster.html#Raster.size">Raster.size (Raster attribute)</a>
+</li>
       <li><a href="api/io/json.html#read">read() (built-in function)</a>, <a href="api/io/wkt.html#read">[1]</a>
 </li>
   </ul></td>
@@ -650,6 +753,8 @@
 </li>
       <li><a href="api/style/shape.html#Shape.where">Shape.where() (Shape method)</a>
 </li>
+      <li><a href="api/index/quadtree.html#size">size (None attribute)</a>, <a href="api/index/strtree.html#size">[1]</a>
+</li>
       <li><a href="api/style/stroke.html#Stroke.and">Stroke.and() (Stroke method)</a>
 </li>
       <li><a href="api/style/stroke.html#Stroke.brush">Stroke.brush (Stroke attribute)</a>
@@ -660,11 +765,15 @@
 </li>
       <li><a href="api/style/stroke.html#Stroke.range">Stroke.range() (Stroke method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/style/stroke.html#Stroke.where">Stroke.where() (Stroke method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/style/stroke.html#Stroke.width">Stroke.width (Stroke attribute)</a>
+</li>
+      <li><a href="api/index/strtree.html#STRtree.insert">STRtree.insert() (STRtree method)</a>
+</li>
+      <li><a href="api/index/strtree.html#STRtree.query">STRtree.query() (STRtree method)</a>
 </li>
       <li><a href="api/style/style.html#Style.and">Style.and() (Style method)</a>
 </li>
@@ -717,6 +826,8 @@
       <li><a href="api/workspace/workspace.html#Workspace.close">Workspace.close() (Workspace method)</a>
 </li>
       <li><a href="api/workspace/directory.html#workspace.Directory">workspace.Directory() (class)</a>
+</li>
+      <li><a href="api/workspace/flatgeobuf.html#workspace.Flatgeobuf">workspace.Flatgeobuf() (class)</a>
 </li>
       <li><a href="api/workspace/geobuf.html#workspace.Geobuf">workspace.Geobuf() (class)</a>
 </li>

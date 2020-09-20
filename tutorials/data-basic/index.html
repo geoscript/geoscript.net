@@ -168,17 +168,17 @@ and reading data, in addition to methods that allow for modification of the unde
 <span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Layer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/layer&quot;</span><span class="p">).</span><span class="nx">Layer</span><span class="p">;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">layer</span> <span class="o">=</span> <span class="nx">Layer</span><span class="p">(</span><span class="s2">&quot;points&quot;</span><span class="p">);</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])});</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])});</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])});</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])});</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">])});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">1</span><span class="p">])});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">2</span><span class="p">,</span> <span class="mf">2</span><span class="p">])});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">3</span><span class="p">,</span> <span class="mf">3</span><span class="p">])});</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">geom</span><span class="o">:</span> <span class="nx">Point</span><span class="p">([</span><span class="mf">4</span><span class="p">,</span> <span class="mf">4</span><span class="p">])});</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">count</span>
-<span class="mi">5</span>
+<span class="mf">5</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">bounds</span>
-<span class="o">&lt;</span><span class="nx">Bounds</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Bounds</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">4</span><span class="p">,</span> <span class="mf">4</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">geoscript.geom.*</span>
@@ -236,8 +236,8 @@ filter is specified as <a class="reference external" href="http://docs.geotools.
 <div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">js</span><span class="o">&gt;</span> <span class="nx">layer</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;INTERSECTS(geom, POLYGON ((1.5 1.5, 1.5 3.5, 3.5 3.5, 3.5 1.5, 1.5 1.5)))&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span> <span class="p">{</span>
   <span class="o">&gt;</span>     <span class="nx">print</span><span class="p">(</span><span class="nx">feature</span><span class="p">.</span><span class="nx">geometry</span><span class="p">);</span>
   <span class="o">&gt;</span> <span class="p">})</span>
-<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mf">2</span><span class="p">,</span> <span class="mf">2</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mf">3</span><span class="p">,</span> <span class="mf">3</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">l</span><span class="o">.</span><span class="na">getFeatures</span><span class="o">(</span><span class="s2">&quot;INTERSECTS(geom, POLYGON ((1.5 1.5, 1.5 3.5, 3.5 3.5, 3.5 1.5, 1.5 1.5)))&quot;</span><span class="o">).</span><span class="na">each</span><span class="o">{</span><span class="n">f</span> <span class="o">-&gt;</span> <span class="n">println</span> <span class="n">f</span><span class="o">}</span>
@@ -298,7 +298,7 @@ filter is specified as <a class="reference external" href="http://docs.geotools.
   <span class="o">&gt;</span>     <span class="p">]</span>
   <span class="o">&gt;</span> <span class="p">});</span>
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">ws</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">roads</span><span class="p">);</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">roads</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">roads</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">0</span><span class="o">&gt;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">cities</span> <span class="o">=</span> <span class="nx">Layer</span><span class="p">({</span>
   <span class="o">&gt;</span>     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;cities&quot;</span><span class="p">,</span>
@@ -309,7 +309,7 @@ filter is specified as <a class="reference external" href="http://docs.geotools.
   <span class="o">&gt;</span>     <span class="p">]</span>
   <span class="o">&gt;</span> <span class="p">});</span>
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">ws</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cities</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">cities</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">cities</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">0</span><span class="o">&gt;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">states</span> <span class="o">=</span> <span class="nx">Layer</span><span class="p">({</span>
   <span class="o">&gt;</span>     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;states&quot;</span><span class="p">,</span>
@@ -319,7 +319,7 @@ filter is specified as <a class="reference external" href="http://docs.geotools.
   <span class="o">&gt;</span>     <span class="p">]</span>
   <span class="o">&gt;</span> <span class="p">});</span>
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">ws</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">states</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">states</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">states</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">0</span><span class="o">&gt;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">ws</span>
 <span class="o">&lt;</span><span class="nx">Memory</span> <span class="p">[</span><span class="s2">&quot;cities&quot;</span><span class="p">,</span> <span class="s2">&quot;states&quot;</span><span class="p">,</span> <span class="s2">&quot;roads&quot;</span><span class="p">]</span><span class="o">&gt;</span>
@@ -409,10 +409,10 @@ workspace used to manage a directory of shapefiles.</p>
   <span class="o">&gt;</span>     <span class="kd">var</span> <span class="nx">layer</span> <span class="o">=</span> <span class="nx">dir</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
   <span class="o">&gt;</span>     <span class="nx">print</span><span class="p">(</span><span class="nx">layer</span><span class="p">);</span>
   <span class="o">&gt;</span> <span class="p">})</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">census_boundaries</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">485</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">neighborhoods</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">78</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">city_boundary</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">12</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">election_precincts</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">429</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">census_boundaries</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">485</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">neighborhoods</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">78</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">city_boundary</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">12</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Layer</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">election_precincts</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">429</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code groovy highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="nl">groovy:</span><span class="mi">000</span><span class="o">&gt;</span> <span class="n">denver_shps</span><span class="o">.</span><span class="na">layers</span><span class="o">.</span><span class="na">each</span><span class="o">{</span><span class="n">name</span> <span class="o">-&gt;</span>
@@ -590,7 +590,7 @@ the data will be first be added to PostGIS as in the last section.</p>
 <span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mf">3181740.363649994</span><span class="p">,</span> <span class="mf">1665985.0072000027</span><span class="p">],</span> <span class="p">[</span><span class="mf">3181811.09655000</span><span class="p">...</span><span class="o">&gt;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="c1">// simplify to speed things up later</span>
-<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">boundary</span> <span class="o">=</span> <span class="nx">boundary</span><span class="p">.</span><span class="nx">simplify</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="nx">js</span><span class="o">&gt;</span> <span class="nx">boundary</span> <span class="o">=</span> <span class="nx">boundary</span><span class="p">.</span><span class="nx">simplify</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
 <span class="o">&lt;</span><span class="nx">Polygon</span> <span class="p">[[[</span><span class="mf">3181740.363649994</span><span class="p">,</span> <span class="mf">1665985.0072000027</span><span class="p">],</span> <span class="p">[</span><span class="mf">3183390.72814999</span><span class="p">...</span><span class="o">&gt;</span>
 
 <span class="nx">js</span><span class="o">&gt;</span> <span class="c1">// transform the boundary to EPSG:4326</span>
@@ -606,7 +606,7 @@ the data will be first be added to PostGIS as in the last section.</p>
 <span class="nx">js</span><span class="o">&gt;</span> <span class="nx">dir</span><span class="p">.</span><span class="nx">names</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
   <span class="o">&gt;</span>     <span class="kd">var</span> <span class="nx">layer</span> <span class="o">=</span> <span class="nx">dir</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
   <span class="o">&gt;</span>     <span class="nx">db</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">layer</span><span class="p">,</span> <span class="p">{</span>
-  <span class="o">&gt;</span>         <span class="nx">name</span><span class="o">:</span> <span class="nx">name</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+  <span class="o">&gt;</span>         <span class="nx">name</span><span class="o">:</span> <span class="nx">name</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">9</span><span class="p">),</span>
   <span class="o">&gt;</span>         <span class="nx">filter</span><span class="o">:</span> <span class="nx">cql</span><span class="p">,</span>
   <span class="o">&gt;</span>         <span class="nx">projection</span><span class="o">:</span> <span class="s2">&quot;epsg:2877&quot;</span>
   <span class="o">&gt;</span>     <span class="p">})</span>

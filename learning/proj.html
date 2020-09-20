@@ -128,7 +128,7 @@ system. A common way to identify a spatial reference system is with an <a class=
 <div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Projection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/proj&quot;</span><span class="p">).</span><span class="nx">Projection</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">prj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Projection</span><span class="p">(</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="nx">prj</span>
-<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mf">4326</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span>scala&gt; import org.geoscript.projection.Projection
@@ -153,7 +153,7 @@ proj: org.geoscript.projection.Projection = EPSG:4326
 <div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Projection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/proj&quot;</span><span class="p">).</span><span class="nx">Projection</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">prj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Projection</span><span class="p">(</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="nx">prj</span><span class="p">.</span><span class="nx">id</span>
-<span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span>
+<span class="nx">EPSG</span><span class="o">:</span><span class="mf">4326</span>
 </pre></div>
 </div>
 <div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span>scala&gt; import org.geoscript.projection._
@@ -194,11 +194,11 @@ from well known text.</p>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">wkt</span> <span class="o">=</span> <span class="s1">&#39;GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]]&#39;</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">prj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Projection</span><span class="p">(</span><span class="nx">wkt</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="nx">prj</span>
-<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mf">4326</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">org.geoscript.projection._</span>
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">proj</span> <span class="k">=</span> <span class="nc">Projection</span><span class="o">(</span><span class="s">&quot;&quot;&quot;GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]]&quot;&quot;&quot;</span><span class="o">)</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">proj</span> <span class="o">=</span> <span class="nc">Projection</span><span class="o">(</span><span class="s">&quot;&quot;&quot;GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]]&quot;&quot;&quot;</span><span class="o">)</span>
 <span class="n">proj</span><span class="k">:</span> <span class="kt">org.geoscript.projection.Projection</span> <span class="o">=</span> <span class="nc">GCS_WGS_1984</span>
 </pre></div>
 </div>
@@ -305,11 +305,11 @@ into coordinates in a different spatial reference system.</p>
 <div class="code js highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Projection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/proj&quot;</span><span class="p">).</span><span class="nx">Projection</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Projection</span><span class="p">(</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">GEOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/geom&quot;</span><span class="p">);</span>
-<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mi">111</span><span class="p">,</span> <span class="mf">45.7</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GEOM</span><span class="p">.</span><span class="nx">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">111</span><span class="p">,</span> <span class="mf">45.7</span><span class="p">]);</span>
 <span class="o">&gt;&gt;</span> <span class="nx">point</span><span class="p">.</span><span class="nx">projection</span> <span class="o">=</span> <span class="nx">src</span><span class="p">;</span>
-<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mi">4326</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Projection</span> <span class="nx">EPSG</span><span class="o">:</span><span class="mf">4326</span><span class="o">&gt;</span>
 <span class="o">&gt;&gt;</span> <span class="nx">point</span><span class="p">.</span><span class="nx">transform</span><span class="p">(</span><span class="s2">&quot;epsg:26912&quot;</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mi">500000</span><span class="p">,</span> <span class="mf">5060716.31816507</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">Point</span> <span class="p">[</span><span class="mf">500000</span><span class="p">,</span> <span class="mf">5060716.31816507</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="code scala highlight-scala notranslate"><div class="highlight"><pre><span></span>scala&gt; import org.geoscript.projection._

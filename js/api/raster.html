@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The raster module &#8212; GeoScript JS</title>
+    <link rel="stylesheet" href="../_static/geoscript.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The style module" href="style.html" />
+    <link rel="prev" title="workspace.Workspace()" href="workspace/workspace.html" />
+    <script src="../_static/site.js"></script>
+    <script src="../_static/jquery.cookie.js"></script>
+    <script>site.setLanguage('js')</script>
+    
+    
+
+  </head><body>
+    <div class="header">
+        <div class="wrap">
+            <div id="logo" class="logo-js">
+                <img id="logo-img" src="../_static/img/icon.png" width="52" height="52"/>
+                <span><a href="../..">GeoScript</a></span>
+            </div>
+            <ul id="top-nav">
+                <li class="first"><a href="../index.html">JavaScript</a></li>
+                <li><a href="../quickstart.html">Quick Start</a></li>
+                <li><a href="index.html">API</a></li>
+                <li><a href="../../py/index.html">Python</a></li>
+                <li><a href="../../scala/index.html">Scala</a></li>
+                <li><a href="../../groovy/index.html">Groovy</a></li>
+            </ul>
+            <div id="searchbox">
+                <form class="search" action="../search.html" method="get">
+                    <input id="searchbox-query" type="text" name="q" size="25" value="Search &hellip;" tabindex="3" onblur="if(this.value=='') this.value='Search &hellip;';" onfocus="if(this.value=='Search &hellip;') this.value='';" />
+                    <input id="searchbox-submit" type="image" value="Search" src="../_static/img/search_icon_green.png" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The raster module</a><ul>
+<li><a class="reference internal" href="#raster-format"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Format()</span></code></a><ul>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#raster-raster"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Raster()</span></code></a><ul>
+<li><a class="reference internal" href="#id1">Properties</a></li>
+<li><a class="reference internal" href="#id2">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#raster-band"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Band()</span></code></a><ul>
+<li><a class="reference internal" href="#id3">Properties</a></li>
+<li><a class="reference internal" href="#id4">Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="workspace/workspace.html"
+                        title="previous chapter"><code class="xref js js-class docutils literal notranslate"><span class="pre">workspace.Workspace()</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="style.html"
+                        title="next chapter">The style module</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-raster-module">
+<h1>The raster module<a class="headerlink" href="#the-raster-module" title="Permalink to this headline">¶</a></h1>
+<p>The <span class="xref std std-doc">raster</span> module can read and write Rasters.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kd">var</span> <span class="nx">Format</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;geoscript/raster&quot;</span><span class="p">).</span><span class="nx">Format</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="raster-format">
+<h2><a class="reference internal" href="#raster.Format" title="raster.Format"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Format()</span></code></a><a class="headerlink" href="#raster-format" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="raster.Format">
+<em class="property">class </em><code class="descclassname">raster.</code><code class="descname">Format</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#raster.Format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Format.  The config must contain a source representing the file or URL.</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="Format.name">
+<code class="descclassname">Format.</code><code class="descname">name</code><a class="headerlink" href="#Format.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">String</span></code>
+The type of Format (GeoTIFF, WorldImage).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Format.names">
+<code class="descclassname">Format.</code><code class="descname">names</code><a class="headerlink" href="#Format.names" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Array</span></code>
+Array of Raster names.  Most Formats will only contain one Raster.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="Format.read">
+<code class="descclassname">Format.</code><code class="descname">read</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#Format.read" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – <code class="docutils literal notranslate"><span class="pre">Object</span></code> An object literal with parameters</p></li>
+</ul>
+</dd>
+</dl>
+<p>name: The name of the Raster (optional).  Required if there are more than one Raster in the Format.</p>
+<p>proj: The Projection of the Raster (optional).</p>
+<p>bounds: The Bounds to read a subset of the entire Raster.  Optional, but if included size must also be included.</p>
+<p>size: An array of width and height of the Raster.  Optional, buf if included bound must also be included.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Format.write">
+<code class="descclassname">Format.</code><code class="descname">write</code><span class="sig-paren">(</span><em>raster</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#Format.write" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raster</strong> – <a class="reference internal" href="#raster.Raster" title="raster.Raster"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Raster()</span></code></a> The Raster to write to this Format.</p></li>
+<li><p><strong>config</strong> – <code class="docutils literal notranslate"><span class="pre">Object</span></code> An object literal of write parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="raster-raster">
+<h2><a class="reference internal" href="#raster.Raster" title="raster.Raster"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Raster()</span></code></a><a class="headerlink" href="#raster-raster" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="raster.Raster">
+<em class="property">class </em><code class="descclassname">raster.</code><code class="descname">Raster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raster.Raster" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Raster is a spatial data set represented by a grid of cells organized in one or more bands.</p>
+<p>Usually, Rasters are read from a Format, but you can create a new Raster from an array or array of numeric values
+and a geom.Bounds.</p>
+</dd></dl>
+
+<div class="section" id="id1">
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="Raster.name">
+<code class="descclassname">Raster.</code><code class="descname">name</code><a class="headerlink" href="#Raster.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">String</span></code>
+Get the name of the Raster.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.proj">
+<code class="descclassname">Raster.</code><code class="descname">proj</code><a class="headerlink" href="#Raster.proj" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a>
+Get the Projection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.bounds">
+<code class="descclassname">Raster.</code><code class="descname">bounds</code><a class="headerlink" href="#Raster.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="geom/bounds.html#geom.Bounds" title="geom.Bounds"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bounds()</span></code></a>
+Get the Bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.size">
+<code class="descclassname">Raster.</code><code class="descname">size</code><a class="headerlink" href="#Raster.size" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Array</cite>
+Get the size of the Raster as an Array of two numbers: width and height</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.cols">
+<code class="descclassname">Raster.</code><code class="descname">cols</code><a class="headerlink" href="#Raster.cols" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Number</cite>
+Get the number of columns or the width or the Raster</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.rows">
+<code class="descclassname">Raster.</code><code class="descname">rows</code><a class="headerlink" href="#Raster.rows" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Number</cite>
+Get the number of row or the height or the Raster</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.bands">
+<code class="descclassname">Raster.</code><code class="descname">bands</code><a class="headerlink" href="#Raster.bands" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Array</cite> of <code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Bands()</span></code>
+Get an array of Bands</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.extrema">
+<code class="descclassname">Raster.</code><code class="descname">extrema</code><a class="headerlink" href="#Raster.extrema" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Object</cite> with min and max arrays with min and max values for each band
+Get the minimum and maximum values for each band.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.blockSize">
+<code class="descclassname">Raster.</code><code class="descname">blockSize</code><a class="headerlink" href="#Raster.blockSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Array</cite> with width and height of a pixel
+Get the block size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Raster.pixelSize">
+<code class="descclassname">Raster.</code><code class="descname">pixelSize</code><a class="headerlink" href="#Raster.pixelSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Array</cite> with width and height of a pixel
+Get the pixel size</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>Methods<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="Raster.getPixel">
+<code class="descclassname">Raster.</code><code class="descname">getPixel</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.getPixel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> – <a class="reference internal" href="geom/point.html#geom.Point" title="geom.Point"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Point()</span></code></a> The geographic Point</p></li>
+</ul>
+</dd>
+</dl>
+<p>Get a pixel <code class="docutils literal notranslate"><span class="pre">Object</span></code> with x and y properies.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.getPoint">
+<code class="descclassname">Raster.</code><code class="descname">getPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.getPoint" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – <code class="docutils literal notranslate"><span class="pre">Number</span></code> The pixel’s x position</p></li>
+<li><p><strong>y</strong> – <code class="docutils literal notranslate"><span class="pre">Number</span></code> The pixel’s y position</p></li>
+</ul>
+</dd>
+</dl>
+<p>Get a <a class="reference internal" href="geom/point.html#geom.Point" title="geom.Point"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Point()</span></code></a> for the pixel.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.getValue">
+<code class="descclassname">Raster.</code><code class="descname">getValue</code><span class="sig-paren">(</span><em>pointOrPixel</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.getValue" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pointOrPixel</strong> – <code class="docutils literal notranslate"><span class="pre">Object</span></code> The pixel or <a class="reference internal" href="geom/point.html#geom.Point" title="geom.Point"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Point()</span></code></a></p></li>
+<li><p><strong>type</strong> – <code class="docutils literal notranslate"><span class="pre">String</span></code> The type of value to return (double, int, float, byte, boolean)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Get a value for each band from the Raster.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.getMinimumValue">
+<code class="descclassname">Raster.</code><code class="descname">getMinimumValue</code><span class="sig-paren">(</span><em>band</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.getMinimumValue" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namd</strong> – <cite>Number</cite> The band</p></li>
+</ul>
+</dd>
+</dl>
+<p>Get the minimum value for the given  band</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.getMaximumValue">
+<code class="descclassname">Raster.</code><code class="descname">getMaximumValue</code><span class="sig-paren">(</span><em>band</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.getMaximumValue" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namd</strong> – <cite>Number</cite> The band</p></li>
+</ul>
+</dd>
+</dl>
+<p>Get the maximum value for the given  band</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.crop">
+<code class="descclassname">Raster.</code><code class="descname">crop</code><span class="sig-paren">(</span><em>bounds</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.crop" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bounds</strong> – <code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Bound()</span></code> The Bounds of the new Raster</p></li>
+</ul>
+</dd>
+</dl>
+<p>Crop the current Raster to only include data in the given Bounds.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">Raster.</code><code class="descname">crop</code><span class="sig-paren">(</span><em>geometry</em><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geometry</strong> – <a class="reference internal" href="geom/geometry.html#geom.Geometry" title="geom.Geometry"><code class="xref js js-class docutils literal notranslate"><span class="pre">geom.Geometry()</span></code></a> The Geometry to use when cropping the Raster</p></li>
+</ul>
+</dd>
+</dl>
+<p>Crop the current Raster to only include data in the given Geometry.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.reproject">
+<code class="descclassname">Raster.</code><code class="descname">reproject</code><span class="sig-paren">(</span><em>projection</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.reproject" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>projection</strong> – <a class="reference internal" href="proj/projection.html#proj.Projection" title="proj.Projection"><code class="xref js js-class docutils literal notranslate"><span class="pre">proj.Projection()</span></code></a> The target Projection</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reproject a Raster from one Projection to another Projection.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Raster.reclassify">
+<code class="descclassname">Raster.</code><code class="descname">reclassify</code><span class="sig-paren">(</span><em>ranges</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#Raster.reclassify" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ranges</strong> – <cite>Array</cite> An array of object literals with required min, max, and value properties. minIncluded and maxIncluded are optional.</p></li>
+<li><p><strong>options</strong> – <cite>Object</cite> An object literal with optional band and noData values.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reclassify the values of the Raster.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="raster-band">
+<h2><a class="reference internal" href="#raster.Band" title="raster.Band"><code class="xref js js-class docutils literal notranslate"><span class="pre">raster.Band()</span></code></a><a class="headerlink" href="#raster-band" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="raster.Band">
+<em class="property">class </em><code class="descclassname">raster.</code><code class="descname">Band</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raster.Band" title="Permalink to this definition">¶</a></dt>
+<dd><p>An individual layer from a Raster.</p>
+</dd></dl>
+
+<div class="section" id="id3">
+<h3>Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="Band.min">
+<code class="descclassname">Band.</code><code class="descname">min</code><a class="headerlink" href="#Band.min" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the minimum value from this Band.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Band.max">
+<code class="descclassname">Band.</code><code class="descname">max</code><a class="headerlink" href="#Band.max" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the maximum value from this Band.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Band.noData">
+<code class="descclassname">Band.</code><code class="descname">noData</code><a class="headerlink" href="#Band.noData" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Array</span></code>
+Get the array of no data values.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Band.scale">
+<code class="descclassname">Band.</code><code class="descname">scale</code><a class="headerlink" href="#Band.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the scale.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descclassname">Band.</code><code class="descname">scale</code></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the scale.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Band.type">
+<code class="descclassname">Band.</code><code class="descname">type</code><a class="headerlink" href="#Band.type" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the Raster type.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Band.description">
+<code class="descclassname">Band.</code><code class="descname">description</code><a class="headerlink" href="#Band.description" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Number</span></code>
+Get the Raster description.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h3>Methods<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="Band.isNoData">
+<code class="descclassname">Band.</code><code class="descname">isNoData</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#Band.isNoData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – <code class="docutils literal notranslate"><span class="pre">Object</span></code> The value to check</p></li>
+</ul>
+</dd>
+</dl>
+<p>Determine whether the value is a no data value.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="../genindex.html" title="General Index"
+                 accesskey="I">index</a></li>
+            <li class="right" >
+              <a href="style.html" title="The style module"
+                 accesskey="N">next</a> |</li>
+            <li class="right" >
+              <a href="workspace/workspace.html" title="workspace.Workspace()"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GeoScript JS</a> &#187;</li>
+            <li><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li><a href="#">The raster module</a></li>
+      </ul>
+    </div>
+
+<div class="footer">
+    <a rel="license" href="https://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+      &copy; Copyright 2020, GeoScript.
+</div>
+
+  </body>
+</html>
