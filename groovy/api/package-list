@@ -1,5 +1,6 @@
 geoscript
 geoscript.carto
+geoscript.carto.io
 geoscript.feature
 geoscript.feature.io
 geoscript.filter
@@ -12,6 +13,7 @@ geoscript.plot
 geoscript.process
 geoscript.proj
 geoscript.render
+geoscript.render.io
 geoscript.style
 geoscript.style.io
 geoscript.viewer
